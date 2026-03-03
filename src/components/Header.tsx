@@ -34,7 +34,7 @@ export default function Header() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 w-full z-[1001]">
+            <header className="fixed top-0 left-0 w-full z-[var(--z-header)]">
                 {/* Protocol Bar - Industrial Labeling */}
                 <div className="w-full h-8 bg-foreground text-background flex items-center justify-between px-4 md:px-8 font-mono text-[9px] font-bold uppercase tracking-[0.3em]">
                     <span>{dict.header.status}</span>
@@ -80,7 +80,7 @@ export default function Header() {
 
             {/* Mobile Overlay - Postmodern Chaos */}
             {isOpen && (
-                <div className="fixed inset-0 z-[1002] bg-background text-foreground flex flex-col justify-center p-8 md:p-16">
+                <div className="fixed inset-0 z-[var(--z-mobile-menu)] bg-background text-foreground flex flex-col justify-center p-8 md:p-16">
                     <div className="absolute top-0 left-0 w-full h-full bg-halftone opacity-10 pointer-events-none"></div>
                     <nav className="relative z-10 flex flex-col gap-4">
                         {dict.header.mobile.items.map((item, i) => (

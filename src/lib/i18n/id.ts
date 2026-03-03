@@ -1,6 +1,7 @@
+import { Dictionary } from "@/types";
 import { en } from "./en";
 
-export const id: typeof en = {
+export const id = {
     header: {
         status: "STATUS: OPERASIONAL // V.01-2026",
         protocol: "PROTOKOL: OTORITAS_DESAIN",
@@ -25,56 +26,71 @@ export const id: typeof en = {
     },
     landing: {
         hero: {
-            established: "[ DIDIRIKAN // 2026 ]",
-            title1: "SISTEM",
-            title2: "YANG TAK",
-            title3: "TERTANDINGI",
-            mission: "// MISI_UTAMA",
-            desc: "Menyediakan amunisi digital bagi raksasa fisik. Kami tidak sekadar membuat situs web; kami membangun monumen kepercayaan.",
-            cta: "Ajukan_Audit",
-            response: "WAKTU_RESPON: 24J",
-            scrollLabel: "SWISS_POP_BRUTALIST"
+            tagline: "[ INSINYUR KEPERCAYAAN // 2026 ]",
+            title1: "KEPERCAYAAN TIDAK DIBUAT.",
+            title2: "IA DIREKAYASA.",
+            subtitle: "Dalam arsitektur digital, setiap struktur menentukan keputusan.",
+            desc1: "Mayoritas website menampilkan informasi. Sedikit yang dirancang untuk menghilangkan keraguan.",
+            desc2: "Kami merancang sistem yang membuat keyakinan muncul secara logis. Tanpa tekanan. Tanpa manipulasi.",
+            stat: "99.9%",
+            statLabel: "Stabilitas_Sistem",
+            cta: "→ Masuk ke ruang keputusan",
+            scrollLabel: "PRESISI_ARSITEKTUR"
         },
-        authority: {
-            title1: "KEKUATAN",
-            title2: "DARI",
-            title3: "SEBUAH",
-            title4: "KETERATURAN.",
-            quote: "\"Kekacauan hanya untuk mereka yang belum terbukti. Anda membutuhkan rekayasa digital mutlak.\"",
-            stats: {
-                system: "Keandalan_Sistem",
-                visual: "Tanpa_Kekacauan",
-                code: "Kode_Eksklusif",
-                presence: "Kehadiran_Digital"
-            }
+        refleksi: {
+            label: "// 01_REFLEKSI",
+            line1: "Website Anda mungkin terlihat baik.",
+            line2: "Namun pertanyaannya sederhana:",
+            question: "Apakah ia benar-benar membuat orang yakin?",
+            desc1: "Banyak bisnis kehilangan kepercayaan bukan karena kualitas,",
+            desc2: "tetapi karena struktur yang tidak presisi."
         },
-        marquee1: {
-            part1: "Inovasi_Tanpa_Risiko",
-            part2: "Kehadiran_Mutlak",
-            part3: "Dominasi_Digital"
-        },
-        manifesto: {
-            title: "MANIFESTO.",
-            subtitle: "PILIH_PROTOKOL(01-06)",
+        diagnosis: {
+            label: "// 02_DIAGNOSIS",
+            title: "Kepercayaan hilang ketika:",
             items: [
-                { title: "Kehadiran Eksklusif", desc: "Kami menciptakan panggung digital yang menghargai ketenangan Anda sekaligus memproyeksikan skala mutlak Anda." },
-                { title: "Membangun Warisan", desc: "Kami menerjemahkan puluhan tahun kepercayaan analog menjadi atmosfer digital yang terasa permanen." },
-                { title: "Otoritas Sunyi", desc: "Rekayasa presisi yang menuntut rasa hormat tanpa kebisingan pemasaran murahan." },
-                { title: "Jangkauan Terbatas", desc: "Kehadiran yang menyaring kualitas, hanya melayani mereka yang benar-benar memahami nilai Anda." },
-                { title: "Presisi Swiss", desc: "Konsistensi yang menyamai standar fisik Anda. Keteraturan mutlak, keandalan yang tak tergoyahkan." },
-                { title: "Keabadian Masa Depan", desc: "Membangun fondasi digital untuk kelanjutan dominasi Anda di abad berikutnya." }
+                "Informasi tidak tersusun dengan logis",
+                "Fokus terpecah",
+                "Navigasi menciptakan friksi",
+                "Pesan tidak konsisten"
+            ],
+            conclusion1: "Keraguan bukan emosi.",
+            conclusion2: "Ia adalah hasil dari struktur yang lemah."
+        },
+        peran: {
+            label: "// 03_DEFINISI",
+            title: "Kami bekerja sebagai insinyur kepercayaan.",
+            notLine1: "Bukan mempercantik tampilan.",
+            notLine2: "Bukan menambah animasi.",
+            mainDesc: "Kami menguji, menyederhanakan, dan menyusun ulang arsitektur digital hingga tidak ada celah bagi keraguan."
+        },
+        bukti: {
+            label: "// 04_BUKTI",
+            items: [
+                { val: "99.9%", label: "Keandalan_Sistem" },
+                { val: "ZERO", label: "Disorientasi_Pengguna" },
+                { val: "EKSKLUSIF", label: "Struktur_Terukur" },
+                { val: "PERMANEN", label: "Dirancang_Bertahan" }
             ]
         },
-        marquee2: {
-            part1: "PROTOKOL_DITEGAKKAN",
-            part2: "INTEGRITAS_DATA_TERVERIFIKASI",
-            part3: "SISTEM_DIAMANKAN"
+        penutup: {
+            line1: "Ketika struktur tepat,",
+            line2: "orang tidak merasa sedang diyakinkan.",
+            line3: "Mereka hanya merasa keputusan itu masuk akal.",
+            closing: "Dan itulah kepercayaan.",
+            cta: "→ Bangun dengan presisi"
         },
-        cta: {
-            subtitle: "Apakah_Anda_Siap_Untuk_Meningkat?",
-            title1: "KONVERSI_KE",
-            title2: "DIGITAL",
-            btn: "[ Masuk_Ke_Ruang_Besi ]"
+        marquee1: {
+            part1: "Presisi_Arsitektur",
+            part2: "Struktur_Kepercayaan",
+            part3: "Rekayasa_Keyakinan"
+        },
+        contrast: {
+            label: "// PERBEDAAN_KRUSIAL",
+            agencyLabel: "Agency biasa berkata:",
+            agencyLine: "\"Kami meningkatkan konversi.\"",
+            engineerLabel: "Insinyur kepercayaan berkata:",
+            engineerLine: "\"Kami menghilangkan alasan untuk tidak percaya.\""
         }
     },
     footer: {
@@ -127,4 +143,4 @@ export const id: typeof en = {
     loading: {
         init: "INISIALISASI_PROTOKOL"
     }
-};
+} satisfies Dictionary;

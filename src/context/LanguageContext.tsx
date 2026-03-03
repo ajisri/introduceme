@@ -1,15 +1,8 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useMemo } from "react";
 import { en } from "@/lib/i18n/en";
 import { id } from "@/lib/i18n/id";
-
-export type Language = "en" | "id";
-type Dictionary = typeof en;
-
-// Deep partial allows nested keys to be optional if missing
-type DeepPartial<T> = T extends object ? {
-    [P in keyof T]?: DeepPartial<T[P]>;
-} : T;
+import { Language, Dictionary } from "@/types";
 
 interface LanguageContextType {
     language: Language;
@@ -19,11 +12,15 @@ interface LanguageContextType {
 
 const dictionaries: Record<Language, Dictionary> = {
     en,
-    id: id as unknown as Dictionary // Ensure id satisfies the type structure of en
+    id
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+/**
+ * LANGUAGE PROVIDER
+ * Optimized with useMemo and dynamic sync of HTML lang attribute.
+ */
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const [language, setLanguageState] = useState<Language>("en");
     const [mounted, setMounted] = useState(false);
@@ -39,17 +36,32 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         setMounted(true);
     }, []);
 
+    // Synchronize HTML lang attribute for SEO and Accessibility
+    useEffect(() => {
+        if (mounted) {
+            document.documentElement.lang = language;
+        }
+    }, [language, mounted]);
+
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);
         localStorage.setItem("language", lang);
     };
 
-    // Prevent hydration mismatch by returning English server-side, 
-    // overriding client-side after mount if necessary.
-    const currentDict = mounted ? dictionaries[language] : dictionaries.en;
+    // Memoize dictionary to avoid re-calculating on every render
+    const currentDict = useMemo(() =>
+        mounted ? dictionaries[language] : dictionaries.en,
+        [language, mounted]);
+
+    // Memoize context value to prevent global re-render hell
+    const contextValue = useMemo(() => ({
+        language: mounted ? language : "en",
+        setLanguage,
+        dict: currentDict
+    }), [language, mounted, currentDict]);
 
     return (
-        <LanguageContext.Provider value={{ language: mounted ? language : "en", setLanguage, dict: currentDict }}>
+        <LanguageContext.Provider value={contextValue}>
             {children}
         </LanguageContext.Provider>
     );

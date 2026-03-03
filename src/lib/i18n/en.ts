@@ -1,3 +1,5 @@
+import { Dictionary } from "@/types";
+
 export const en = {
     header: {
         status: "STATUS: OPERATIONAL // V.01-2026",
@@ -23,56 +25,71 @@ export const en = {
     },
     landing: {
         hero: {
-            established: "[ ESTABLISHED // 2026 ]",
-            title1: "UNTOUCHABLE",
-            title2: "SYSTEMS",
-            title3: "AUTHORITY",
-            mission: "// CORE_MISSION",
-            desc: "Providing the digital ammunition for physical giants. We don't build websites; we build monuments of trust.",
-            cta: "Request_Audit",
-            response: "RESPONSE_TIME: 24H",
-            scrollLabel: "SWISS_POP_BRUTALIST"
+            tagline: "[ TRUST ENGINEER // 2026 ]",
+            title1: "TRUST IS NOT BUILT.",
+            title2: "IT IS ENGINEERED.",
+            subtitle: "In digital architecture, every structure determines a decision.",
+            desc1: "Most websites display information. Few are designed to eliminate doubt.",
+            desc2: "We engineer systems that make conviction emerge logically. No pressure. No manipulation.",
+            stat: "99.9%",
+            statLabel: "System_Stability",
+            cta: "→ Enter the decision room",
+            scrollLabel: "PRECISION_ARCHITECTURE"
         },
-        authority: {
-            title1: "THE",
-            title2: "POWER",
-            title3: "OF",
-            title4: "ORDER.",
-            quote: "\"Chaos is for the unproven. You require absolute digital engineering.\"",
-            stats: {
-                system: "System_Reliability",
-                visual: "Visual_Clutter",
-                code: "Exclusive_Code",
-                presence: "Digital_Presence"
-            }
+        refleksi: {
+            label: "// 01_REFLECTION",
+            line1: "Your website may look good.",
+            line2: "But the question is simple:",
+            question: "Does it truly make people believe?",
+            desc1: "Many businesses lose trust not because of quality,",
+            desc2: "but because of imprecise structure."
         },
-        marquee1: {
-            part1: "Innovation_Without_Risk",
-            part2: "Absolute_Presence",
-            part3: "Digital_Domination"
-        },
-        manifesto: {
-            title: "MANIFESTO.",
-            subtitle: "SELECT_PROTOCOL(01-06)",
+        diagnosis: {
+            label: "// 02_DIAGNOSIS",
+            title: "Trust is lost when:",
             items: [
-                { title: "Reserved Presence", desc: "We create digital stages that respect your silence while projecting your absolute scale." },
-                { title: "Legacy Immersion", desc: "We translate decades of analog trust into a digital atmosphere that feels permanent." },
-                { title: "Silent Authority", desc: "Precision engineering that commands respect without the noise of cheap marketing." },
-                { title: "Exclusive Reach", desc: "A presence that filters for quality, serving only those who truly understand your value." },
-                { title: "Swiss Precision", desc: "Consistency that matches your physical standards. Absolute order, unyielding reliability." },
-                { title: "Future Permanence", desc: "Building the digital foundation for the next century of your continued dominance." }
+                "Information is not logically structured",
+                "Focus is fragmented",
+                "Navigation creates friction",
+                "Messaging is inconsistent"
+            ],
+            conclusion1: "Doubt is not an emotion.",
+            conclusion2: "It is the result of weak structure."
+        },
+        peran: {
+            label: "// 03_DEFINITION",
+            title: "We work as trust engineers.",
+            notLine1: "Not beautifying interfaces.",
+            notLine2: "Not adding animations.",
+            mainDesc: "We test, simplify, and restructure digital architecture until there is no gap for doubt."
+        },
+        bukti: {
+            label: "// 04_EVIDENCE",
+            items: [
+                { val: "99.9%", label: "System_Reliability" },
+                { val: "ZERO", label: "User_Disorientation" },
+                { val: "EXCLUSIVE", label: "Measured_Structure" },
+                { val: "PERMANENT", label: "Built_To_Last" }
             ]
         },
-        marquee2: {
-            part1: "PROTOCOL_ENFORCED",
-            part2: "DATA_INTEGRITY_VERIFIED",
-            part3: "SYSTEM_SECURED"
+        penutup: {
+            line1: "When the structure is precise,",
+            line2: "people don't feel they're being convinced.",
+            line3: "They simply feel the decision makes sense.",
+            closing: "And that is trust.",
+            cta: "→ Build with precision"
         },
-        cta: {
-            subtitle: "Are_You_Ready_To_Level_Up?",
-            title1: "CONVERT",
-            title2: "TO_DIGITAL",
-            btn: "[ Enter_The_Vault ]"
+        marquee1: {
+            part1: "Precision_Architecture",
+            part2: "Trust_Structure",
+            part3: "Conviction_Engineering"
+        },
+        contrast: {
+            label: "// CRUCIAL_DIFFERENCE",
+            agencyLabel: "A typical agency says:",
+            agencyLine: "\"We increase conversions.\"",
+            engineerLabel: "A trust engineer says:",
+            engineerLine: "\"We eliminate reasons not to trust.\""
         }
     },
     footer: {
@@ -125,4 +142,4 @@ export const en = {
     loading: {
         init: "INITIALIZING_PROTOCOL"
     }
-};
+} satisfies Dictionary;

@@ -1,0 +1,237 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - main [ref=e5]:
+      - generic: S
+      - generic: W
+      - generic: I
+      - generic: S
+      - generic: S
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]: "STATUS: OPERATIONAL // V.01-2026"
+          - generic [ref=e9]: "PROTOCOL: DESIGN_AUTHORITY"
+          - generic [ref=e10]: "LOC: GLOBAL_NETWORK"
+        - generic [ref=e11]:
+          - link "SW POP" [ref=e13] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e14]: SW
+            - generic [ref=e15]: POP
+          - navigation [ref=e16]:
+            - link "Core" [ref=e17] [cursor=pointer]:
+              - /url: /
+            - link "Vault" [ref=e18] [cursor=pointer]:
+              - /url: /story
+            - link "Manifesto" [ref=e19] [cursor=pointer]:
+              - /url: /#about
+            - button "Toggle Language" [ref=e21] [cursor=pointer]:
+              - generic [ref=e23]:
+                - generic [ref=e24]: EN
+                - generic [ref=e25]: /
+                - generic [ref=e26]: ID
+            - button "Toggle Theme" [ref=e29] [cursor=pointer]:
+              - generic [ref=e31]:
+                - generic [ref=e32]: LGT
+                - generic [ref=e33]: /
+                - generic [ref=e34]: DRK
+      - generic [ref=e37]:
+        - generic [ref=e41]:
+          - generic [ref=e43]: "[ ESTABLISHED // 2026 ]"
+          - heading "UNTOUCHABLE SYSTEMS AUTHORITY" [level=1] [ref=e45]:
+            - generic [ref=e47]: UNTOUCHABLE
+            - generic [ref=e49]: SYSTEMS
+            - generic [ref=e51]: AUTHORITY
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - paragraph [ref=e55]: // CORE_MISSION
+            - paragraph [ref=e56]: Providing the digital ammunition for physical giants. We don't build websites; we build monuments of trust.
+          - generic [ref=e57]:
+            - button "Request_Audit" [ref=e58] [cursor=pointer]: Request_Audit
+            - paragraph [ref=e60]: "RESPONSE_TIME: 24H"
+        - generic [ref=e62]: SWISS_POP_BRUTALIST
+      - generic [ref=e66]:
+        - heading "THE POWER OF ORDER." [level=2] [ref=e69]:
+          - text: THE
+          - text: POWER
+          - text: OF
+          - text: ORDER.
+        - generic [ref=e70]:
+          - paragraph [ref=e71]: "\"Chaos is for the unproven. You require absolute digital engineering.\""
+          - generic [ref=e72]:
+            - generic [ref=e73]:
+              - paragraph [ref=e74]: 99.9%
+              - paragraph [ref=e75]: System_Reliability
+            - generic [ref=e76]:
+              - paragraph [ref=e77]: ZERO
+              - paragraph [ref=e78]: Visual_Clutter
+            - generic [ref=e79]:
+              - paragraph [ref=e80]: 100%
+              - paragraph [ref=e81]: Exclusive_Code
+            - generic [ref=e82]:
+              - paragraph [ref=e83]: PERMANENT
+              - paragraph [ref=e84]: Digital_Presence
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - generic [ref=e88]: Innovation_Without_Risk
+          - generic [ref=e90]: Absolute_Presence
+          - generic [ref=e92]: Digital_Domination
+        - generic [ref=e94]:
+          - generic [ref=e95]: Innovation_Without_Risk
+          - generic [ref=e97]: Absolute_Presence
+          - generic [ref=e99]: Digital_Domination
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - heading "MANIFESTO." [level=2] [ref=e103]
+          - generic [ref=e104]: SELECT_PROTOCOL(01-06)
+        - generic [ref=e105]:
+          - generic [ref=e106] [cursor=pointer]:
+            - generic [ref=e108]:
+              - generic [ref=e109]: (
+              - generic [ref=e110]: "01"
+              - generic [ref=e111]: )
+            - heading "Reserved Presence" [level=3] [ref=e113]: Reserved Presence
+            - paragraph [ref=e115]: We create digital stages that respect your silence while projecting your absolute scale.
+          - generic [ref=e116] [cursor=pointer]:
+            - generic [ref=e118]:
+              - generic [ref=e119]: (
+              - generic [ref=e120]: "02"
+              - generic [ref=e121]: )
+            - heading "Legacy Immersion" [level=3] [ref=e123]: Legacy Immersion
+            - paragraph [ref=e125]: We translate decades of analog trust into a digital atmosphere that feels permanent.
+          - generic [ref=e126] [cursor=pointer]:
+            - generic [ref=e128]:
+              - generic [ref=e129]: (
+              - generic [ref=e130]: "03"
+              - generic [ref=e131]: )
+            - heading "Silent Authority" [level=3] [ref=e133]: Silent Authority
+            - paragraph [ref=e135]: Precision engineering that commands respect without the noise of cheap marketing.
+          - generic [ref=e136] [cursor=pointer]:
+            - generic [ref=e138]:
+              - generic [ref=e139]: (
+              - generic [ref=e140]: "04"
+              - generic [ref=e141]: )
+            - heading "Exclusive Reach" [level=3] [ref=e143]: Exclusive Reach
+            - paragraph [ref=e145]: A presence that filters for quality, serving only those who truly understand your value.
+          - generic [ref=e146] [cursor=pointer]:
+            - generic [ref=e148]:
+              - generic [ref=e149]: (
+              - generic [ref=e150]: "05"
+              - generic [ref=e151]: )
+            - heading "Swiss Precision" [level=3] [ref=e153]: Swiss Precision
+            - paragraph [ref=e155]: Consistency that matches your physical standards. Absolute order, unyielding reliability.
+          - generic [ref=e156] [cursor=pointer]:
+            - generic [ref=e158]:
+              - generic [ref=e159]: (
+              - generic [ref=e160]: "06"
+              - generic [ref=e161]: )
+            - heading "Future Permanence" [level=3] [ref=e163]: Future Permanence
+            - paragraph [ref=e165]: Building the digital foundation for the next century of your continued dominance.
+      - generic [ref=e168]:
+        - generic [ref=e169]:
+          - generic [ref=e170]: PROTOCOL_ENFORCED
+          - generic [ref=e172]: DATA_INTEGRITY_VERIFIED
+          - generic [ref=e174]: SYSTEM_SECURED
+        - generic [ref=e176]:
+          - generic [ref=e177]: PROTOCOL_ENFORCED
+          - generic [ref=e179]: DATA_INTEGRITY_VERIFIED
+          - generic [ref=e181]: SYSTEM_SECURED
+      - generic [ref=e183]:
+        - generic [ref=e184]:
+          - generic [ref=e185]: "[ ACCESS_RESTRICTED // ARCHIVE_04 ]"
+          - heading "THE LEGACY ASSETS" [level=2] [ref=e186]:
+            - text: THE
+            - text: LEGACY
+            - text: ASSETS
+          - paragraph [ref=e187]: Establishing Authority Through Proven Origin Sequences
+        - generic [ref=e189]:
+          - generic [ref=e191] [cursor=pointer]:
+            - img "Legacy Archive 1" [ref=e192]
+            - generic [ref=e193]: REF_01
+            - generic [ref=e196]: DATA_SEQUENCE_01
+          - generic [ref=e199] [cursor=pointer]:
+            - img "Legacy Archive 2" [ref=e200]
+            - generic [ref=e201]: REF_02
+            - generic [ref=e204]: DATA_SEQUENCE_02
+          - generic [ref=e207] [cursor=pointer]:
+            - img "Legacy Archive 3" [ref=e208]
+            - generic [ref=e209]: REF_03
+            - generic [ref=e212]: DATA_SEQUENCE_03
+          - generic [ref=e215] [cursor=pointer]:
+            - img "Legacy Archive 4" [ref=e216]
+            - generic [ref=e217]: REF_04
+            - generic [ref=e220]: DATA_SEQUENCE_04
+          - generic [ref=e223] [cursor=pointer]:
+            - img "Legacy Archive 5" [ref=e224]
+            - generic [ref=e225]: REF_05
+            - generic [ref=e228]: DATA_SEQUENCE_05
+          - generic [ref=e231] [cursor=pointer]:
+            - img "Legacy Archive 6" [ref=e232]
+            - generic [ref=e233]: REF_06
+            - generic [ref=e236]: DATA_SEQUENCE_06
+        - generic [ref=e239]:
+          - paragraph [ref=e241]: "\"Your heritage is not a liability. It is the fuel for your next era of dominance.\""
+          - generic [ref=e242]:
+            - generic [ref=e243]: "TRUST_INDEX: AA+"
+            - generic [ref=e244]: •
+            - generic [ref=e245]: "VERSION: LEGACY_ULTIMATE"
+      - generic [ref=e246]:
+        - generic [ref=e247]:
+          - paragraph [ref=e248]: Are_You_Ready_To_Level_Up?
+          - heading "CONVERT TO_DIGITAL" [level=2] [ref=e249]:
+            - text: CONVERT
+            - text: TO_DIGITAL
+        - link "[ Enter_The_Vault ]" [ref=e250] [cursor=pointer]:
+          - /url: /story
+          - generic [ref=e251]: "[ Enter_The_Vault ]"
+      - generic [ref=e253]:
+        - img [ref=e255]:
+          - generic [ref=e256]: SYSTEM_AUTHORITY — DESIGN_LEGACY — SWISS_POP_EST_2026 —SYSTEM_AUTHORITY — DESIGN_LEGACY — SWISS_POP_EST_2026 —SYSTEM_AUTHORITY — DESIGN_LEGACY — SWISS_POP_EST_2026 —
+          - generic [ref=e257]: PROTOCOL_ACTIVE — NETWORK_STABLE — DATA_VERIFIED — TRUST_MAINTAINED —PROTOCOL_ACTIVE — NETWORK_STABLE — DATA_VERIFIED — TRUST_MAINTAINED —
+        - generic [ref=e258]:
+          - generic [ref=e259]: "[ VISUAL_ASSETS_CACHE ]"
+          - generic [ref=e261]:
+            - generic [ref=e262] [cursor=pointer]:
+              - img "AWAKENING" [ref=e263]
+              - generic [ref=e264]: //01
+            - generic [ref=e266] [cursor=pointer]:
+              - img "AKSA" [ref=e267]
+              - generic [ref=e268]: //02
+            - generic [ref=e270] [cursor=pointer]:
+              - img "TIME" [ref=e271]
+              - generic [ref=e272]: //03
+            - generic [ref=e274] [cursor=pointer]:
+              - img "STUCK" [ref=e275]
+              - generic [ref=e276]: //04
+            - generic [ref=e278] [cursor=pointer]:
+              - img "TEST" [ref=e279]
+              - generic [ref=e280]: //05
+            - generic [ref=e282] [cursor=pointer]:
+              - img "REALIZE" [ref=e283]
+              - generic [ref=e284]: //06
+            - generic [ref=e286] [cursor=pointer]:
+              - generic [ref=e287]: +
+              - generic [ref=e288]: EXPAND_ARCHIVE
+        - generic [ref=e289]:
+          - generic [ref=e290]:
+            - generic [ref=e291]: ( AUTH_INDEX )
+            - generic [ref=e292]: PORTFOLIO.ARC.26
+          - navigation [ref=e293]:
+            - link "Protocol_Home" [ref=e294] [cursor=pointer]:
+              - /url: "#"
+            - link "Enter_Vault" [ref=e295] [cursor=pointer]:
+              - /url: /story
+            - link "Read_Manifesto" [ref=e296] [cursor=pointer]:
+              - /url: "#about"
+          - generic [ref=e297]:
+            - generic [ref=e298]: ( ACCESS_POINT )
+            - generic [ref=e299]: GLOBAL_CORE_NETWORK
+        - generic [ref=e300]:
+          - generic [ref=e301]: © 2026 SWISS_POP_BRUTALIST
+          - generic [ref=e302]: ALL_SYSTEMS_NOMINAL
+    - generic [ref=e306]: INITIALIZING_PROTOCOL
+  - button "Open Next.js Dev Tools" [ref=e312] [cursor=pointer]:
+    - img [ref=e313]
+  - alert [ref=e316]
+```

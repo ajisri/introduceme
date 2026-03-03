@@ -18,16 +18,19 @@ export default function SmoothScrolling({ children }: { children: React.ReactNod
     // Synchronize Lenis scroll with GSAP's ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
 
-    // Use GSAP's ticker to drive Lenis for perfect synchronization
-    gsap.ticker.add((time) => {
+    // Define the ticker callback for clean removal
+    const tickerCallback = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
+
+    // Use GSAP's ticker to drive Lenis for perfect synchronization
+    gsap.ticker.add(tickerCallback);
 
     // Turn off lagSmoothing to prevent jumps during heavy load
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(50, 16);
 
     return () => {
-      gsap.ticker.remove(lenis.raf);
+      gsap.ticker.remove(tickerCallback);
       lenis.destroy();
     };
   }, []);

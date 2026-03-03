@@ -1,0 +1,222 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - main [ref=e5]:
+      - generic: S
+      - generic: W
+      - generic: I
+      - generic: S
+      - generic: S
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]: "STATUS: OPERATIONAL // V.01-2026"
+          - generic [ref=e9]: "PROTOCOL: DESIGN_AUTHORITY"
+          - generic [ref=e10]: "LOC: GLOBAL_NETWORK"
+        - generic [ref=e11]:
+          - link "SW POP" [ref=e13] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e14]: SW
+            - generic [ref=e15]: POP
+          - navigation [ref=e16]:
+            - link "Core" [ref=e17] [cursor=pointer]:
+              - /url: /
+            - link "Vault" [ref=e18] [cursor=pointer]:
+              - /url: /story
+            - link "Manifesto" [ref=e19] [cursor=pointer]:
+              - /url: /#about
+            - button "Toggle Language" [ref=e21] [cursor=pointer]:
+              - generic [ref=e23]:
+                - generic [ref=e24]: EN
+                - generic [ref=e25]: /
+                - generic [ref=e26]: ID
+            - button "Toggle Theme" [ref=e29] [cursor=pointer]:
+              - generic [ref=e31]:
+                - generic [ref=e32]: LGT
+                - generic [ref=e33]: /
+                - generic [ref=e34]: DRK
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: ( DECRYPTING_BIOGRAPHY )
+          - heading "THE PRIVATE VAULT" [level=1] [ref=e40]:
+            - text: THE
+            - text: PRIVATE
+            - text: VAULT
+          - paragraph [ref=e41]: Authorized access to the origin sequence of the architect.
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic:
+              - generic:
+                - heading "AWAKENING" [level=2]
+                - heading "AKSA" [level=2]
+                - heading "TIME" [level=2]
+                - heading "STUCK" [level=2]
+                - heading "TEST" [level=2]
+                - heading "REALIZE" [level=2]
+                - heading "REFLECTION" [level=2]
+                - heading "JOURNEY" [level=2]
+                - heading "HOPE" [level=2]
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "AWAKENING"
+                        - generic: FIG. 01
+                    - generic:
+                      - generic:
+                        - img "AKSA"
+                        - generic: FIG. 02
+                    - generic:
+                      - generic:
+                        - img "TIME"
+                        - generic: FIG. 03
+                    - generic:
+                      - generic:
+                        - img "STUCK"
+                        - generic: FIG. 04
+                    - generic:
+                      - generic:
+                        - img "TEST"
+                        - generic: FIG. 05
+                    - generic:
+                      - generic:
+                        - img "REALIZE"
+                        - generic: FIG. 06
+                    - generic:
+                      - generic:
+                        - img "REFLECTION"
+                        - generic: FIG. 07
+                    - generic:
+                      - generic:
+                        - img "JOURNEY"
+                        - generic: FIG. 08
+                    - generic:
+                      - generic:
+                        - img "HOPE"
+                        - generic: FIG. 09
+          - generic [ref=e44]:
+            - generic [ref=e46]:
+              - generic [ref=e47]:
+                - generic [ref=e48]: "01"
+                - generic [ref=e49]: AWAKENING
+              - paragraph [ref=e51]: On an ordinary morning, someone woke up—but the world around them no longer felt the same.
+            - generic [ref=e53]:
+              - generic [ref=e54]:
+                - generic [ref=e55]: "02"
+                - generic [ref=e56]: AKSA
+              - generic [ref=e57]:
+                - paragraph [ref=e58]:
+                  - strong [ref=e59]: His name is Aksa.
+                - paragraph [ref=e60]: Once, in the past, he was known as someone who blazed bright. In his silence, there was determination. In his steps, a clear direction.
+                - paragraph [ref=e61]: He was not only smart, but full of vision. It seemed everything he touched grew into something meaningful.
+            - generic [ref=e63]:
+              - generic [ref=e64]:
+                - generic [ref=e65]: "03"
+                - generic [ref=e66]: TIME
+              - generic [ref=e67]:
+                - paragraph [ref=e68]: But time... is not always a friend.
+                - paragraph [ref=e69]: Slowly, without realizing it, Aksa began walking aimlessly. Not because he lost his purpose, but because he let himself be trapped in a false comfort for too long.
+            - generic [ref=e71]:
+              - generic [ref=e72]:
+                - generic [ref=e73]: "04"
+                - generic [ref=e74]: STUCK
+              - paragraph [ref=e76]:
+                - text: His days became filled with small distractions that turned into massive obstacles. He procrastinated, waited, then repeated. Day after day, with no progress. He knew it,
+                - strong [ref=e77]: but like mud, the harder he tried to move, the deeper he sank.
+            - generic [ref=e79]:
+              - generic [ref=e80]:
+                - generic [ref=e81]: "05"
+                - generic [ref=e82]: TEST
+              - generic [ref=e83]:
+                - paragraph [ref=e84]: Until finally... the test came.
+                - paragraph [ref=e85]: Not a massive disaster, nor an obvious failure. But it was enough to awaken him.
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - generic [ref=e89]: "06"
+                - generic [ref=e90]: REALIZE
+              - generic [ref=e91]:
+                - paragraph [ref=e92]:
+                  - text: A huge opportunity—one he would have conquered easily in the past—now stood before him, and
+                  - strong [ref=e93]: "he realized: he was no longer ready."
+                - paragraph [ref=e94]: His hands hesitated, his mind was slow, his heart shrank.
+            - generic [ref=e96]:
+              - generic [ref=e97]:
+                - generic [ref=e98]: "07"
+                - generic [ref=e99]: REFLECTION
+              - generic [ref=e100]:
+                - paragraph [ref=e101]: That was when he saw his own reflection.
+                - paragraph [ref=e102]: Not the one in the mirror, but the one in his memories—the version of his past self. Full of fire. Ready to blaze at any time.
+                - paragraph [ref=e103]:
+                  - strong [ref=e104]: He did not want to be a mere spectator of his own life.
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - generic [ref=e108]: "08"
+                - generic [ref=e109]: JOURNEY
+              - generic [ref=e110]:
+                - paragraph [ref=e111]: The journey back began. It felt heavy. Slow. Full of shame for having to start over.
+                - paragraph [ref=e112]:
+                  - text: "But one thing is now firmly planted in his chest:"
+                  - strong [ref=e113]: he still has the flame.
+                  - text: Though small, he preserves it. And that is enough to keep him moving.
+            - generic [ref=e115]:
+              - generic [ref=e116]:
+                - generic [ref=e117]: "09"
+                - generic [ref=e118]: HOPE
+              - generic [ref=e119]:
+                - paragraph [ref=e120]: Today, Aksa has not fully become his past self again.
+                - paragraph [ref=e121]:
+                  - text: But every step he takes now is a
+                  - strong [ref=e122]: conscious choice not to give up.
+                - paragraph [ref=e123]: Every second, he bets on the possibility that he can still become someone who is not just good, but meaningful.
+      - generic [ref=e124]:
+        - img [ref=e126]:
+          - generic [ref=e127]: SYSTEM_AUTHORITY — DESIGN_LEGACY — SWISS_POP_EST_2026 —SYSTEM_AUTHORITY — DESIGN_LEGACY — SWISS_POP_EST_2026 —SYSTEM_AUTHORITY — DESIGN_LEGACY — SWISS_POP_EST_2026 —
+          - generic [ref=e128]: PROTOCOL_ACTIVE — NETWORK_STABLE — DATA_VERIFIED — TRUST_MAINTAINED —PROTOCOL_ACTIVE — NETWORK_STABLE — DATA_VERIFIED — TRUST_MAINTAINED —
+        - generic [ref=e129]:
+          - generic [ref=e130]: "[ VISUAL_ASSETS_CACHE ]"
+          - generic [ref=e132]:
+            - generic [ref=e133] [cursor=pointer]:
+              - img "AWAKENING" [ref=e134]
+              - generic [ref=e135]: //01
+            - generic [ref=e137] [cursor=pointer]:
+              - img "AKSA" [ref=e138]
+              - generic [ref=e139]: //02
+            - generic [ref=e141] [cursor=pointer]:
+              - img "TIME" [ref=e142]
+              - generic [ref=e143]: //03
+            - generic [ref=e145] [cursor=pointer]:
+              - img "STUCK" [ref=e146]
+              - generic [ref=e147]: //04
+            - generic [ref=e149] [cursor=pointer]:
+              - img "TEST" [ref=e150]
+              - generic [ref=e151]: //05
+            - generic [ref=e153] [cursor=pointer]:
+              - img "REALIZE" [ref=e154]
+              - generic [ref=e155]: //06
+            - generic [ref=e157] [cursor=pointer]:
+              - generic [ref=e158]: +
+              - generic [ref=e159]: EXPAND_ARCHIVE
+        - generic [ref=e160]:
+          - generic [ref=e161]:
+            - generic [ref=e162]: ( AUTH_INDEX )
+            - generic [ref=e163]: PORTFOLIO.ARC.26
+          - navigation [ref=e164]:
+            - link "Protocol_Home" [ref=e165] [cursor=pointer]:
+              - /url: "#"
+            - link "Enter_Vault" [ref=e166] [cursor=pointer]:
+              - /url: /story
+            - link "Read_Manifesto" [ref=e167] [cursor=pointer]:
+              - /url: "#about"
+          - generic [ref=e168]:
+            - generic [ref=e169]: ( ACCESS_POINT )
+            - generic [ref=e170]: GLOBAL_CORE_NETWORK
+        - generic [ref=e171]:
+          - generic [ref=e172]: © 2026 SWISS_POP_BRUTALIST
+          - generic [ref=e173]: ALL_SYSTEMS_NOMINAL
+    - generic [ref=e177]: INITIALIZING_PROTOCOL
+  - button "Open Next.js Dev Tools" [ref=e183] [cursor=pointer]:
+    - img [ref=e184]
+  - alert [ref=e187]
+```

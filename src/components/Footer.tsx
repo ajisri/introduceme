@@ -193,13 +193,13 @@ const FooterGallery = () => {
                     {storyFloors.slice(0, 6).map((floor, i) => (
                         <div
                             key={i}
-                            className="relative w-[150px] h-[150px] lg:w-[300px] lg:h-[300px] shrink-0 grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer border-[var(--border-width)] border-foreground hover:shadow-[10px_10px_0px_var(--swiss-red)] hover:-translate-y-2 hover:-translate-x-2 overflow-hidden group"
+                            className="relative w-[150px] aspect-square lg:w-[300px] shrink-0 grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer border-[var(--border-width)] border-foreground bg-foreground/5 hover:shadow-[10px_10px_0px_var(--swiss-red)] hover:-translate-y-2 hover:-translate-x-2 overflow-hidden group"
                             style={{ position: 'relative' }}
                         >
                             {floor.image && (
                                 <Image
                                     src={floor.image}
-                                    alt={floor.backgroundText}
+                                    alt={dict.storyPage.floors[i]?.text || ""}
                                     fill
                                     sizes="(max-width: 768px) 150px, 300px"
                                     className="object-cover group-hover:scale-110 transition-transform duration-700"

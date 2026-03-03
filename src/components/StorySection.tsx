@@ -112,10 +112,8 @@ export default function StorySection() {
         };
     }, []);
 
-    // No State needed for rendering!
-
     return (
-        <section ref={containerRef} className="relative w-full bg-transparent border-b-[var(--border-width)] border-[var(--swiss-red)]">
+        <section ref={containerRef} className="relative w-full bg-transparent border-b-[var(--border-width)] border-[var(--swiss-red)] overflow-visible">
 
             {/* Pinned Visual Container */}
             <div ref={visualsRef} className="absolute top-0 left-0 h-screen w-full overflow-hidden flex flex-col md:flex-row z-0 pointer-events-none bg-background">
@@ -129,7 +127,7 @@ export default function StorySection() {
                             className="absolute text-[30vw] font-black tracking-tighter uppercase text-white/5 opacity-0 scale-90 blur-sm transition-none will-change-transform leading-none"
                             style={{ WebkitTextStroke: "2px var(--swiss-red)" }}
                         >
-                            {dict.storyPage.floors[i]?.text || floor.backgroundText}
+                            {dict.storyPage.floors[i]?.text || ""}
                         </h2>
                     ))}
                 </div>
@@ -152,14 +150,16 @@ export default function StorySection() {
                                         <div
                                             id={`visual-${floor.id}`}
                                             className="absolute inset-0 opacity-0 will-change-transform bg-background"
-                                            style={{ clipPath: "inset(100% 0% 0% 0%)" }} // Initial Mask
+                                            style={{ clipPath: "inset(100% 0% 0% 0%)" }}
                                         >
                                             <Image
                                                 src={floor.image}
-                                                alt={dict.storyPage.floors[i]?.text || floor.backgroundText}
+                                                alt={dict.storyPage.floors[i]?.text || ""}
                                                 fill
-                                                className="object-cover scale-110" // Initial slight zoom
+                                                className="object-cover scale-110 will-change-transform"
                                                 sizes="(max-width: 768px) 90vw, 40vw"
+                                                priority={i === 0}
+                                                loading={i === 0 ? "eager" : "lazy"}
                                             />
                                             {/* Brutalist Label Overlay */}
                                             <div className="absolute top-0 left-0 bg-[var(--swiss-red)] text-white font-mono text-xs px-2 py-1 font-bold z-10">
@@ -198,12 +198,12 @@ export default function StorySection() {
                                         0{floor.id}
                                     </span>
                                     <span className="font-mono text-sm md:text-base text-[var(--pop-green)] uppercase font-bold tracking-wider">
-                                        {dict.storyPage.floors[i]?.text || floor.backgroundText}
+                                        {dict.storyPage.floors[i]?.text || ""}
                                     </span>
                                 </div>
                                 <div
                                     className="prose prose-lg md:prose-xl prose-invert dark:prose-invert prose-p:font-bold prose-p:text-foreground prose-headings:font-black prose-headings:text-foreground tracking-tight"
-                                    dangerouslySetInnerHTML={{ __html: dict.storyPage.floors[i]?.content || floor.content }}
+                                    dangerouslySetInnerHTML={{ __html: dict.storyPage.floors[i]?.content || "" }}
                                 />
                             </div>
                         </div>

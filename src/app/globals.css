@@ -11,11 +11,29 @@
    - Postmodern: Irony, broken grids, self-reference
    - Mini-Brutalism: Raw borders, exposed structure, no pretense
    
-   Typography Hierarchy (Müller-Brockmann inspired):
-   - Display: 12-15vw, 900 weight, -0.05em tracking
-   - Headline: 6-8vw, 800 weight, -0.03em tracking  
-   - Body: 1rem, 400 weight, 0 tracking
-   - Mono/Label: 8-10px, 700 weight, 0.3em+ tracking
+   Spatial System (8pt Grid — designsystems.com/space-grids-and-layouts):
+   - Base unit: 8px | Half-step: 4px
+   - Scale: 4  8  12  16  24  32  40  48  64  80  96  128  160  192  224
+   - All padding, margin, gap, and component sizing MUST use multiples of 4px
+   - 8px preferred; 4px half-step for fine detail (badges, small gaps)
+   
+   Typography Scale (Modular — designsystems.com/typography-guides):
+   - Ratio: ~1.333 (Perfect Fourth) anchored to 16px base
+   - Tokens: --type-xs → --type-display-2 (see below)
+   - Line-heights: divisible by 4 for baseline grid alignment
+   - Weights: 400 (body), 700 (bold), 900 (black/display)
+   - Fonts: Geist Sans (body), Geist Mono (labels/data), Unbounded (display)
+   
+   Iconography/Visual Elements (designsystems.com/iconography-guide):
+   - Decorative shapes sized to 8pt grid (max dimensions: 120 152 200 248 336)
+   - Consistent stroke/border: var(--border-width) = 3px
+   - Badge sizes: 32px (w-8 h-8), icon shapes: 48px / 64px
+   
+   Content Strategy (designsystems.com/guide-to-content-strategy):
+   - Labels: UPPER_CASE with underscores (system aesthetic)
+   - Section labels: "// 0N_NAME" numbered pattern
+   - CTA: verb-first with arrow prefix "→"
+   - Title case for headings, sentence case for descriptions
    ============================================================================= */
 
 @layer base {
@@ -35,12 +53,75 @@
     --pop-pink: #FF00FF;
     --pop-yellow: #FFEE00;
 
+    /* -------------------------------------------------------------------------
+       TYPE SCALE — Perfect Fourth (1.333) anchored to 16px
+       Line-heights divisible by 4 for baseline grid alignment
+       ------------------------------------------------------------------------- */
+    --type-xs: 0.625rem;      /* 10px — mono labels */
+    --type-sm: 0.75rem;       /* 12px — small text */
+    --type-base: 1rem;        /* 16px — body */
+    --type-lg: 1.125rem;      /* 18px — body emphasis */
+    --type-xl: 1.25rem;       /* 20px — subheadings */
+    --type-2xl: 1.5rem;       /* 24px — section text */
+    --type-3xl: 1.875rem;     /* 30px — section headings (mobile) */
+    --type-4xl: 2.25rem;      /* 36px — section headings */
+    --type-5xl: 3rem;         /* 48px — large headings */
+    --type-display-1: clamp(2.25rem, 5vw, 4rem);     /* Responsive display */
+    --type-display-2: clamp(3rem, 8vw, 8rem);         /* Hero display */
+    --type-display-hero: clamp(3rem, 12vw, 12rem);    /* Giant hero */
+
+    /* Line-height tokens — divisible by 4px */
+    --leading-none: 1;           /* display type */
+    --leading-tight: 1.25;      /* 20px at 16px base */
+    --leading-snug: 1.375;      /* 22px — close to 1.25 for density */
+    --leading-normal: 1.5;      /* 24px at 16px base — ideal body */
+    --leading-relaxed: 1.625;   /* 26px — comfortable reading */
+    --leading-display: 0.85;    /* Tight display/hero type */
+
+    /* Tracking tokens */
+    --tracking-tight: -0.04em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.3em;
+    --tracking-wider: 0.5em;
+    --tracking-widest: 0.6em;
+    --tracking-display: -0.05em;
+
+    /* -------------------------------------------------------------------------
+       SPACING SCALE — 8pt grid with 4pt half-step
+       Maps to Tailwind: 1=4px, 2=8px, 3=12px, 4=16px, 6=24px, 8=32px ...
+       ------------------------------------------------------------------------- */
+    --space-1: 0.25rem;       /* 4px  — half-step fine detail */
+    --space-2: 0.5rem;        /* 8px  — tight spacing */
+    --space-3: 0.75rem;       /* 12px — badge padding */
+    --space-4: 1rem;          /* 16px — base unit x2 */
+    --space-6: 1.5rem;        /* 24px — component internal */
+    --space-8: 2rem;          /* 32px — section gap */
+    --space-10: 2.5rem;       /* 40px — section internal */
+    --space-12: 3rem;         /* 48px — comfortable spacing */
+    --space-16: 4rem;         /* 64px — large section gap */
+    --space-20: 5rem;         /* 80px — section spacing */
+    --space-24: 6rem;         /* 96px — major separation */
+    --space-32: 8rem;         /* 128px — section padding (py-32) */
+    --space-40: 10rem;        /* 160px — large section padding */
+    --space-48: 12rem;        /* 192px — XL section padding (py-48) */
+    --space-56: 14rem;        /* 224px — XXL section padding */
+
     /* System Variables */
     --grid-line: rgba(0, 0, 0, 0.06);
     --border-width: 3px;
     --noise-opacity: 0.02;
     --radius: 0px;
     --theme-transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Z-Index Hierarchy Strategy */
+    --z-negative: -1;
+    --z-base: 1;
+    --z-header: 1000;
+    --z-mobile-menu: 1100;
+    --z-overlay: 9000;
+    --z-bg-texture: 9997;
+    --z-cursor: 9999;
+    --z-loading: 10000;
   }
 
   .dark {
@@ -106,6 +187,13 @@
 /* =============================================================================
    SWISS GRID SYSTEM
    12-column modular grid with mathematical rhythm (Bauhaus/Swiss principles)
+   
+   Grid Architecture (designsystems.com/space-grids-and-layouts):
+   - Container: max-width 1600px, horizontal padding 4vw (responsive)
+   - Column grid: 12-col via Tailwind (halves/thirds/fourths)
+   - Gutter: gap-6 (24px) mobile → gap-8 (32px) desktop
+   - Baseline grid: all line-heights divisible by 4px
+   - Layout type: Responsive (scales fluidly with breakpoints)
    ============================================================================= */
 
 .swiss-container {
@@ -126,7 +214,7 @@
 .brutalist-card {
   border: var(--border-width) solid var(--foreground);
   background-color: var(--background);
-  padding: 2rem;
+  padding: var(--space-8);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 8px 8px 0px var(--foreground);
 }
@@ -137,12 +225,12 @@
 }
 
 .btn-brutal {
-  padding: 1rem 2rem;
+  padding: var(--space-4) var(--space-8);
   background-color: var(--foreground);
   color: var(--background);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--tracking-tight);
   transition: all 0.3s ease;
   border: var(--border-width) solid var(--foreground);
 }
@@ -156,16 +244,70 @@
 
 /* =============================================================================
    TYPOGRAPHY - SWISS INTERNATIONAL STYLE
+   Modular scale (Perfect Fourth 1.333) with baseline grid alignment
    Following Müller-Brockmann's grid principles with Helvetica-inspired clarity
    ============================================================================= */
 
-/* Giant Display - For hero statements */
-.text-giant {
-  font-size: clamp(3rem, 12vw, 12rem);
+/* ----- Type Scale Utility Classes ----- */
+/* These consume --type-* tokens for systematic sizing */
+
+.type-label {
+  font-size: var(--type-xs);
   font-weight: 900;
   text-transform: uppercase;
-  line-height: 0.85;
-  letter-spacing: -0.05em;
+  letter-spacing: var(--tracking-wider);
+  line-height: var(--leading-normal);
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.type-body {
+  font-size: var(--type-base);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+}
+
+.type-body-emphasis {
+  font-size: var(--type-lg);
+  font-weight: 700;
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+}
+
+.type-heading {
+  font-size: var(--type-4xl);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tight);
+  font-family: var(--font-unbounded), sans-serif;
+}
+
+.type-display {
+  font-size: var(--type-display-1);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tight);
+  font-family: var(--font-unbounded), sans-serif;
+}
+
+.type-hero {
+  font-size: var(--type-display-hero);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-family: var(--font-unbounded), sans-serif;
+}
+
+/* Giant Display - For hero statements */
+.text-giant {
+  font-size: var(--type-display-hero);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
 }
 
 /* Stroke Text - Outline effect for visual hierarchy */
@@ -213,6 +355,7 @@
 
 /* =============================================================================
    HALFTONE PATTERNS - Pop Art Texture
+   Pattern sizes aligned to spatial grid: 24px (3×8) and 8px (1×8)
    ============================================================================= */
 
 .bg-halftone {
@@ -233,7 +376,7 @@
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 9998;
+  z-index: var(--z-bg-texture);
   opacity: var(--noise-opacity);
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA5OTkAAABEREQAAAAAAABEREOAgIAaa1VeAAAACHRSTlMAmpwDpMzMzk4Fv6UAAABSSURBVDjL7dJBDoAgDETR1kP4/yeWjqIRCxsTzR/w4b5mAAh5iIAQhEBEIAQhEBEIQAhEBEIQAhGBEIRARCAEIRC9E4L4TiD+E4L4TgjHO6E434kFylxTvJ4AAAAASUVORK5CYII=");
   background-repeat: repeat;
@@ -382,6 +525,12 @@
 
 /* =============================================================================
    RESPONSIVE BREAKPOINTS - Swiss Grid Adaptation
+   
+   Breakpoint strategy (designsystems.com/space-grids-and-layouts):
+   - ≤768px: Mobile — 1-2 col, tighter padding, reduced shadows
+   - ≤1024px: Tablet — 6-12 col transition, medium padding
+   - >1024px: Desktop — full 12-col, maximum whitespace
+   - Container padding scales: 5vw → 6vw → 4vw (progressive)
    ============================================================================= */
 
 @media (max-width: 1024px) {
@@ -399,7 +548,7 @@
 
   .brutalist-card {
     box-shadow: 6px 6px 0px var(--foreground);
-    padding: 1.5rem;
+    padding: var(--space-6);
   }
 
   .brutalist-card:hover {
