@@ -20,6 +20,13 @@ module.exports = {
             },
             borderWidth: {
                 'swiss': 'var(--border-width)',
+            },
+            fontFamily: {
+                'unbounded': ['var(--font-unbounded)', 'sans-serif'],
+                'inter': ['var(--font-inter)', 'sans-serif'],
+            },
+            opacity: {
+                '06': '0.06',
             }
         },
     },

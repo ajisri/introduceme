@@ -1,55 +1,191 @@
 "use client";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Magnetic from "./Magnetic";
 
 export default function PenutupSection() {
     const { dict } = useLanguage();
+    const containerRef = useRef<HTMLElement>(null);
+    const noButtonRef = useRef<HTMLButtonElement>(null);
+
+    const handleEvade = (e?: React.MouseEvent | React.TouchEvent) => {
+        if (!noButtonRef.current) return;
+        
+        let moveX = (Math.random() - 0.5) * 200; 
+        let moveY = (Math.random() - 0.5) * 100;
+
+        if (e && 'clientX' in e) {
+            const rect = noButtonRef.current.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Hitung arah dorongan kursor (mouse -> center of button)
+            const dirX = centerX - e.clientX;
+            const dirY = centerY - e.clientY;
+            const length = Math.sqrt(dirX * dirX + dirY * dirY) || 1;
+            
+            // Dorong berlawanan dengan arah datangnya mouse secara agresif
+            const pushX = (dirX / length) * 180 + (Math.random() * 60 - 30);
+            const pushY = (dirY / length) * 100 + (Math.random() * 40 - 20);
+            
+            // Ambil posisi transform saat ini
+            const currentX = (gsap.getProperty(noButtonRef.current, "x") as number) || 0;
+            const currentY = (gsap.getProperty(noButtonRef.current, "y") as number) || 0;
+
+            moveX = currentX + pushX;
+            moveY = currentY + pushY;
+
+            // Batasi ruang gerak agar tidak hilang dari layar ("cage limit")
+            const limitX = 220;
+            const limitY = 120;
+            
+            // Jika terpojok, teleportasi silang secara acak
+            if (moveX > limitX) moveX = -limitX + Math.random() * 50;
+            if (moveX < -limitX) moveX = limitX - Math.random() * 50;
+            if (moveY > limitY) moveY = -limitY + Math.random() * 30;
+            if (moveY < -limitY) moveY = limitY - Math.random() * 30;
+        }
+
+        gsap.to(noButtonRef.current, {
+            x: moveX,
+            y: moveY,
+            duration: 0.1, // Jauh lebih cepat (instant reflex)
+            ease: "expo.out", // Sangat tajam dan agresif 
+            overwrite: "auto"
+        });
+    };
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const ctx = gsap.context(() => {
+            const penutupLines = gsap.utils.toArray(".penutup-line") as HTMLElement[];
+
+            if (penutupLines.length === 0) return;
+
+            // SET INITIAL STATE: Hardware acceleration enabled
+            gsap.set(penutupLines, {
+                opacity: 0,
+                y: "6vh",
+                force3D: true
+            });
+            gsap.set(".penutup-cta-container", {
+                opacity: 0,
+                y: "4vh",
+                force3D: true
+            });
+
+            // CHOREOGRAPHY
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top center", 
+                    end: "+=100%", 
+                    pin: true,
+                    scrub: 1,    
+                    anticipatePin: 1
+                }
+            });
+
+            tl.to(penutupLines, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                stagger: 0.15,
+                ease: "expo.out"
+            })
+            .to(".penutup-cta-container", {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "expo.out"
+            }, "-=0.8"); 
+            
+            // Breathing room end frame
+            tl.to({}, { duration: 0.5 });
+
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
         <section
-            className="swiss-container py-40 lg:py-56 relative"
-            style={{ position: 'relative' }}
+            ref={containerRef}
+            className="w-full relative penutup-section overflow-hidden min-h-[100svh] bg-background border-t border-foreground/5 pt-32 lg:pt-40 pb-10 lg:pb-20 flex flex-col justify-between"
         >
-            {/* Pop Art accent — subtle postmodern break */}
-            <div className="absolute top-[15%] left-[5%] w-[12vw] h-[12vw] max-w-[160px] max-h-[160px] bg-[var(--pop-pink)] opacity-[0.06] rounded-full -z-10" style={{ position: 'absolute' }} />
-            <div className="absolute bottom-[20%] right-[8%] w-[8vw] h-[8vw] max-w-[120px] max-h-[120px] border-[var(--border-width)] border-foreground opacity-[0.06] rotate-12 -z-10" style={{ position: 'absolute' }} />
-
-            <div className="grid grid-cols-12 gap-6 lg:gap-8">
-                {/* Poetic Closing — Centered, Calm but visible */}
-                <div className="col-span-12 lg:col-span-8 lg:col-start-3 text-center">
-                    <div className="penutup-text space-y-3 lg:space-y-4 mb-20 lg:mb-28">
-
-                        <p className="text-lg lg:text-xl font-medium leading-snug opacity-60">
-                            {dict.landing.penutup.line1}
-                        </p>
-
-                        <p className="text-xl lg:text-2xl font-semibold leading-snug opacity-70">
-                            {dict.landing.penutup.line2}
-                        </p>
-
-                        <p className="text-2xl lg:text-3xl font-bold leading-snug opacity-90">
-                            {dict.landing.penutup.line3}
-                        </p>
-
-                        <p className="text-5xl lg:text-8xl font-black uppercase tracking-[-0.03em] leading-none pt-8 lg:pt-12 font-[family-name:var(--font-unbounded)]">
-                            {dict.landing.penutup.closing}
-                        </p>
-
+            <div className="swiss-container flex-grow flex flex-col justify-between relative z-10 h-full">
+                
+                {/* =========================================
+                    TOP MODULE: READING & ACTION (ASYMMETRICAL)
+                    ========================================= */}
+                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-16 lg:gap-0 border-b border-foreground/10 pb-12 lg:pb-16">
+                    
+                    {/* Left: Structured Reflection */}
+                    <div className="flex flex-col gap-8 max-w-lg">
+                        <span className="penutup-line inline-block font-mono font-black uppercase tracking-[0.4em] text-swiss-red opacity-60" style={{ fontSize: "0.65rem" }}>
+                            // 05_CLOSURE_PROTOCOL
+                        </span>
+                        
+                        <div className="border-l border-foreground/20 pl-6 lg:pl-8 space-y-6">
+                            <p className="penutup-line font-medium leading-[1.6] text-foreground/50 italic" style={{ fontSize: "clamp(1rem, 1.2vw, 1.15rem)" }}>
+                                {dict.landing.penutup.line1} <br/> {dict.landing.penutup.line2}
+                            </p>
+                            <p className="penutup-line font-bold leading-[1.4] tracking-tight text-foreground" style={{ fontSize: "clamp(1.2rem, 1.5vw, 1.4rem)" }}>
+                                {dict.landing.penutup.line3}
+                            </p>
+                        </div>
                     </div>
 
+                    {/* Right: Studio Monk Style CTA + Evasive Button */}
+                    <div className="penutup-cta-container w-full lg:w-auto flex flex-col-reverse lg:flex-row items-center justify-start lg:justify-end gap-8 relative z-50">
+                        
+                        <button 
+                            ref={noButtonRef}
+                            onMouseEnter={handleEvade}
+                            onClick={handleEvade}
+                            className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-foreground/50 border border-foreground/10 px-8 py-5 bg-background whitespace-nowrap hover:border-swiss-red hover:text-swiss-red transition-colors duration-300"
+                            style={{ position: "relative" }}
+                        >
+                            Lebih baik cari yang lain
+                        </button>
 
-                    {/* CTA — Brutalist button, not quiet */}
-                    <Link href="/story" className="group relative inline-block penutup-cta">
-                        <div className="absolute -inset-6 bg-foreground scale-0 group-hover:scale-100 transition-transform duration-700 origin-center" style={{ position: 'absolute' }} />
-                        <div className="relative border-[var(--border-width)] border-foreground px-12 lg:px-20 py-6 lg:py-8 bg-background group-hover:-translate-y-2 group-hover:translate-x-2 transition-all duration-500 shadow-[4px_4px_0px_var(--foreground)] group-hover:shadow-[6px_6px_0px_var(--swiss-red)]" style={{ position: 'relative' }}>
-                            <span className="relative z-10 text-lg lg:text-xl font-black uppercase tracking-tighter group-hover:text-[var(--swiss-red)] transition-colors font-[family-name:var(--font-unbounded)]">
-                                {dict.landing.penutup.cta}
-                            </span>
-                            <div className="mt-3 w-full h-1 bg-foreground group-hover:bg-[var(--swiss-red)] transition-colors" />
-                        </div>
-                    </Link>
+                        <Magnetic strength={0.25}>
+                            <Link href="/story" aria-label={dict.landing.penutup.cta} className="group relative flex items-center justify-between gap-10 border border-foreground/10 bg-background hover:bg-foreground hover:border-foreground transition-all duration-700 px-8 py-6 w-full lg:w-auto">
+                                <span className="font-unbounded font-semibold uppercase tracking-widest text-foreground group-hover:text-background transition-colors duration-500" style={{ fontSize: "0.75rem" }}>
+                                    {dict.landing.penutup.cta}
+                                </span>
+                                <span className="w-10 h-10 rounded-full border border-foreground/20 flex items-center justify-center group-hover:bg-swiss-red group-hover:border-transparent transition-colors duration-500">
+                                    <svg className="w-4 h-4 text-foreground group-hover:text-white rotate-[-45deg] group-hover:rotate-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </span>
+                            </Link>
+                        </Magnetic>
+                    </div>
+
                 </div>
+
+                {/* =========================================
+                    BOTTOM MODULE: PURE TYPOGRAPHIC SCALE
+                    ========================================= */}
+                <div className="pt-16 lg:pt-auto mt-auto flex flex-col justify-end">
+                    <div className="penutup-line">
+                        <h1 className="font-unbounded font-medium uppercase text-foreground leading-[0.8] tracking-tighter w-full text-left" style={{ fontSize: "clamp(4.5rem, 13vw, 15rem)", wordSpacing: "0.05em" }}>
+                            {dict.landing.penutup.closing}
+                        </h1>
+                    </div>
+                </div>
+
             </div>
+            
+            {/* =========================================
+                ENVIRONMENTAL: BLEEDING BRUTALIST LINES
+                ========================================= */}
+            <div className="absolute top-0 left-[5%] lg:left-[8%] w-[1px] h-full bg-foreground/5 pointer-events-none" />
+            <div className="absolute top-0 right-[5%] lg:right-[8%] w-[1px] h-full bg-foreground/5 pointer-events-none" />
+            
         </section>
     );
 }

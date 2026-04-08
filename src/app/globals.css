@@ -57,26 +57,44 @@
        TYPE SCALE — Perfect Fourth (1.333) anchored to 16px
        Line-heights divisible by 4 for baseline grid alignment
        ------------------------------------------------------------------------- */
-    --type-xs: 0.625rem;      /* 10px — mono labels */
-    --type-sm: 0.75rem;       /* 12px — small text */
-    --type-base: 1rem;        /* 16px — body */
-    --type-lg: 1.125rem;      /* 18px — body emphasis */
-    --type-xl: 1.25rem;       /* 20px — subheadings */
-    --type-2xl: 1.5rem;       /* 24px — section text */
-    --type-3xl: 1.875rem;     /* 30px — section headings (mobile) */
-    --type-4xl: 2.25rem;      /* 36px — section headings */
-    --type-5xl: 3rem;         /* 48px — large headings */
-    --type-display-1: clamp(2.25rem, 5vw, 4rem);     /* Responsive display */
-    --type-display-2: clamp(3rem, 8vw, 8rem);         /* Hero display */
-    --type-display-hero: clamp(3rem, 12vw, 12rem);    /* Giant hero */
+    --type-xs: 0.625rem;
+    /* 10px — mono labels */
+    --type-sm: 0.75rem;
+    /* 12px — small text */
+    --type-base: 1rem;
+    /* 16px — body */
+    --type-lg: 1.125rem;
+    /* 18px — body emphasis */
+    --type-xl: 1.25rem;
+    /* 20px — subheadings */
+    --type-2xl: 1.5rem;
+    /* 24px — section text */
+    --type-3xl: 1.875rem;
+    /* 30px — section headings (mobile) */
+    --type-4xl: 2.25rem;
+    /* 36px — section headings */
+    --type-5xl: 3rem;
+    /* 48px — large headings */
+    --type-display-1: clamp(2.25rem, 5vw, 4rem);
+    /* Responsive display */
+    --type-display-2: clamp(3rem, 8vw, 8rem);
+    /* Hero display */
+    --type-display-hero: clamp(3rem, 12vw, 12rem);
+    /* Giant hero */
 
     /* Line-height tokens — divisible by 4px */
-    --leading-none: 1;           /* display type */
-    --leading-tight: 1.25;      /* 20px at 16px base */
-    --leading-snug: 1.375;      /* 22px — close to 1.25 for density */
-    --leading-normal: 1.5;      /* 24px at 16px base — ideal body */
-    --leading-relaxed: 1.625;   /* 26px — comfortable reading */
-    --leading-display: 0.85;    /* Tight display/hero type */
+    --leading-none: 1;
+    /* display type */
+    --leading-tight: 1.25;
+    /* 20px at 16px base */
+    --leading-snug: 1.375;
+    /* 22px — close to 1.25 for density */
+    --leading-normal: 1.5;
+    /* 24px at 16px base — ideal body */
+    --leading-relaxed: 1.625;
+    /* 26px — comfortable reading */
+    --leading-display: 0.85;
+    /* Tight display/hero type */
 
     /* Tracking tokens */
     --tracking-tight: -0.04em;
@@ -84,34 +102,50 @@
     --tracking-wide: 0.3em;
     --tracking-wider: 0.5em;
     --tracking-widest: 0.6em;
-    --tracking-display: -0.05em;
+    --tracking-display: -0.06em;
+    /* Lebih rapet khas desain level atas */
 
     /* -------------------------------------------------------------------------
        SPACING SCALE — 8pt grid with 4pt half-step
        Maps to Tailwind: 1=4px, 2=8px, 3=12px, 4=16px, 6=24px, 8=32px ...
        ------------------------------------------------------------------------- */
-    --space-1: 0.25rem;       /* 4px  — half-step fine detail */
-    --space-2: 0.5rem;        /* 8px  — tight spacing */
-    --space-3: 0.75rem;       /* 12px — badge padding */
-    --space-4: 1rem;          /* 16px — base unit x2 */
-    --space-6: 1.5rem;        /* 24px — component internal */
-    --space-8: 2rem;          /* 32px — section gap */
-    --space-10: 2.5rem;       /* 40px — section internal */
-    --space-12: 3rem;         /* 48px — comfortable spacing */
-    --space-16: 4rem;         /* 64px — large section gap */
-    --space-20: 5rem;         /* 80px — section spacing */
-    --space-24: 6rem;         /* 96px — major separation */
-    --space-32: 8rem;         /* 128px — section padding (py-32) */
-    --space-40: 10rem;        /* 160px — large section padding */
-    --space-48: 12rem;        /* 192px — XL section padding (py-48) */
-    --space-56: 14rem;        /* 224px — XXL section padding */
+    --space-1: 0.25rem;
+    /* 4px  — half-step fine detail */
+    --space-2: 0.5rem;
+    /* 8px  — tight spacing */
+    --space-3: 0.75rem;
+    /* 12px — badge padding */
+    --space-4: 1rem;
+    /* 16px — base unit x2 */
+    --space-6: 1.5rem;
+    /* 24px — component internal */
+    --space-8: 2rem;
+    /* 32px — section gap */
+    --space-10: 2.5rem;
+    /* 40px — section internal */
+    --space-12: 3rem;
+    /* 48px — comfortable spacing */
+    --space-16: 4rem;
+    /* 64px — large section gap */
+    --space-20: 5rem;
+    /* 80px — section spacing */
+    --space-24: 6rem;
+    /* 96px — major separation */
+    --space-32: 8rem;
+    /* 128px — section padding (py-32) */
+    --space-40: 10rem;
+    /* 160px — large section padding */
+    --space-48: 12rem;
+    /* 192px — XL section padding (py-48) */
+    --space-56: 14rem;
+    /* 224px — XXL section padding */
 
     /* System Variables */
-    --grid-line: rgba(0, 0, 0, 0.06);
-    --border-width: 3px;
-    --noise-opacity: 0.02;
+    --grid-line: rgba(0, 0, 0, 0.05);
+    --border-width: 1px;
+    --noise-opacity: 0.015;
     --radius: 0px;
-    --theme-transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --theme-transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 
     /* Z-Index Hierarchy Strategy */
     --z-negative: -1;
@@ -139,8 +173,8 @@
     --pop-pink: #FF00FF;
     --pop-yellow: #FFFF00;
 
-    --grid-line: rgba(255, 255, 255, 0.08);
-    --noise-opacity: 0.04;
+    --grid-line: rgba(255, 255, 255, 0.05);
+    --noise-opacity: 0.03;
   }
 }
 
@@ -215,13 +249,13 @@
   border: var(--border-width) solid var(--foreground);
   background-color: var(--background);
   padding: var(--space-8);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 8px 8px 0px var(--foreground);
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 6px 6px 0px var(--foreground);
 }
 
 .brutalist-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0px var(--swiss-red);
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px var(--swiss-red);
 }
 
 .btn-brutal {
@@ -231,15 +265,21 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: var(--tracking-tight);
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   border: var(--border-width) solid var(--foreground);
+  box-shadow: 4px 4px 0px var(--foreground);
 }
 
 .btn-brutal:hover {
-  background-color: var(--pop-green);
-  color: black;
+  background-color: var(--swiss-red);
+  color: var(--background);
   box-shadow: 6px 6px 0px var(--foreground);
   transform: translate(-2px, -2px);
+}
+
+.btn-brutal:active {
+  box-shadow: 0px 0px 0px var(--foreground);
+  transform: translate(4px, 4px);
 }
 
 /* =============================================================================
@@ -364,8 +404,21 @@
 }
 
 .bg-halftone-dense {
-  background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
-  background-size: 8px 8px;
+  background-image: radial-gradient(var(--grid-line) 0.5px, transparent 0.5px);
+  background-size: 6px 6px;
+}
+
+.bg-swiss-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 2vw 2vw;
+}
+
+.reveal-mask {
+  display: block;
+  overflow: hidden;
+  position: relative;
 }
 
 /* Subtle grain overlay for texture depth */

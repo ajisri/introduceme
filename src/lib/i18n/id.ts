@@ -26,51 +26,54 @@ export const id = {
     },
     landing: {
         hero: {
-            tagline: "[ INSINYUR KEPERCAYAAN // 2026 ]",
-            title1: "KEPERCAYAAN TIDAK DIBUAT.",
-            title2: "IA DIREKAYASA.",
-            subtitle: "Dalam arsitektur digital, setiap struktur menentukan keputusan.",
-            desc1: "Mayoritas website menampilkan informasi. Sedikit yang dirancang untuk menghilangkan keraguan.",
-            desc2: "Kami merancang sistem yang membuat keyakinan muncul secara logis. Tanpa tekanan. Tanpa manipulasi.",
-            stat: "99.9%",
-            statLabel: "Stabilitas_Sistem",
-            cta: "→ Masuk ke ruang keputusan",
-            scrollLabel: "PRESISI_ARSITEKTUR"
+            tagline: "[ ANALISA AKAR MASALAH (ROOT CAUSE) ]",
+            title1: "TRAFIK TINGGI.",
+            title2: "CLOSING MATI.",
+            subtitle: "MENGAPA AUDIENS BERHENTI MERESPONS SAAT PROSES MENDEKATI TITIK TRANSAKSI?",
+            desc1: "Akar Masalah: Tentu bukan pada harga atau kualitas layanan Anda.",
+            desc2: "Otak manusia otomatis membatalkan keputusan ketika mendeteksi sekecil 1% ambiguitas dalam struktur informasi layar Anda.",
+            stat: "99%",
+            statLabel: "KEPUTUSAN DIBATALKAN KARENA KERAGUAN VISUAL",
+            point1: "Tingkat kejelasan visual menuntun",
+            point2: "Tingkat konversi dan transaksi",
+            cta: "→ LAKUKAN DIAGNOSA",
+            scrollLabel: "MULAI_ANALISIS",
+            qualifier: "DIRANCANG KHUSUS UNTUK B2B YANG MENGALAMI KEBOCORAN KONVERSI"
         },
         refleksi: {
             label: "// 01_REFLEKSI",
-            line1: "Website Anda mungkin terlihat baik.",
-            line2: "Namun pertanyaannya sederhana:",
-            question: "Apakah ia benar-benar membuat orang yakin?",
-            desc1: "Banyak bisnis kehilangan kepercayaan bukan karena kualitas,",
-            desc2: "tetapi karena struktur yang tidak presisi."
+            line1: "Realita terjadi saat kantor Anda tutup.",
+            line2: "Saat calon pelanggan mencari Anda malam ini,",
+            question: "Apa yang sesungguhnya mereka temukan?",
+            desc1: "Keputusan jarang terjadi di depan Anda.",
+            desc2: "Ia terjadi dalam sunyi, saat pelanggan membandingkan Anda dengan alternatif lain tanpa suara."
         },
         diagnosis: {
-            label: "// 02_DIAGNOSIS",
-            title: "Kepercayaan hilang ketika:",
+            label: "// 02_ROOT_CAUSE_ANALYSIS",
+            title: "MENGURAI KEBOCORAN",
             items: [
-                "Informasi tidak tersusun dengan logis",
-                "Fokus terpecah",
-                "Navigasi menciptakan friksi",
-                "Pesan tidak konsisten"
+                "WHY 1: Klien batal membeli. Kenapa? Karena mereka merasa ragu.",
+                "WHY 2: Mengapa ragu? Absennya bukti instan tegas di 5 detik pertama.",
+                "WHY 3: Mengapa tidak ada bukti instan? Layar dipenuhi klaim sepihak dan jargon dekoratif.",
+                "WHY 4: Mengapa penuh jargon? Bukti dan parameter objektif tertimbun karena kurangnya arsitektur informasi."
             ],
-            conclusion1: "Keraguan bukan emosi.",
-            conclusion2: "Ia adalah hasil dari struktur yang lemah."
+            conclusion1: "AKAR MASALAH (ROOT CAUSE) PADA VISUAL ANDA:",
+            conclusion2: "menjual dgn emosi, mematikan logika."
         },
         peran: {
-            label: "// 03_DEFINISI",
-            title: "Kami bekerja sebagai insinyur kepercayaan.",
-            notLine1: "Bukan mempercantik tampilan.",
-            notLine2: "Bukan menambah animasi.",
-            mainDesc: "Kami menguji, menyederhanakan, dan menyusun ulang arsitektur digital hingga tidak ada celah bagi keraguan."
+            label: "// 03_DEFINISI_PROTOKOL",
+            title: "Rekayasa kepercayaan melalui eliminasi friksi arsitektural.",
+            notLine1: "Bukan sekadar estetika visual.",
+            notLine2: "Bukan penambahan ornamen tanpa fungsi.",
+            mainDesc: "Identifikasi dan pembersihan celah informasi yang menghambat alur keyakinan pada arsitektur digital."
         },
         bukti: {
-            label: "// 04_BUKTI",
+            label: "// 04_PARAMETER_VERIFIKASI",
             items: [
-                { val: "99.9%", label: "Keandalan_Sistem" },
-                { val: "ZERO", label: "Disorientasi_Pengguna" },
-                { val: "EKSKLUSIF", label: "Struktur_Terukur" },
-                { val: "PERMANEN", label: "Dirancang_Bertahan" }
+                { val: "100%", label: "BEBAS_ASUMSI_LIAR" },
+                { val: "NOL", label: "JALAN_BUNTU_NAVIGASI" },
+                { val: "CEPAT", label: "DAYA_SERAP_INFORMASI" },
+                { val: "KLINIS", label: "SISTEM_VALIDASI" }
             ]
         },
         penutup: {
@@ -86,15 +89,15 @@ export const id = {
             part3: "Rekayasa_Keyakinan"
         },
         contrast: {
-            label: "// PERBEDAAN_KRUSIAL",
-            agencyLabel: "Agency biasa berkata:",
-            agencyLine: "\"Kami meningkatkan konversi.\"",
-            engineerLabel: "Insinyur kepercayaan berkata:",
-            engineerLine: "\"Kami menghilangkan alasan untuk tidak percaya.\""
+            label: "// PARAMETER_AUDIT",
+            agencyLabel: "AUDIT_STANDAR",
+            agencyLine: "Fokus pada estetika dan alur navigasi linear.",
+            engineerLabel: "AUDIT_VALIDASI",
+            engineerLine: "Fokus pada arsitektur logika dan rekayasa keyakinan."
         }
     },
     footer: {
-        textPath1: "OTORITAS_SISTEM — WARISAN_DESAIN — SWISS_POP_EST_2026 —",
+        textPath1: "OTORITAS_SISTEM — PROVENANCE_DATA — SWISS_POP_EST_2026 —",
         textPath2: "PROTOKOL_AKTIF — JARINGAN_STABIL — DATA_TERVERIFIKASI — KEPERCAYAAN_TERJAGA —",
         authIndex: "( INDEKS_OTORISASI )",
         portfolioAsc: "PORTOFOLIO.ARC.26",
@@ -111,16 +114,16 @@ export const id = {
         expandArchive: "PERLUAS_ARSIP"
     },
     legacy: {
-        badge: "[ AKSES_TERBATAS // ARSIP_04 ]",
-        title1: "ASET",
-        title2: "WARISAN",
-        title3: "KITA",
-        subtitle: "Membangun Otoritas Melalui Urutan Asal yang Terbukti",
+        badge: "[ AKSES_TERBATAS // ARSIP_OTORITAS ]",
+        title1: "REKAM",
+        title2: "JEJAK",
+        title3: "HISTORIS",
+        subtitle: "Membangun Otoritas Melalui Data Histori yang Terverifikasi",
         ref: "REF_",
         sequence: "URUTAN_DATA_",
-        quote: "\"Warisan Anda bukanlah beban. Itu adalah bahan bakar untuk era dominasi Anda berikutnya.\"",
+        quote: "Data histori membentuk fondasi struktural bagi keberlanjutan otoritas digital.",
         trustIndex: "INDEKS_KEPERCAYAAN: AA+",
-        version: "VERSI: WARISAN_ULTIMATE"
+        version: "VERSI: PROVENANCE_V1"
     },
     storyPage: {
         badge: "( DEKRIPSI_BIOGRAFI )",

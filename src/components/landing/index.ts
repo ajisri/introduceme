@@ -6,3 +6,5 @@ export { default as PeranSection } from "./PeranSection";
 export { default as BuktiSection } from "./BuktiSection";
 export { default as ContrastSection } from "./ContrastSection";
 export { default as PenutupSection } from "./PenutupSection";
+export { default as ScrollTextReveal } from "./ScrollTextReveal";
+export { default as MaskTransition } from "./MaskTransition";

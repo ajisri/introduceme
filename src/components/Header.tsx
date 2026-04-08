@@ -5,6 +5,7 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
+import Magnetic from "./landing/Magnetic";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -42,27 +43,36 @@ export default function Header() {
                     <span>{dict.header.location}</span>
                 </div>
 
-                <div className="swiss-container flex justify-between items-center h-20 border-b-[var(--border-width)] border-foreground bg-background/80 backdrop-blur-xl">
+                <div className="swiss-container flex justify-between items-center h-20 border-b border-foreground/10 bg-background/80 backdrop-blur-xl">
                     <div className="flex items-center gap-6">
-                        <Link href="/" className="text-2xl font-black uppercase tracking-tighter flex items-center gap-0">
-                            <span className="bg-[var(--swiss-red)] text-white px-3 py-1 border-2 border-[var(--swiss-red)]">SW</span>
-                            <span className="border-2 border-foreground px-3 py-1 bg-foreground text-background">POP</span>
-                        </Link>
+                        <Magnetic strength={0.3}>
+                            <Link href="/" className="text-xl font-black uppercase tracking-tighter flex items-center group">
+                                <span className="bg-[var(--swiss-red)] text-white px-3 py-1 border border-[var(--swiss-red)] transition-all group-hover:px-4">SW</span>
+                                <span className="border border-foreground px-3 py-1 bg-background text-foreground transition-all group-hover:bg-foreground group-hover:text-background">POP</span>
+                            </Link>
+                        </Magnetic>
                     </div>
 
-                    <nav className="hidden lg:flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
-                        <Link href="/" className="px-6 py-2 hover:bg-[var(--swiss-red)] hover:text-white transition-all border-2 border-transparent">{dict.header.nav.core}</Link>
-                        <Link href="/story" className="px-6 py-2 bg-[var(--pop-blue)] text-white border-2 border-[var(--pop-blue)] hover:bg-transparent hover:text-foreground transition-all">{dict.header.nav.vault}</Link>
+                    <nav className="hidden lg:flex items-center gap-1 text-[9px] font-black uppercase tracking-[0.3em]">
+                        <Magnetic strength={0.1}>
+                            <Link href="/" className="px-5 py-2 hover:bg-[var(--swiss-red)] hover:text-white transition-all border border-transparent">{dict.header.nav.core}</Link>
+                        </Magnetic>
+                        <Magnetic strength={0.1}>
+                            <Link href="/story" className="px-5 py-2 border border-foreground/20 hover:border-foreground hover:bg-foreground hover:text-background transition-all mx-2">{dict.header.nav.vault}</Link>
+                        </Magnetic>
                         <a
                             href="/#about"
                             onClick={(e) => handleAnchorClick(e, '#about')}
-                            className="px-6 py-2 hover:bg-[var(--pop-pink)] hover:text-white transition-all border-2 border-transparent cursor-pointer"
+                            className="px-5 py-2 hover:bg-[var(--pop-pink)] hover:text-white transition-all border border-transparent cursor-pointer"
                         >
                             {dict.header.nav.manifesto}
                         </a>
-                        <div className="w-px h-8 bg-foreground/20 mx-4"></div>
-                        <LanguageToggle />
-                        <ThemeToggle />
+                        <div className="w-px h-6 bg-foreground/10 mx-4"></div>
+                        <div className="flex items-center border border-foreground/10 rounded-sm overflow-hidden">
+                            <LanguageToggle />
+                            <div className="w-px h-4 bg-foreground/10"></div>
+                            <ThemeToggle />
+                        </div>
                     </nav>
 
                     <div className="flex lg:hidden items-center gap-4">

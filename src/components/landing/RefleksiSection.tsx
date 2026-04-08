@@ -1,52 +1,66 @@
 "use client";
 import { useLanguage } from "@/context/LanguageContext";
+import ScrollTextReveal from "./ScrollTextReveal";
 
 export default function RefleksiSection() {
     const { dict } = useLanguage();
 
     return (
-        <section
-            id="about"
-            className="swiss-container py-32 lg:py-48 relative"
-            style={{ position: 'relative' }}
-        >
-            {/* Pop Art Accent — Postmodern broken grid */}
-            <div className="absolute top-16 right-[6%] w-[14vw] h-[14vw] max-w-[200px] max-h-[200px] bg-[var(--pop-yellow)] opacity-[0.08] rotate-6 -z-10 border-[var(--border-width)] border-foreground" style={{ position: 'absolute' }} />
-
-            <div className="grid grid-cols-12 gap-6 lg:gap-8">
-                {/* Section Label — Brutalist Badge */}
-                <div className="col-span-12 mb-10 lg:mb-14">
-                    <span className="refleksi-label inline-block font-mono text-[10px] font-black uppercase tracking-[0.5em] bg-[var(--pop-pink)] text-white px-4 py-2 border-2 border-foreground shadow-[3px_3px_0px_var(--foreground)]">
-                        {dict.landing.refleksi.label}
-                    </span>
+        <section className="swiss-container py-32 lg:py-48 relative border-t border-foreground/5 bg-background">
+            <div className="grid grid-cols-12 gap-8 lg:gap-12 relative z-10">
+                {/* Sticky Side Label */}
+                <div className="col-span-12 lg:col-span-3">
+                    <div className="sticky top-32 lg:pb-10">
+                        <span className="refleksi-label inline-block font-mono font-black uppercase tracking-[0.4em] text-swiss-red opacity-60"
+                            style={{ fontSize: "0.6rem" }}>
+                            {dict.landing.refleksi.label}
+                        </span>
+                    </div>
                 </div>
 
-                {/* Leading Statement */}
-                <div className="col-span-12 lg:col-span-7 mb-12 lg:mb-20">
-                    <p className="refleksi-line text-2xl lg:text-3xl font-bold leading-relaxed opacity-70">
-                        {dict.landing.refleksi.line1}
-                    </p>
-                    <p className="refleksi-line text-2xl lg:text-3xl font-bold leading-relaxed opacity-70 mt-4">
-                        {dict.landing.refleksi.line2}
-                    </p>
-                </div>
+                <div className="col-span-12 lg:col-span-9 lg:col-start-4">
+                    <div className="flex flex-col gap-10 lg:gap-16">
+                        
+                        {/* Scroll Text Reveal — Words illuminate as you scroll */}
+                        <ScrollTextReveal 
+                            text={dict.landing.refleksi.line1}
+                            tag="h2"
+                            className="font-light uppercase leading-[0.9] tracking-[-0.05em] font-unbounded text-foreground/40"
+                            triggerStart="top 85%"
+                            triggerEnd="top 55%"
+                        />
 
-                {/* The Question — Unbounded Display, Isolated */}
-                <div className="col-span-12 lg:col-span-10 mb-16 lg:mb-24">
-                    <h2 className="refleksi-question text-[8vw] lg:text-[5vw] font-black uppercase leading-[0.85] tracking-[-0.04em] font-[family-name:var(--font-unbounded)]">
-                        {dict.landing.refleksi.question}
-                    </h2>
-                </div>
-
-                {/* Closing Observation — Brutalist border-left */}
-                <div className="col-span-12 lg:col-span-6 lg:col-start-7">
-                    <div className="refleksi-desc border-l-[var(--border-width)] border-foreground pl-8 lg:pl-12">
-                        <p className="text-lg lg:text-xl font-medium leading-relaxed opacity-50">
-                            {dict.landing.refleksi.desc1}
-                        </p>
-                        <p className="text-lg lg:text-xl font-black uppercase tracking-tight leading-tight mt-4">
-                            {dict.landing.refleksi.desc2}
-                        </p>
+                        <ScrollTextReveal 
+                            text={dict.landing.refleksi.line2}
+                            tag="h2"
+                            className="font-light uppercase leading-[0.9] tracking-[-0.05em] font-unbounded text-foreground"
+                            triggerStart="top 75%"
+                            triggerEnd="top 40%"
+                        />
+                        
+                        {/* The Question — Standard reveal, stays bold */}
+                        <div className="mt-4">
+                            <p className="refleksi-question font-light uppercase tracking-tight text-swiss-red leading-[0.85] font-unbounded"
+                                style={{ fontSize: "clamp(2.5rem, 6vw + 1rem, 6rem)" }}>
+                                {dict.landing.refleksi.question}
+                            </p>
+                        </div>
+                        
+                        {/* Descriptive mirror text — also scroll-revealed */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 lg:mt-20 pt-10 border-t border-foreground/5">
+                            <ScrollTextReveal
+                                text={dict.landing.refleksi.desc1}
+                                className="font-medium text-foreground/50 leading-relaxed"
+                                triggerStart="top 80%"
+                                triggerEnd="top 50%"
+                            />
+                            <ScrollTextReveal
+                                text={dict.landing.refleksi.desc2}
+                                className="font-black uppercase tracking-tight text-foreground/80 leading-snug"
+                                triggerStart="top 75%"
+                                triggerEnd="top 45%"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

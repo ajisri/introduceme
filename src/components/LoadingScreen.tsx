@@ -55,8 +55,8 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
             fragmentShader: fireFragmentShader,
             uniforms: {
                 uTime: { value: 0 },
-                uIntensity: { value: 1.0 },
-                uWind: { value: 0.0 }
+                uIntensity: { value: 1.5 }, // Intensitas api awal dinaikkan
+                uWind: { value: 0.1 }
             },
             transparent: true,
             blending: THREE.AdditiveBlending,
@@ -64,17 +64,23 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
             side: THREE.DoubleSide
         });
 
-        // Larger geometry to ensure no visible frame/boundaries
+        // Main Campfire (Satu api yang sangat masif, sedikit off-center)
         const fireGeo = new THREE.PlaneGeometry(8, 7, 48, 48);
         const fireMesh = new THREE.Mesh(fireGeo, fireMaterial);
-        fireMesh.position.set(0, -2.5, 0);
+        fireMesh.position.set(1.5, -2.5, -1.0); // Sedikit digeser ke kanan belakang
+        fireMesh.scale.set(2.5, 2.5, 2.5); // Skala super raksasa
         scene.add(fireMesh);
 
-        // Secondary smaller fires
+        // Secondary fires (Tersebar acak, berantakan, menjangkau pinggir layar)
         const secondaryFireData = [
-            { x: -2.8, y: -3.2, scale: 0.3 },
-            { x: 2.5, y: -3.3, scale: 0.25 },
-            { x: -1.2, y: -3.0, scale: 0.2 }
+            { x: -4.5, y: -3.0, z: -0.5, scale: 1.4 },  // Kiri pinggir besar
+            { x: 5.5, y: -2.8, z: -1.5, scale: 1.2 },   // Kanan jauh pinggir
+            { x: -7.0, y: -2.3, z: -2.0, scale: 1.6 },  // Ekstrem kiri
+            { x: 7.5, y: -2.2, z: -2.5, scale: 1.5 },   // Ekstrem kanan
+            { x: -1.5, y: -3.5, z: 0.5, scale: 0.6 },   // Di depan agak kecil
+            { x: 3.5, y: -3.2, z: 0.2, scale: 0.8 },    // Kanan depan
+            { x: -3.0, y: -3.8, z: 1.0, scale: 0.5 },   // Paling depan ujung
+            { x: 0.2, y: -3.5, z: 0.0, scale: 0.9 }     // Tengah kecil
         ];
 
         const secondaryFires: THREE.Mesh[] = [];
@@ -82,15 +88,15 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
             const mat = fireMaterial.clone();
             const mesh = new THREE.Mesh(fireGeo.clone(), mat);
             mesh.scale.set(data.scale, data.scale, 1);
-            mesh.position.set(data.x, data.y, -0.2);
+            mesh.position.set(data.x, data.y, data.z);
             scene.add(mesh);
             secondaryFires.push(mesh);
         });
 
         // =====================================================================
-        // SPARKS - Small Embers
+        // SPARKS - Small Embers (Diperbanyak drastis agar lebih membara)
         // =====================================================================
-        const sparkCount = 25;
+        const sparkCount = 200; // Ditambah lagi agar menutupi kekosongan layar
         const sparkGeo = new THREE.BufferGeometry();
         const sparkPositions = new Float32Array(sparkCount * 3);
         const sparkSizes = new Float32Array(sparkCount);
@@ -98,10 +104,10 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
         const sparkSeeds = new Float32Array(sparkCount);
 
         for (let i = 0; i < sparkCount; i++) {
-            sparkPositions[i * 3] = (Math.random() - 0.5) * 4;
-            sparkPositions[i * 3 + 1] = -3.0 + Math.random() * 1.0;
-            sparkPositions[i * 3 + 2] = (Math.random() - 0.5) * 1.0;
-            sparkSizes[i] = 0.2 + Math.random() * 0.6;
+            sparkPositions[i * 3] = (Math.random() - 0.5) * 18; // Sebaran X sangat lebar (edge to edge)
+            sparkPositions[i * 3 + 1] = -4.0 + Math.random() * 2.0; // Mulai dari lantai
+            sparkPositions[i * 3 + 2] = (Math.random() - 0.5) * 4.0; // Kedalaman Z
+            sparkSizes[i] = 0.2 + Math.random() * 0.8;
             sparkLifetimes[i] = 0.3 + Math.random() * 0.7;
             sparkSeeds[i] = Math.random();
         }
@@ -114,7 +120,7 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
         const sparkMaterial = new THREE.ShaderMaterial({
             vertexShader: sparksVertexShader,
             fragmentShader: sparksFragmentShader,
-            uniforms: { uTime: { value: 0 }, uIntensity: { value: 1.0 } },
+            uniforms: { uTime: { value: 0 }, uIntensity: { value: 1.5 } },
             transparent: true,
             blending: THREE.AdditiveBlending,
             depthWrite: false
@@ -155,10 +161,9 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
         scene.add(rainSystem);
 
         // =====================================================================
-        // SMOKE - Full Screen Cover (Theme-Aware Color)
-        // Smoke color matches the hero background for seamless transition
+        // SMOKE - Full Screen Cover (Asap putih menebal layaknya uap panas kena hujan)
         // =====================================================================
-        const smokeColor = isDark ? "#0a0a0a" : "#ffffff";
+        const smokeColor = "#ffffff"; // Selalu putih sesuai permintaan
 
         const smokeMaterial = new THREE.ShaderMaterial({
             vertexShader: smokeVertexShader,
@@ -182,7 +187,7 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
         // ANIMATION TIMELINE
         // Fire → Rain → Fire Dies → Smoke Fills → Reveal Hero
         // =====================================================================
-        const state = { fire: 1.0, wind: 0.0, sparksIntensity: 1.0 };
+        const state = { fire: 1.5, wind: 0.1, sparksIntensity: 1.5 };
 
         const tl = gsap.timeline({
             onComplete: () => {
@@ -202,17 +207,22 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
             }
         });
 
-        // Balanced Cinematic Sequence (total ~6.0s) 
-        // Optimized for LCP via background rendering in ClientLayout
-        tl.to({}, { duration: 0.8 }) // Initial fire focus
-            .to(state, { wind: 0.3, duration: 0.8, ease: "power1.inOut" }, 0.5)
-            .to(rainMaterial.uniforms.uOpacity, { value: 0.3, duration: 1.0, ease: "power1.in" }, 0.8)
-            .to(state, { fire: 0.2, wind: 0.6, duration: 1.0, ease: "power1.in" }, 1.5)
-            .to(state, { sparksIntensity: 0.1, duration: 0.6 }, 1.8)
-            .to(state, { fire: 0.0, sparksIntensity: 0.0, duration: 0.8, ease: "power2.in" }, 2.5)
-            .to(smokeMaterial.uniforms.uOpacity, { value: 1.0, duration: 1.2, ease: "power1.in" }, 2.8)
-            .to(smokeMaterial.uniforms.uRise, { value: 1.2, duration: 4.0, ease: "power1.out" }, 2.8)
-            .to(rainMaterial.uniforms.uOpacity, { value: 0.0, duration: 1.0, ease: "power1.out" }, 5.0);
+        // Diubah untuk mempertahankan kobaran api jauh lebih lama sebelum padam
+        tl.to({}, { duration: 1.5 }) // Initial fire focus lasts longer
+            .to(state, { wind: 0.5, duration: 1.0, ease: "power1.inOut" }, 1.0)
+            // Hujan turun
+            .to(rainMaterial.uniforms.uOpacity, { value: 0.4, duration: 1.5, ease: "power1.in" }, 1.5)
+            // Uap air (asap samar) perlahan muncul saat api kena hujan
+            .to(smokeMaterial.uniforms.uOpacity, { value: 0.25, duration: 2.0, ease: "power1.inOut" }, 1.5)
+            .to(smokeMaterial.uniforms.uRise, { value: 0.4, duration: 2.0, ease: "power1.out" }, 1.5)
+            // Api meredup
+            .to(state, { fire: 0.5, wind: 0.8, duration: 1.5, ease: "power1.in" }, 2.5)
+            .to(state, { sparksIntensity: 0.3, duration: 1.0 }, 3.0)
+            .to(state, { fire: 0.0, sparksIntensity: 0.0, duration: 1.5, ease: "power2.in" }, 4.0)
+            // Asap menebal penuh berwarna putih di akhir
+            .to(smokeMaterial.uniforms.uOpacity, { value: 1.0, duration: 1.5, ease: "power1.in" }, 4.2)
+            .to(smokeMaterial.uniforms.uRise, { value: 1.5, duration: 4.0, ease: "power1.out" }, 4.2)
+            .to(rainMaterial.uniforms.uOpacity, { value: 0.0, duration: 1.0, ease: "power1.out" }, 5.5);
 
         // =====================================================================
         // RENDER LOOP
@@ -291,8 +301,11 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
             style={{ backgroundColor: '#000000' }}
         >
             <canvas ref={canvas3dRef} className="absolute inset-0" />
-            <div className="absolute bottom-8 left-8 z-10">
-                <span className="font-mono text-[9px] uppercase tracking-[0.4em] opacity-50 text-white">
+            <div className="absolute bottom-8 left-8 z-10 flex flex-col gap-2">
+                <span className="font-mono text-[9px] uppercase tracking-[0.4em] opacity-80 text-swiss-red">
+                    [ API_CONNECTION : ESTABLISHED ]
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.4em] opacity-40 text-white">
                     {dict.loading.init}
                 </span>
             </div>

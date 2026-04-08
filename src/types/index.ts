@@ -51,8 +51,11 @@ export interface Dictionary {
             desc2: string;
             stat: string;
             statLabel: string;
+            point1?: string;
+            point2?: string;
             cta: string;
             scrollLabel: string;
+            qualifier: string;
         };
         refleksi: {
             label: string;

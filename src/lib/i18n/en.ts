@@ -25,51 +25,54 @@ export const en = {
     },
     landing: {
         hero: {
-            tagline: "[ TRUST ENGINEER // 2026 ]",
-            title1: "TRUST IS NOT BUILT.",
-            title2: "IT IS ENGINEERED.",
-            subtitle: "In digital architecture, every structure determines a decision.",
-            desc1: "Most websites display information. Few are designed to eliminate doubt.",
-            desc2: "We engineer systems that make conviction emerge logically. No pressure. No manipulation.",
-            stat: "99.9%",
-            statLabel: "System_Stability",
-            cta: "→ Enter the decision room",
-            scrollLabel: "PRECISION_ARCHITECTURE"
+            tagline: "[ ROOT CAUSE ANALYSIS ]",
+            title1: "HIGH TRAFFIC.",
+            title2: "ZERO CLOSE.",
+            subtitle: "WHY DO AUDIENCES STOP RESPONDING RIGHT BEFORE THE TRANSACTION POINT?",
+            desc1: "The Core Issue: It's never about your price or service quality.",
+            desc2: "The human brain automatically aborts decisions the moment it detects a 1% ambiguity in your information structure.",
+            stat: "99%",
+            statLabel: "DECISIONS ABORTED DUE TO VISUAL DOUBT",
+            point1: "Visual clarity dictates",
+            point2: "Conversion rate logic",
+            cta: "→ RUN DIAGNOSTICS",
+            scrollLabel: "INITIATE_ANALYSIS",
+            qualifier: "ENGINEERED EXCLUSIVELY FOR B2B FACING INVISIBLE CONVERSION LEAKS"
         },
         refleksi: {
             label: "// 01_REFLECTION",
-            line1: "Your website may look good.",
-            line2: "But the question is simple:",
-            question: "Does it truly make people believe?",
-            desc1: "Many businesses lose trust not because of quality,",
-            desc2: "but because of imprecise structure."
+            line1: "Reality occurs when your office is closed.",
+            line2: "When potential customers search for you tonight,",
+            question: "What do they actually find?",
+            desc1: "Decisions rarely happen in front of you.",
+            desc2: "They happen in silence, as customers compare you with other alternatives without a word."
         },
         diagnosis: {
-            label: "// 02_DIAGNOSIS",
-            title: "Trust is lost when:",
+            label: "// 02_ROOT_CAUSE_ANALYSIS",
+            title: "UNPACKING THE LEAK",
             items: [
-                "Information is not logically structured",
-                "Focus is fragmented",
-                "Navigation creates friction",
-                "Messaging is inconsistent"
+                "WHY 1: Clients hesitate to close. Why? Because they feel uncertain.",
+                "WHY 2: Why uncertainty? Absolute absence of instant proof in the first 5 seconds.",
+                "WHY 3: Why is there no proper proof? The layout is flooded with self-proclaimed decor.",
+                "WHY 4: Why lack parameters? Objective truth is buried due to zero information architecture."
             ],
-            conclusion1: "Doubt is not an emotion.",
-            conclusion2: "It is the result of weak structure."
+            conclusion1: "THE STRUCTURAL ROOT CAUSE:",
+            conclusion2: "selling with emotion, killing logic."
         },
         peran: {
-            label: "// 03_DEFINITION",
-            title: "We work as trust engineers.",
-            notLine1: "Not beautifying interfaces.",
-            notLine2: "Not adding animations.",
-            mainDesc: "We test, simplify, and restructure digital architecture until there is no gap for doubt."
+            label: "// 03_PROTOCOL_DEFINITION",
+            title: "Trust engineering through the elimination of architectural friction.",
+            notLine1: "Beyond visual aesthetics.",
+            notLine2: "No redundant ornamentation.",
+            mainDesc: "Identifying and sealing information gaps that hinder the flow of conviction in digital architectures."
         },
         bukti: {
-            label: "// 04_EVIDENCE",
+            label: "// 04_VERIFICATION_PARAMETERS",
             items: [
-                { val: "99.9%", label: "System_Reliability" },
-                { val: "ZERO", label: "User_Disorientation" },
-                { val: "EXCLUSIVE", label: "Measured_Structure" },
-                { val: "PERMANENT", label: "Built_To_Last" }
+                { val: "100%", label: "ZERO_ASSUMPTIONS" },
+                { val: "ZERO", label: "NAVIGATION_DEAD_ENDS" },
+                { val: "SWIFT", label: "INFORMATION_ABSORPTION" },
+                { val: "CLINICAL", label: "VALIDATION_SYSTEM" }
             ]
         },
         penutup: {
@@ -85,15 +88,15 @@ export const en = {
             part3: "Conviction_Engineering"
         },
         contrast: {
-            label: "// CRUCIAL_DIFFERENCE",
-            agencyLabel: "A typical agency says:",
-            agencyLine: "\"We increase conversions.\"",
-            engineerLabel: "A trust engineer says:",
-            engineerLine: "\"We eliminate reasons not to trust.\""
+            label: "// AUDIT_PARAMETERS",
+            agencyLabel: "STANDARD_AUDIT",
+            agencyLine: "Focus on aesthetics and linear navigation flow.",
+            engineerLabel: "VALIDATED_AUDIT",
+            engineerLine: "Focus on logical architecture and conviction engineering."
         }
     },
     footer: {
-        textPath1: "SYSTEM_AUTHORITY — DESIGN_LEGACY — SWISS_POP_EST_2026 —",
+        textPath1: "SYSTEM_AUTHORITY — PROVENANCE_DATA — SWISS_POP_EST_2026 —",
         textPath2: "PROTOCOL_ACTIVE — NETWORK_STABLE — DATA_VERIFIED — TRUST_MAINTAINED —",
         authIndex: "( AUTH_INDEX )",
         portfolioAsc: "PORTFOLIO.ARC.26",
@@ -110,16 +113,16 @@ export const en = {
         expandArchive: "EXPAND_ARCHIVE"
     },
     legacy: {
-        badge: "[ ACCESS_RESTRICTED // ARCHIVE_04 ]",
-        title1: "THE",
-        title2: "LEGACY",
-        title3: "ASSETS",
-        subtitle: "Establishing Authority Through Proven Origin Sequences",
+        badge: "[ RESTRICTED_ACCESS // AUTHORITY_ARCHIVE ]",
+        title1: "PROVENANCE",
+        title2: "DATA",
+        title3: "RECORDS",
+        subtitle: "Architecture for Authority Through Verified Provenance",
         ref: "REF_",
         sequence: "DATA_SEQUENCE_",
-        quote: "\"Your heritage is not a liability. It is the fuel for your next era of dominance.\"",
+        quote: "Historical data constitutes the structural foundation for digital authority.",
         trustIndex: "TRUST_INDEX: AA+",
-        version: "VERSION: LEGACY_ULTIMATE"
+        version: "VERSION: PROVENANCE_V1"
     },
     storyPage: {
         badge: "( DECRYPTING_BIOGRAPHY )",
