@@ -6,7 +6,7 @@ export default function RefleksiSection() {
     const { dict } = useLanguage();
 
     return (
-        <section className="swiss-container py-32 lg:py-48 relative border-t border-foreground/5 bg-background">
+        <section className="swiss-container py-32 lg:py-48 relative border-t border-foreground/5 bg-transparent">
             <div className="grid grid-cols-12 gap-8 lg:gap-12 relative z-10">
                 {/* Sticky Side Label */}
                 <div className="col-span-12 lg:col-span-3">

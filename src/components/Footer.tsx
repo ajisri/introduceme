@@ -44,7 +44,7 @@ export default function Footer() {
     return (
         <footer
             ref={footerRef}
-            className="w-full z-30 bg-background border-t-[var(--border-width)] border-foreground mt-24 lg:mt-32"
+            className="w-full z-30 bg-transparent border-t-[var(--border-width)] border-foreground mt-24 lg:mt-32"
             style={{ position: 'relative' }}
         >
             {/* ================================================================
@@ -173,7 +173,7 @@ const FooterGallery = () => {
     return (
         <div
             ref={galleryRef}
-            className="h-[200px] lg:h-[400px] bg-background overflow-hidden w-full border-t-[var(--border-width)] border-foreground"
+            className="h-[200px] lg:h-[400px] bg-transparent overflow-hidden w-full border-t-[var(--border-width)] border-foreground"
             style={{ position: 'relative' }}
         >
             {/* Section Label */}

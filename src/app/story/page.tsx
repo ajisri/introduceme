@@ -8,11 +8,11 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function StoryPage() {
     const { dict } = useLanguage();
     return (
-        <main className="relative w-full min-h-screen bg-background text-foreground">
+        <main className="relative w-full min-h-screen bg-transparent text-foreground">
             <CustomCursor />
             <Header />
             <div className="pt-32 min-h-screen">
-                <div className="swiss-container py-20 border-b-[var(--border-width)] border-foreground/10 mb-20 bg-background/40 backdrop-blur-3xl">
+                <div className="swiss-container py-20 border-b-[var(--border-width)] border-foreground/10 mb-20 bg-transparent/40 backdrop-blur-3xl">
                     <p className="font-mono text-xs uppercase tracking-[0.6em] text-[var(--pop-green)] mb-6 animate-pulse">
                         {dict.storyPage.badge}
                     </p>

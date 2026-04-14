@@ -115,7 +115,7 @@ export default function PenutupSection() {
     return (
         <section
             ref={containerRef}
-            className="w-full relative penutup-section overflow-hidden min-h-[100svh] bg-background border-t border-foreground/5 pt-32 lg:pt-40 pb-10 lg:pb-20 flex flex-col justify-between"
+            className="w-full relative penutup-section overflow-hidden min-h-[100svh] bg-transparent border-t border-foreground/5 pt-32 lg:pt-40 pb-10 lg:pb-20 flex flex-col justify-between"
         >
             <div className="swiss-container flex-grow flex flex-col justify-between relative z-10 h-full">
                 
@@ -147,14 +147,14 @@ export default function PenutupSection() {
                             ref={noButtonRef}
                             onMouseEnter={handleEvade}
                             onClick={handleEvade}
-                            className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-foreground/50 border border-foreground/10 px-8 py-5 bg-background whitespace-nowrap hover:border-swiss-red hover:text-swiss-red transition-colors duration-300"
+                            className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-foreground/50 border border-foreground/10 px-8 py-5 bg-transparent whitespace-nowrap hover:border-swiss-red hover:text-swiss-red transition-colors duration-300"
                             style={{ position: "relative" }}
                         >
                             Lebih baik cari yang lain
                         </button>
 
                         <Magnetic strength={0.25}>
-                            <Link href="/story" aria-label={dict.landing.penutup.cta} className="group relative flex items-center justify-between gap-10 border border-foreground/10 bg-background hover:bg-foreground hover:border-foreground transition-all duration-700 px-8 py-6 w-full lg:w-auto">
+                            <Link href="/story" aria-label={dict.landing.penutup.cta} className="group relative flex items-center justify-between gap-10 border border-foreground/10 bg-transparent hover:bg-foreground hover:border-foreground transition-all duration-700 px-8 py-6 w-full lg:w-auto">
                                 <span className="font-unbounded font-semibold uppercase tracking-widest text-foreground group-hover:text-background transition-colors duration-500" style={{ fontSize: "0.75rem" }}>
                                     {dict.landing.penutup.cta}
                                 </span>

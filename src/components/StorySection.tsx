@@ -116,7 +116,7 @@ export default function StorySection() {
         <section ref={containerRef} className="relative w-full bg-transparent border-b-[var(--border-width)] border-[var(--swiss-red)] overflow-visible">
 
             {/* Pinned Visual Container */}
-            <div ref={visualsRef} className="absolute top-0 left-0 h-screen w-full overflow-hidden flex flex-col md:flex-row z-0 pointer-events-none bg-background">
+            <div ref={visualsRef} className="absolute top-0 left-0 h-screen w-full overflow-hidden flex flex-col md:flex-row z-0 pointer-events-none bg-transparent">
 
                 {/* Background Typography - Mini Brutalism: Huge, Bold, Tight */}
                 <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
@@ -134,7 +134,7 @@ export default function StorySection() {
 
                 {/* Side: Image Display - Brutalist Frame */}
                 <div className="w-full md:w-1/2 h-[50vh] md:h-full relative z-10 flex items-center justify-center p-4 md:p-12">
-                    <div className="relative w-full max-w-md md:max-w-xl aspect-square bg-background shadow-[16px_16px_0px_var(--swiss-red)] border-[var(--border-width)] border-[var(--swiss-red)] p-2 md:p-0">
+                    <div className="relative w-full max-w-md md:max-w-xl aspect-square bg-transparent shadow-[16px_16px_0px_var(--swiss-red)] border-[var(--border-width)] border-[var(--swiss-red)] p-2 md:p-0">
                         <div className="relative w-full h-full overflow-hidden bg-gray-900 border-2 border-white/10">
                             {/* Static "NO SIGNAL" or Grid background for empty state */}
                             <div className="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA5OTkAAABEREQAAAAAAABEREOAgIAaa1VeAAAACHRSTlMAmpwDpMzMzk4Fv6UAAABSSURBVDjL7dJBDoAgDETR1kP4/yeWjqIRCxsTzR/w4b5mAAh5iIAQhEBEIAQhEBEIQAhEBEIQAhGBEIRARCAEIRC9E4L4TiD+E4L4TgjHO6E434kFylxTvJ4AAAAASUVORK5CYII=')] opacity-10 z-0"></div>
@@ -149,7 +149,7 @@ export default function StorySection() {
                                     >
                                         <div
                                             id={`visual-${floor.id}`}
-                                            className="absolute inset-0 opacity-0 will-change-transform bg-background"
+                                            className="absolute inset-0 opacity-0 will-change-transform bg-transparent"
                                             style={{ clipPath: "inset(100% 0% 0% 0%)" }}
                                         >
                                             <Image
@@ -192,7 +192,7 @@ export default function StorySection() {
 
                         {/* Text Content - Brutalist Card */}
                         <div className="flex flex-col justify-start md:justify-center p-6 md:p-20 pointer-events-auto">
-                            <div className="max-w-lg bg-background border-[var(--border-width)] border-[var(--swiss-red)] shadow-[12px_12px_0px_var(--pop-green)] p-6 md:p-10 transform transition-transform hover:-translate-y-1 hover:shadow-[16px_16px_0px_var(--pop-green)] duration-300">
+                            <div className="max-w-lg bg-transparent border-[var(--border-width)] border-[var(--swiss-red)] shadow-[12px_12px_0px_var(--pop-green)] p-6 md:p-10 transform transition-transform hover:-translate-y-1 hover:shadow-[16px_16px_0px_var(--pop-green)] duration-300">
                                 <div className="flex items-center gap-4 mb-6 border-b-2 border-[var(--swiss-red)] pb-4">
                                     <span className="font-mono text-sm md:text-base bg-[var(--swiss-red)] text-white px-2 py-1 font-bold">
                                         0{floor.id}

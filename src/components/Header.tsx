@@ -43,12 +43,12 @@ export default function Header() {
                     <span>{dict.header.location}</span>
                 </div>
 
-                <div className="swiss-container flex justify-between items-center h-20 border-b border-foreground/10 bg-background/80 backdrop-blur-xl">
+                <div className="swiss-container flex justify-between items-center h-20 border-b border-foreground/10 bg-background/95 backdrop-blur-md antialiased relative z-10">
                     <div className="flex items-center gap-6">
                         <Magnetic strength={0.3}>
                             <Link href="/" className="text-xl font-black uppercase tracking-tighter flex items-center group">
                                 <span className="bg-[var(--swiss-red)] text-white px-3 py-1 border border-[var(--swiss-red)] transition-all group-hover:px-4">SW</span>
-                                <span className="border border-foreground px-3 py-1 bg-background text-foreground transition-all group-hover:bg-foreground group-hover:text-background">POP</span>
+                                <span className="border border-foreground px-3 py-1 bg-transparent text-foreground transition-all group-hover:bg-foreground group-hover:text-background">POP</span>
                             </Link>
                         </Magnetic>
                     </div>
@@ -90,7 +90,7 @@ export default function Header() {
 
             {/* Mobile Overlay - Postmodern Chaos */}
             {isOpen && (
-                <div className="fixed inset-0 z-[var(--z-mobile-menu)] bg-background text-foreground flex flex-col justify-center p-8 md:p-16">
+                <div className="fixed inset-0 z-[var(--z-mobile-menu)] bg-transparent text-foreground flex flex-col justify-center p-8 md:p-16">
                     <div className="absolute top-0 left-0 w-full h-full bg-halftone opacity-10 pointer-events-none"></div>
                     <nav className="relative z-10 flex flex-col gap-4">
                         {dict.header.mobile.items.map((item, i) => (

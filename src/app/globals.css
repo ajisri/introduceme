@@ -181,10 +181,7 @@
 @layer base {
   * {
     border-color: var(--foreground);
-    transition: background-color var(--theme-transition),
-      color var(--theme-transition),
-      border-color var(--theme-transition),
-      box-shadow var(--theme-transition);
+    /* Removed custom global transitions to allow GSAP CSS variable tweens to run buttery smooth at 60fps without triggering cascading transition recalculation lag */
   }
 
   html {

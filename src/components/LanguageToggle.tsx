@@ -7,7 +7,7 @@ export default function LanguageToggle() {
     return (
         <button
             onClick={() => setLanguage(language === "en" ? "id" : "en")}
-            className="relative h-10 px-4 flex items-center gap-2 border-2 border-foreground bg-background transition-all group overflow-hidden"
+            className="relative h-10 px-4 flex items-center gap-2 border-2 border-foreground bg-transparent transition-all group overflow-hidden"
             aria-label="Toggle Language"
         >
             <div className="absolute inset-0 bg-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>

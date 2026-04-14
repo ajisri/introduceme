@@ -147,7 +147,7 @@ export default function LegacySection() {
     return (
         <section
             ref={containerRef}
-            className="relative w-full min-h-[150vh] bg-background text-foreground flex flex-col items-center justify-start overflow-hidden py-32 lg:py-44 border-y-[var(--border-width)] border-foreground"
+            className="relative w-full min-h-[150vh] bg-transparent text-foreground flex flex-col items-center justify-start overflow-hidden py-32 lg:py-44 border-y-[var(--border-width)] border-foreground"
         >
             {/* Background Textures */}
             <div className="absolute inset-0 opacity-5 pointer-events-none bg-halftone" />
@@ -206,7 +206,7 @@ export default function LegacySection() {
                             }}
                         >
                             {/* Image Container */}
-                            <div className="absolute inset-0 bg-background overflow-hidden">
+                            <div className="absolute inset-0 bg-transparent overflow-hidden">
                                 <Image
                                     src={src}
                                     alt={`Legacy Archive ${i + 1}`}
@@ -243,7 +243,7 @@ export default function LegacySection() {
                 SECTION FOOTER - Quote + Trust Indicators
             ================================================================ */}
             <div className="text-center mt-24 lg:mt-32 z-10 px-4 lg:px-6">
-                <div className="max-w-3xl mx-auto p-10 lg:p-14 border-[var(--border-width)] border-foreground bg-background relative">
+                <div className="max-w-3xl mx-auto p-10 lg:p-14 border-[var(--border-width)] border-foreground bg-transparent relative">
                     {/* Accent Corner */}
                     <div className="absolute top-0 left-0 w-8 h-8 bg-[var(--swiss-red)]" />
 

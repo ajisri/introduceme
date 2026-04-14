@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTheme } from "next-themes";
 import Header from "./Header";
 import CustomCursor from "./CustomCursor";
 import Footer from "./Footer";
@@ -22,12 +23,54 @@ if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
+// STUDIO MONKS COLOR PALETTE (Themed)
+const THEME_PALETTE: Record<string, { light: { bg: string, fg: string }, dark: { bg: string, fg: string } }> = {
+    hero: {
+        light: { bg: "#F5F5F0", fg: "#0E0E0E" },
+        dark: { bg: "#0a0a0a", fg: "#F5F5F0" }
+    },
+    refleksi: {
+        light: { bg: "#E8E9E4", fg: "#0E0E0E" },
+        dark: { bg: "#121212", fg: "#F5F5F0" }
+    },
+    diagnosis_top: {
+        light: { bg: "#D7DFE4", fg: "#0E0E0E" },
+        dark: { bg: "#1a1c1e", fg: "#F5F5F0" }
+    },
+    diagnosis_bottom: {
+        light: { bg: "#0E0E0E", fg: "#F5F5F0" },
+        dark: { bg: "#000000", fg: "#F5F5F0" }
+    },
+    peran: {
+        light: { bg: "#F5F2EB", fg: "#0E0E0E" },
+        dark: { bg: "#151513", fg: "#F5F5F0" }
+    },
+    bukti: {
+        light: { bg: "#E6E5E0", fg: "#0E0E0E" },
+        dark: { bg: "#141416", fg: "#F5F5F0" }
+    },
+    contrast: {
+        light: { bg: "#DFE2E5", fg: "#0E0E0E" },
+        dark: { bg: "#1a1a1b", fg: "#F5F5F0" }
+    },
+    legacy: {
+        light: { bg: "#F5F5F0", fg: "#0E0E0E" },
+        dark: { bg: "#0a0a0a", fg: "#F5F5F0" }
+    },
+    penutup: {
+        light: { bg: "#050505", fg: "#F5F5F0" },
+        dark: { bg: "#000000", fg: "#F5F5F0" }
+    }
+};
+
 /**
  * LANDING PAGE - Insinyur Kepercayaan
  * Psychological architecture: Refleksi → Diagnosis → Definisi → Bukti → Penutup
  * Visual philosophy: Precision = minimal. White space = confidence.
  */
 export default function LandingPage() {
+    const { theme, resolvedTheme } = useTheme();
+    const isDark = resolvedTheme === "dark";
     const containerRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
     const animationStartedRef = useRef(false);
@@ -165,11 +208,64 @@ export default function LandingPage() {
                 scrollTrigger: { trigger: ".contrast-engineer", start: "top 88%", toggleActions: "play none none reverse" },
                 x: 30, opacity: 0, duration: 0.7, delay: 0.15, ease: "power2.out"
             });
-
         }, containerRef);
 
         return () => ctx.revert();
     }, [isVisible]);
+
+    // B. STUDIO MONKS BACKGROUND TRANSITIONS (Themed Priority Effect)
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const colorTriggers = gsap.utils.toArray(".color-trigger") as HTMLElement[];
+            console.log(`[LEVEL_UP] Theme: ${resolvedTheme}. Tracking ${colorTriggers.length} zones.`);
+
+            if (colorTriggers.length > 0) {
+                // Determine Mode
+                const mode = (resolvedTheme === "dark") ? "dark" : "light";
+
+                // Initialize Root Colors
+                const firstKey = colorTriggers[0].dataset.themeKey || "hero";
+                const firstPalette = THEME_PALETTE[firstKey][mode];
+                
+                gsap.set(document.documentElement, { 
+                    "--background": firstPalette.bg,
+                    "--foreground": firstPalette.fg 
+                });
+
+                colorTriggers.forEach((trigger, i) => {
+                    // Check height: only trigger for "Meaningful" sections (> 30% of screen height)
+                    // This catches Diagnosis Section (part 5) which is ~40% of VH
+                    const sectionHeight = trigger.offsetHeight;
+                    const threshold = window.innerHeight * 0.3;
+                    
+                    if (sectionHeight < threshold) {
+                        return;
+                    }
+
+                    if (i === 0) return;
+
+                    const key = trigger.dataset.themeKey || "hero";
+                    const palette = THEME_PALETTE[key][mode];
+
+                    // Smooth Variable Interpolation
+                    gsap.to(document.documentElement, {
+                        "--background": palette.bg,
+                        "--foreground": palette.fg,
+                        ease: "power2.inOut",
+                        immediateRender: false,
+                        overwrite: "auto",
+                        scrollTrigger: {
+                            trigger: trigger,
+                            start: "top 95%", // Start very early for seamless blend
+                            end: "top 25%",   // End late for luxurious feel
+                            scrub: 0.8,       // Liquid smooth interpolation
+                        }
+                    });
+                });
+            }
+        });
+        return () => ctx.revert();
+    }, [resolvedTheme]); // Re-initialize on theme change
 
     const handleMouseMove = (e: React.MouseEvent) => {
         const moveX = (e.clientX - window.innerWidth / 2) * 0.015;
@@ -187,17 +283,38 @@ export default function LandingPage() {
             <CustomCursor />
             <Header />
 
-            <HeroSection handleMouseMove={handleMouseMove} />
-            <MarqueeOne />
-            <RefleksiSection />
-            <DiagnosisSection />
-            <MaskTransition bgColor="var(--foreground)">
-                <PeranSection />
+            <div className="color-trigger" data-theme-key="hero">
+                <HeroSection handleMouseMove={handleMouseMove} />
+                <MarqueeOne />
+            </div>
+            <div className="color-trigger" data-theme-key="refleksi">
+                <RefleksiSection />
+            </div>
+            
+            <DiagnosisSection /> 
+            {/* DiagnosisSection implements its own .color-trigger keys internally if needed */}
+
+            <MaskTransition bgColor="var(--background)">
+                <div className="color-trigger" data-theme-key="peran">
+                    <PeranSection />
+                </div>
             </MaskTransition>
-            <BuktiSection />
-            <ContrastSection />
-            <LegacySection />
-            <PenutupSection />
+            
+            <div className="color-trigger" data-theme-key="bukti">
+                <BuktiSection />
+            </div>
+            
+            <div className="color-trigger" data-theme-key="contrast">
+                <ContrastSection />
+            </div>
+            
+            <div className="color-trigger" data-theme-key="legacy">
+                <LegacySection />
+            </div>
+            
+            <div className="color-trigger" data-theme-key="penutup">
+                <PenutupSection />
+            </div>
 
             <Footer />
         </main>

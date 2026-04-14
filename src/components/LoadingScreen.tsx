@@ -207,22 +207,33 @@ export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: ()
             }
         });
 
-        // Diubah untuk mempertahankan kobaran api jauh lebih lama sebelum padam
-        tl.to({}, { duration: 1.5 }) // Initial fire focus lasts longer
-            .to(state, { wind: 0.5, duration: 1.0, ease: "power1.inOut" }, 1.0)
-            // Hujan turun
-            .to(rainMaterial.uniforms.uOpacity, { value: 0.4, duration: 1.5, ease: "power1.in" }, 1.5)
-            // Uap air (asap samar) perlahan muncul saat api kena hujan
-            .to(smokeMaterial.uniforms.uOpacity, { value: 0.25, duration: 2.0, ease: "power1.inOut" }, 1.5)
-            .to(smokeMaterial.uniforms.uRise, { value: 0.4, duration: 2.0, ease: "power1.out" }, 1.5)
-            // Api meredup
-            .to(state, { fire: 0.5, wind: 0.8, duration: 1.5, ease: "power1.in" }, 2.5)
-            .to(state, { sparksIntensity: 0.3, duration: 1.0 }, 3.0)
-            .to(state, { fire: 0.0, sparksIntensity: 0.0, duration: 1.5, ease: "power2.in" }, 4.0)
-            // Asap menebal penuh berwarna putih di akhir
-            .to(smokeMaterial.uniforms.uOpacity, { value: 1.0, duration: 1.5, ease: "power1.in" }, 4.2)
-            .to(smokeMaterial.uniforms.uRise, { value: 1.5, duration: 4.0, ease: "power1.out" }, 4.2)
-            .to(rainMaterial.uniforms.uOpacity, { value: 0.0, duration: 1.0, ease: "power1.out" }, 5.5);
+        // Diubah untuk mensimulasikan api yang mengecil saat tersiram hujan
+        const fireMeshes = [fireMesh, ...secondaryFires];
+        
+        tl.to({}, { duration: 1.0 }) // Initial fire focus
+            .to(state, { wind: 0.8, duration: 1.5, ease: "power1.inOut" }, 1.0)
+            
+            // 1. Hujan mulai turun membasahi
+            .to(rainMaterial.uniforms.uOpacity, { value: 0.6, duration: 1.5, ease: "power1.in" }, 1.5)
+            
+            // 2. Api pelan-pelan mengecil secara fisik (scale) dan meredup
+            .to(fireMeshes.map(m => m.scale), { 
+                x: 0.1, y: 0.1, z: 0.1, 
+                duration: 2.5, 
+                ease: "power2.inOut" 
+            }, 2.0)
+            .to(state, { fire: 0.3, sparksIntensity: 0.2, duration: 2.0, ease: "power1.in" }, 2.0)
+            
+            // 3. Uap asap muncul drastis sebagai reaksi api tersiram hujan
+            .to(smokeMaterial.uniforms.uOpacity, { value: 0.8, duration: 3.0, ease: "power2.out" }, 2.0)
+            .to(smokeMaterial.uniforms.uRise, { value: 1.2, duration: 3.0, ease: "power1.out" }, 2.0)
+            
+            // 4. Api benar-benar padam
+            .to(state, { fire: 0.0, sparksIntensity: 0.0, duration: 0.5 }, 4.0)
+            
+            // 5. Asap tebal memenuhi layar (Whiteout) sebelum masuk ke website
+            .to(smokeMaterial.uniforms.uOpacity, { value: 1.0, duration: 1.5, ease: "power1.in" }, 4.5)
+            .to(rainMaterial.uniforms.uOpacity, { value: 0.0, duration: 1.0, ease: "power1.out" }, 5.0);
 
         // =====================================================================
         // RENDER LOOP

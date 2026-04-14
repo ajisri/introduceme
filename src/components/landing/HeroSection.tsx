@@ -12,7 +12,7 @@ export default function HeroSection({ handleMouseMove }: HeroSectionProps) {
     return (
         <section
             onMouseMove={handleMouseMove}
-            className="w-full min-h-[90vh] pt-32 lg:pt-40 pb-20 flex flex-col justify-start relative overflow-hidden bg-background border-b border-foreground/5"
+            className="w-full min-h-[90vh] pt-32 lg:pt-40 pb-20 flex flex-col justify-start relative overflow-hidden bg-transparent border-b border-foreground/5"
         >
             {/* 
                 PHILOSOPHY: Decisions occur in silence. 

@@ -5,7 +5,7 @@ export default function ContrastSection() {
     const { dict } = useLanguage();
 
     return (
-        <section className="swiss-container py-32 lg:py-48 relative border-t border-foreground/5 bg-background overflow-hidden">
+        <section className="swiss-container py-32 lg:py-48 relative border-t border-foreground/5 bg-transparent overflow-hidden">
             <div className="grid grid-cols-12 gap-8 lg:gap-12 relative z-10">
                 
                 {/* Sticky Side Label */}
@@ -37,7 +37,7 @@ export default function ContrastSection() {
                         </div>
 
                         {/* Validated Audit — High Performance/Authority */}
-                        <div className="p-10 lg:p-16 bg-background relative group">
+                        <div className="p-10 lg:p-16 bg-transparent relative group">
                             <div className="absolute top-0 left-0 w-full h-[1px] bg-swiss-red opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             <span className="font-mono font-black uppercase tracking-[0.3em] text-swiss-red opacity-60 mb-10 block" style={{ fontSize: "0.6rem" }}>
                                 [ 02_VALIDATED_AUDIT ]

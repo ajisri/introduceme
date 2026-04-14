@@ -5,7 +5,7 @@ export default function MarqueeOne() {
     const { dict } = useLanguage();
 
     return (
-        <div className="w-full border-y-swiss border-foreground py-10 bg-background overflow-hidden relative" style={{ minHeight: "clamp(140px, 15vh + 50px, 200px)" }}>
+        <div className="w-full border-y-swiss border-foreground py-10 bg-transparent overflow-hidden relative" style={{ minHeight: "clamp(140px, 15vh + 50px, 200px)" }}>
             <div className="animate-marquee flex w-max will-change-transform" aria-hidden="true">
                 {[1, 2].map((i) => (
                     <div key={i} className="flex items-center shrink-0 gap-20 px-10">
