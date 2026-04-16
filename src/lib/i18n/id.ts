@@ -26,74 +26,84 @@ export const id = {
     },
     landing: {
         hero: {
-            tagline: "[ ANALISA AKAR MASALAH (ROOT CAUSE) ]",
-            title1: "TRAFIK TINGGI.",
-            title2: "CLOSING MATI.",
-            subtitle: "MENGAPA AUDIENS BERHENTI MERESPONS SAAT PROSES MENDEKATI TITIK TRANSAKSI?",
-            desc1: "Akar Masalah: Tentu bukan pada harga atau kualitas layanan Anda.",
-            desc2: "Otak manusia otomatis membatalkan keputusan ketika mendeteksi sekecil 1% ambiguitas dalam struktur informasi layar Anda.",
+            tagline: "[ ANALISA PERILAKU DIGITAL ]",
+            title1: "TETAP RELEVAN.",
+            title2: "TETAP PROFESIONAL.",
+            subtitle: "Website hanyalah salah satu alat agar bisnis terus bertumbuh menjadi profesional dan tidak tertinggal saat pasar berubah.",
+            desc1: "Kenapa? Karena saat ingin memastikan sesuatu yang memiliki risiko, perilaku orang berubah.",
+            desc2: "Dari mendatangi gerai langsung untuk konfirmasi, berubah menjadi konfirmasi Google dan mencari alternatif secara digital.",
             stat: "99%",
-            statLabel: "KEPUTUSAN DIBATALKAN KARENA KERAGUAN VISUAL",
-            point1: "Tingkat kejelasan visual menuntun",
-            point2: "Tingkat konversi dan transaksi",
-            cta: "→ LAKUKAN DIAGNOSA",
+            statLabel: "ORANG TIDAK PEDULI DENGAN KERINGAT ANDA",
+            cta: "→ LIHAT REALITA",
             scrollLabel: "MULAI_ANALISIS",
-            qualifier: "DIRANCANG KHUSUS UNTUK B2B YANG MENGALAMI KEBOCORAN KONVERSI"
+            qualifier: "USAHA ANDA HANYA PERLU SIAP ATAU TIDAK SIAP UNTUK MEYAKINKAN MEREKA."
         },
         refleksi: {
-            label: "// 01_REFLEKSI",
-            line1: "Realita terjadi saat kantor Anda tutup.",
-            line2: "Saat calon pelanggan mencari Anda malam ini,",
-            question: "Apa yang sesungguhnya mereka temukan?",
-            desc1: "Keputusan jarang terjadi di depan Anda.",
-            desc2: "Ia terjadi dalam sunyi, saat pelanggan membandingkan Anda dengan alternatif lain tanpa suara."
+            label: "// 01_PSIKOLOGI_PASAR",
+            line1: "Namun... apa yang tidak berubah?",
+            line2: "Memastikan informasi resmi, reputasi, dan profesionalitas.",
+            question: "Saat ragu, Mereka hanya… pergi.",
+            desc1: "Membuka 3–5 pilihan, membandingkan diam-diam. Tidak pernah bilang “Saya ragu.”",
+            desc2: "Otak manusia secara natural mengisi kekosongan informasi dengan risiko."
         },
         diagnosis: {
-            label: "// 02_ROOT_CAUSE_ANALYSIS",
-            title: "MENGURAI KEBOCORAN",
+            label: "// 02_ANALISA_KERAGUAN",
+            title: "MENGISI KEKOSONGAN",
             items: [
-                "WHY 1: Klien batal membeli. Kenapa? Karena mereka merasa ragu.",
-                "WHY 2: Mengapa ragu? Absennya bukti instan tegas di 5 detik pertama.",
-                "WHY 3: Mengapa tidak ada bukti instan? Layar dipenuhi klaim sepihak dan jargon dekoratif.",
-                "WHY 4: Mengapa penuh jargon? Bukti dan parameter objektif tertimbun karena kurangnya arsitektur informasi."
+                "Tanpa pusat informasi resmi → otak pelanggan mengisi kekosongan dengan asumsi.",
+                "Keraguan muncul saat informasi tidak jelas (The Black Room).",
+                "Yang dibutuhkan adalah pusat informasi yang membuat orang berhenti ragu.",
+                "Mendorong keputusan dengan menghadirkan kejelasan yang mengalir lancar."
             ],
-            conclusion1: "AKAR MASALAH (ROOT CAUSE) PADA VISUAL ANDA:",
-            conclusion2: "menjual dgn emosi, mematikan logika."
+            conclusion1: "KESEIMBANGAN INFORMASI:",
+            conclusion2: "sederhana namun meyakinkan.",
+            storyStep0: "The Black Room.",
+            storyStep0Desc: "Keraguan muncul saat informasi tidak jelas. Semuanya gelap.",
+            storyStep1: "Asumsi mengisi kekosongan.",
+            storyStep1Desc: "Otak secara natural mengisi kekosongan informasi dengan risiko.",
+            storyStep2: "Saklar yang salah.",
+            storyStep2Desc: "Upaya ada, tapi bukan di titik yang tepat. Masih belum ada kejelasan resmi.",
+            storyStep3: "LAMPU MENYALA.",
+            storyStep3Desc: "Kejelasan resmi mematikan asumsi liar.",
+            storyCta0: "Coba melihat",
+            storyCta1: "Cari saklar",
+            storyCta2: "Coba yang lain",
+            storyCta3: "Lanjutkan"
         },
         peran: {
-            label: "// 03_DEFINISI_PROTOKOL",
-            title: "Rekayasa kepercayaan melalui eliminasi friksi arsitektural.",
-            notLine1: "Bukan sekadar estetika visual.",
-            notLine2: "Bukan penambahan ornamen tanpa fungsi.",
-            mainDesc: "Identifikasi dan pembersihan celah informasi yang menghambat alur keyakinan pada arsitektur digital."
+            label: "// 03_STRATEGI_SEDERHANA",
+            title: "Banyak bisnis hanya butuh versi sistem sederhana agar pelanggan tidak bingung.",
+            notLine1: "Tidak semua bisnis butuh sistem kompleks.",
+            notLine2: "Kejelasan adalah kunci dari kepercayaan.",
+            mainDesc: "Profil Jelas • Lokasi & Jam • Cara Pesan • Portofolio • Testimoni • Prosedur Layanan."
         },
         bukti: {
-            label: "// 04_PARAMETER_VERIFIKASI",
+            label: "// 04_PARAMETER_KEJELASAN",
             items: [
                 { val: "100%", label: "BEBAS_ASUMSI_LIAR" },
-                { val: "NOL", label: "JALAN_BUNTU_NAVIGASI" },
-                { val: "CEPAT", label: "DAYA_SERAP_INFORMASI" },
-                { val: "KLINIS", label: "SISTEM_VALIDASI" }
+                { val: "NOL", label: "KERAGUAN_PELANGGAN" },
+                { val: "FOKUS", label: "KEPUTUSAN_MANTAP" },
+                { val: "JELAS", label: "ALUR_KONFIRMASI" }
             ]
         },
         penutup: {
-            line1: "Ketika struktur tepat,",
-            line2: "orang tidak merasa sedang diyakinkan.",
-            line3: "Mereka hanya merasa keputusan itu masuk akal.",
-            closing: "Dan itulah kepercayaan.",
-            cta: "→ Bangun dengan presisi"
+            line1: "Bisnis Anda siap,",
+            line2: "Atau tidak siap,",
+            line3: "Untuk meyakinkan mereka.",
+            closing: "Pilih untuk dipercaya.",
+            cta: "→ Bangun Kejelasan"
         },
         marquee1: {
-            part1: "Presisi_Arsitektur",
-            part2: "Struktur_Kepercayaan",
-            part3: "Rekayasa_Keyakinan"
+            part1: "Bertumbuh_Profesional",
+            part2: "Pusat_Informasi_Resmi",
+            part3: "Kejelasan_Konversi"
         },
         contrast: {
-            label: "// PARAMETER_AUDIT",
-            agencyLabel: "AUDIT_STANDAR",
-            agencyLine: "Fokus pada estetika dan alur navigasi linear.",
-            engineerLabel: "AUDIT_VALIDASI",
-            engineerLine: "Fokus pada arsitektur logika dan rekayasa keyakinan."
+            label: "// PERBANDINGAN STRATEGI",
+            agencyLabel: "SISTEM KOMPLEKS",
+            agencyLine: "Fokus pada fitur rumit yang seringkali membingungkan pelanggan.",
+            engineerLabel: "STRATEGI TEPAT",
+            engineerLine: "Fokus pada pemenuhan kebutuhan informasi agar pelanggan berhenti ragu."
         }
     },
     footer: {

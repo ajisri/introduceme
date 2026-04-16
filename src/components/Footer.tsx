@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { storyFloors } from "@/data/story-content";
 import Image from "next/image";
@@ -18,15 +18,11 @@ export default function Footer() {
     const pathRefs = useRef<(SVGTextPathElement | null)[]>([]);
     const { dict } = useLanguage();
 
-    // Use window scroll for the text path animation as it's at the top of the footer
     const { scrollYProgress } = useScroll({
         target: footerRef,
         offset: ['start end', 'end start']
     });
 
-    // =========================================================================
-    // TEXT PATH ANIMATION - Smooth scroll-linked movement
-    // =========================================================================
     useEffect(() => {
         const unsubscribe = scrollYProgress.on("change", (latest) => {
             pathRefs.current.forEach((path, i) => {
@@ -44,13 +40,11 @@ export default function Footer() {
     return (
         <footer
             ref={footerRef}
-            className="w-full z-30 bg-transparent border-t-[var(--border-width)] border-foreground mt-24 lg:mt-32"
+            className="w-full z-30 bg-background border-t-[var(--border-width)] border-foreground mt-24 lg:mt-32"
             style={{ position: 'relative' }}
         >
-            {/* ================================================================
-                SVG TEXT PATH - Edge to Edge Curved Text
-            ================================================================ */}
-            <div className="relative w-full pt-16 lg:pt-24 pb-12 overflow-visible bg-halftone" style={{ position: 'relative' }}>
+            {/* SVG TEXT PATH - Repetition fix and padding */}
+            <div className="relative w-full pt-16 lg:pt-24 pb-12 overflow-hidden bg-halftone" style={{ position: 'relative' }}>
                 <svg
                     className="w-[120%] h-auto -ml-[10%]"
                     viewBox="0 0 1200 180"
@@ -73,16 +67,16 @@ export default function Footer() {
                     <text
                         className="font-black uppercase fill-foreground font-mono"
                         style={{
-                            fontSize: '18px',
-                            letterSpacing: '0.15em'
+                            fontSize: '14px',
+                            letterSpacing: '0.1em'
                         }}
                     >
-                        {[0, 1, 2].map((i) => (
+                        {[0, 1, 2, 3].map((i) => (
                             <textPath
                                 key={`main-${i}`}
                                 ref={(el) => { pathRefs.current[i] = el; }}
                                 href="#curve-main"
-                                startOffset={`${-60 + i * 50}%`}
+                                startOffset={`${-80 + i * 45}%`}
                             >
                                 {dict.footer.textPath1}
                             </textPath>
@@ -92,16 +86,16 @@ export default function Footer() {
                     <text
                         className="font-black uppercase fill-foreground/30 font-mono"
                         style={{
-                            fontSize: '12px',
+                            fontSize: '10px',
                             letterSpacing: '0.2em'
                         }}
                     >
-                        {[3, 4].map((i) => (
+                        {[4, 5, 6].map((i) => (
                             <textPath
                                 key={`secondary-${i}`}
                                 ref={(el) => { pathRefs.current[i] = el; }}
                                 href="#curve-secondary"
-                                startOffset={`${-40 + (i - 3) * 60}%`}
+                                startOffset={`${-60 + (i - 4) * 60}%`}
                             >
                                 {dict.footer.textPath2}
                             </textPath>
@@ -110,10 +104,8 @@ export default function Footer() {
                 </svg>
             </div>
 
-            {/* Gallery Section with its own local scroll target */}
             <FooterGallery />
 
-            {/* Credits Section */}
             <div className="bg-foreground text-background p-6 lg:p-12 flex flex-col md:flex-row justify-between items-start md:items-end border-t border-background/10" style={{ position: 'relative' }}>
                 <div className="flex flex-col gap-2">
                     <span className="font-mono text-[8px] uppercase tracking-[0.5em] opacity-50">
@@ -125,7 +117,7 @@ export default function Footer() {
                 </div>
 
                 <nav className="hidden lg:flex gap-8 font-mono text-[9px] uppercase tracking-widest opacity-60">
-                    <a href="#" className="hover:opacity-100 hover:text-[var(--pop-green)] transition-all">
+                    <a href="/" className="hover:opacity-100 hover:text-[var(--pop-green)] transition-all">
                         {dict.footer.nav.home}
                     </a>
                     <a href="/story" className="hover:opacity-100 hover:text-[var(--pop-pink)] transition-all">
@@ -154,14 +146,10 @@ export default function Footer() {
     );
 }
 
-// =============================================================================
-// GALLERY COMPONENT - Self-contained Parallax Image Strip
-// =============================================================================
 const FooterGallery = () => {
     const galleryRef = useRef<HTMLDivElement>(null);
     const { dict } = useLanguage();
 
-    // Each component manages its own target for maximum accuracy and zero warnings
     const { scrollYProgress } = useScroll({
         target: galleryRef,
         offset: ['start end', 'end start']
@@ -176,7 +164,6 @@ const FooterGallery = () => {
             className="h-[200px] lg:h-[400px] bg-transparent overflow-hidden w-full border-t-[var(--border-width)] border-foreground"
             style={{ position: 'relative' }}
         >
-            {/* Section Label */}
             <div
                 className="absolute top-4 left-4 z-20 font-mono text-[9px] uppercase font-black bg-[var(--pop-green)] text-black px-3 py-1.5 border-2 border-foreground shadow-[4px_4px_0px_var(--foreground)]"
                 style={{ position: 'absolute' }}
@@ -186,7 +173,6 @@ const FooterGallery = () => {
 
             <div className="w-full h-full overflow-hidden" style={{ position: 'relative' }}>
                 <motion.div
-                    id="footer-parallax-container"
                     style={{ y, x, display: 'flex', position: 'relative' }}
                     className="h-full flex items-center gap-4 lg:gap-10 px-4 lg:px-12"
                 >

@@ -25,74 +25,84 @@ export const en = {
     },
     landing: {
         hero: {
-            tagline: "[ ROOT CAUSE ANALYSIS ]",
-            title1: "HIGH TRAFFIC.",
-            title2: "ZERO CLOSE.",
-            subtitle: "WHY DO AUDIENCES STOP RESPONDING RIGHT BEFORE THE TRANSACTION POINT?",
-            desc1: "The Core Issue: It's never about your price or service quality.",
-            desc2: "The human brain automatically aborts decisions the moment it detects a 1% ambiguity in your information structure.",
+            tagline: "[ DIGITAL BEHAVIOR ANALYSIS ]",
+            title1: "STAY RELEVANT.",
+            title2: "STAY PROFESSIONAL.",
+            subtitle: "A website is just one tool for business growth and staying professional in a changing market.",
+            desc1: "Why? Because when confirming something risky, people's behavior changes.",
+            desc2: "From visiting stores directly to confirm, it shifts to Google confirmation and seeking digital alternatives.",
             stat: "99%",
-            statLabel: "DECISIONS ABORTED DUE TO VISUAL DOUBT",
-            point1: "Visual clarity dictates",
-            point2: "Conversion rate logic",
-            cta: "→ RUN DIAGNOSTICS",
+            statLabel: "PEOPLE DON'T CARE ABOUT YOUR HARD WORK",
+            cta: "→ SEE REALITY",
             scrollLabel: "INITIATE_ANALYSIS",
-            qualifier: "ENGINEERED EXCLUSIVELY FOR B2B FACING INVISIBLE CONVERSION LEAKS"
+            qualifier: "YOUR BUSINESS IS EITHER READY OR NOT READY TO CONVINCE THEM."
         },
         refleksi: {
-            label: "// 01_REFLECTION",
-            line1: "Reality occurs when your office is closed.",
-            line2: "When potential customers search for you tonight,",
-            question: "What do they actually find?",
-            desc1: "Decisions rarely happen in front of you.",
-            desc2: "They happen in silence, as customers compare you with other alternatives without a word."
+            label: "// 01_MARKET_PSYCHOLOGY",
+            line1: "However... what doesn't change?",
+            line2: "Ensuring official information, reputation, and professionalism.",
+            question: "They simply… leave.",
+            desc1: "Opening 3–5 options, comparing silently. They never say 'I'm hesitant'.",
+            desc2: "The human brain naturally fills information gaps with risk."
         },
         diagnosis: {
-            label: "// 02_ROOT_CAUSE_ANALYSIS",
-            title: "UNPACKING THE LEAK",
+            label: "// 02_UNCERTAINTY_ANALYSIS",
+            title: "FILLING THE GAPS",
             items: [
-                "WHY 1: Clients hesitate to close. Why? Because they feel uncertain.",
-                "WHY 2: Why uncertainty? Absolute absence of instant proof in the first 5 seconds.",
-                "WHY 3: Why is there no proper proof? The layout is flooded with self-proclaimed decor.",
-                "WHY 4: Why lack parameters? Objective truth is buried due to zero information architecture."
+                "No official information center → customer brain fills the gap with assumptions.",
+                "Doubt arises when information is unclear (The Black Room).",
+                "What is needed is an information center that makes people stop doubting.",
+                "Driving decisions by providing clarity that flows smoothly."
             ],
-            conclusion1: "THE STRUCTURAL ROOT CAUSE:",
-            conclusion2: "selling with emotion, killing logic."
+            conclusion1: "INFORMATION BALANCE:",
+            conclusion2: "simple yet convincing.",
+            storyStep0: "The Black Room.",
+            storyStep0Desc: "Doubt arises when information is unclear. Everything is dark.",
+            storyStep1: "Assumptions fill the void.",
+            storyStep1Desc: "The brain naturally fills information gaps with risk.",
+            storyStep2: "Different contact.",
+            storyStep2Desc: "There's effort, but not at the right point. Still no official clarity.",
+            storyStep3: "THE LAMP IS ON.",
+            storyStep3Desc: "Official clarity kills wild assumptions.",
+            storyCta0: "Try to see",
+            storyCta1: "Find a switch",
+            storyCta2: "Try another one",
+            storyCta3: "Push further"
         },
         peran: {
-            label: "// 03_PROTOCOL_DEFINITION",
-            title: "Trust engineering through the elimination of architectural friction.",
-            notLine1: "Beyond visual aesthetics.",
-            notLine2: "No redundant ornamentation.",
-            mainDesc: "Identifying and sealing information gaps that hinder the flow of conviction in digital architectures."
+            label: "// 03_SIMPLE_STRATEGY",
+            title: "Many businesses only need a simple version to avoid customer confusion.",
+            notLine1: "Not all businesses need complex systems.",
+            notLine2: "Clarity is the key to trust.",
+            mainDesc: "Clear Profile • Location & Hours • Ordering Process • Portfolio • Testimonials • Service Procedures."
         },
         bukti: {
-            label: "// 04_VERIFICATION_PARAMETERS",
+            label: "// 04_CLARITY_PARAMETERS",
             items: [
-                { val: "100%", label: "ZERO_ASSUMPTIONS" },
-                { val: "ZERO", label: "NAVIGATION_DEAD_ENDS" },
-                { val: "SWIFT", label: "INFORMATION_ABSORPTION" },
-                { val: "CLINICAL", label: "VALIDATION_SYSTEM" }
+                { val: "100%", label: "ZERO_WILD_ASSUMPTIONS" },
+                { val: "ZERO", label: "CUSTOMER_DOUBT" },
+                { val: "FOCUS", label: "FIRM_DECISIONS" },
+                { val: "CLEAR", label: "CONFIRMATION_FLOW" }
             ]
         },
         penutup: {
-            line1: "When the structure is precise,",
-            line2: "people don't feel they're being convinced.",
-            line3: "They simply feel the decision makes sense.",
-            closing: "And that is trust.",
-            cta: "→ Build with precision"
+            line1: "Your business is ready,",
+            line2: "Or not ready,",
+            line3: "To convince them.",
+            closing: "Choose to be trusted.",
+            cta: "→ Build Clarity"
         },
         marquee1: {
-            part1: "Precision_Architecture",
-            part2: "Trust_Structure",
-            part3: "Conviction_Engineering"
+            part1: "Grow_Professional",
+            part2: "Official_Info_Center",
+            part3: "Conversion_Clarity"
         },
         contrast: {
-            label: "// AUDIT_PARAMETERS",
-            agencyLabel: "STANDARD_AUDIT",
-            agencyLine: "Focus on aesthetics and linear navigation flow.",
-            engineerLabel: "VALIDATED_AUDIT",
-            engineerLine: "Focus on logical architecture and conviction engineering."
+            label: "// STRATEGY COMPARISON",
+            agencyLabel: "COMPLEX SYSTEMS",
+            agencyLine: "Focus on complicated features that often confuse customers.",
+            engineerLabel: "RIGHT STRATEGY",
+            engineerLine: "Focus on fulfilling information needs so customers stop doubting."
         }
     },
     footer: {

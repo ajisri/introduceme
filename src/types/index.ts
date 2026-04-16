@@ -71,6 +71,18 @@ export interface Dictionary {
             items: string[];
             conclusion1: string;
             conclusion2: string;
+            storyStep0: string;
+            storyStep0Desc: string;
+            storyStep1: string;
+            storyStep1Desc: string;
+            storyStep2: string;
+            storyStep2Desc: string;
+            storyStep3: string;
+            storyStep3Desc: string;
+            storyCta0: string;
+            storyCta1: string;
+            storyCta2: string;
+            storyCta3: string;
         };
         peran: {
             label: string;

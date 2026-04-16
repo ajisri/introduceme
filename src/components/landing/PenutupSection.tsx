@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Magnetic from "./Magnetic";
 
 export default function PenutupSection() {
-    const { dict } = useLanguage();
+    const { dict, language } = useLanguage();
     const containerRef = useRef<HTMLElement>(null);
     const noButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -150,7 +150,7 @@ export default function PenutupSection() {
                             className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-foreground/50 border border-foreground/10 px-8 py-5 bg-transparent whitespace-nowrap hover:border-swiss-red hover:text-swiss-red transition-colors duration-300"
                             style={{ position: "relative" }}
                         >
-                            Lebih baik cari yang lain
+                            {language === "id" ? "pindah alternatif lain" : "find alternatives"}
                         </button>
 
                         <Magnetic strength={0.25}>
@@ -172,7 +172,7 @@ export default function PenutupSection() {
                     ========================================= */}
                 <div className="pt-16 lg:pt-auto mt-auto flex flex-col justify-end">
                     <div className="penutup-line">
-                        <h1 className="font-unbounded font-medium uppercase text-foreground leading-[0.8] tracking-tighter w-full text-left" style={{ fontSize: "clamp(4.5rem, 13vw, 15rem)", wordSpacing: "0.05em" }}>
+                        <h1 className="font-unbounded font-medium uppercase text-foreground leading-[0.8] tracking-tighter w-full text-left" style={{ fontSize: "clamp(2.5rem, 10vw, 11rem)" }}>
                             {dict.landing.penutup.closing}
                         </h1>
                     </div>
