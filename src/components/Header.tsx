@@ -102,7 +102,7 @@ export default function Header() {
                                     className="text-6xl md:text-8xl font-black uppercase tracking-tighter hover:italic flex items-center gap-4 group cursor-pointer"
                                 >
                                     <span className="text-sm font-mono opacity-40 group-hover:opacity-100 transition-opacity">{item.label.split('_')[0]}</span>
-                                    <span className="group-hover:translate-x-4 transition-transform duration-500">{item.label.split('_')[1]}</span>
+                                    <span className="group-hover:translate-x-4 transition-transform duration-500">{item.label.split('_').slice(1).join('_')}</span>
                                 </a>
                             ) : (
                                 <Link
@@ -112,7 +112,7 @@ export default function Header() {
                                     className="text-6xl md:text-8xl font-black uppercase tracking-tighter hover:italic flex items-center gap-4 group"
                                 >
                                     <span className="text-sm font-mono opacity-40 group-hover:opacity-100 transition-opacity">{item.label.split('_')[0]}</span>
-                                    <span className="group-hover:translate-x-4 transition-transform duration-500">{item.label.split('_')[1]}</span>
+                                    <span className="group-hover:translate-x-4 transition-transform duration-500">{item.label.split('_').slice(1).join('_')}</span>
                                 </Link>
                             )
                         ))}

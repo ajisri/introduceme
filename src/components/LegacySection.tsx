@@ -104,6 +104,58 @@ export default function LegacySection() {
             });
 
             // ====================================================================
+            // TEXT REVEAL: Masterpiece Quote (Studio Monks Level)
+            // ====================================================================
+            const trustWords = gsap.utils.toArray(".trust-quote-word") as HTMLElement[];
+            if (trustWords.length > 0) {
+                gsap.fromTo(trustWords, 
+                    { 
+                        y: "150%", 
+                        rotateZ: 8,
+                        opacity: 0
+                    },
+                    {
+                        y: "0%",
+                        rotateZ: 0,
+                        opacity: 1,
+                        stagger: 0.04,
+                        scrollTrigger: {
+                            trigger: ".trust-quote-wrapper",
+                            start: "top 95%",
+                            end: "top 20%",
+                            scrub: 1.2, // Smooth scroll-linked movement
+                        }
+                    }
+                );
+            }
+
+            // ====================================================================
+            // SMOOTH MOVEMENT: Parallax for pinned section
+            // ====================================================================
+            gsap.to(".trust-quote-word-2", {
+                x: (i) => (i % 2 === 0 ? -40 : 40),
+                y: (i) => (i % 3 === 0 ? -20 : 20),
+                rotateZ: (i) => (i % 2 === 0 ? -3 : 3),
+                scrollTrigger: {
+                    trigger: ".trust-quote-part-2",
+                    start: "center center",
+                    end: "+=150%",
+                    scrub: 2, // Extra smooth inertia
+                }
+            });
+
+            // ====================================================================
+            // PINNING: "Mulailah bersaing di kepercayaan" stays fixed
+            // ====================================================================
+            ScrollTrigger.create({
+                trigger: ".trust-quote-part-2",
+                start: "center center",
+                end: "+=150%", // Tahan lebih lama (ditambah 1x scroll)
+                pin: true,
+                pinSpacing: false, // Biarkan konten selanjutnya (seperti footer) menumpuk di atasnya
+            });
+
+            // ====================================================================
             // MOUSE PARALLAX: Subtle Interactive Movement
             // ====================================================================
             const handleMouseMove = (e: MouseEvent) => {
@@ -240,23 +292,63 @@ export default function LegacySection() {
             </div>
 
             {/* ================================================================
-                SECTION FOOTER - Quote + Trust Indicators
+                SECTION FOOTER - MASTERPIECE TYPOGRAPHY
             ================================================================ */}
-            <div className="text-center mt-24 lg:mt-32 z-10 px-4 lg:px-6">
-                <div className="max-w-3xl mx-auto p-10 lg:p-14 border-[var(--border-width)] border-foreground bg-transparent relative">
-                    {/* Accent Corner */}
-                    <div className="absolute top-0 left-0 w-8 h-8 bg-[var(--swiss-red)]" />
+            <div className="w-full mt-32 lg:mt-48 z-10 px-4 lg:px-10 pb-20 overflow-hidden">
+                <div className="w-full max-w-[1600px] mx-auto border-t-[3px] border-foreground relative pt-12 lg:pt-24">
+                    
+                    {/* Meta Header */}
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-16 lg:mb-32">
+                        {/* Trust Metrics Badge */}
+                        <div className="flex items-center gap-4 bg-foreground text-background px-6 py-3 font-mono text-[10px] md:text-xs font-black uppercase tracking-widest">
+                            <span className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-[var(--swiss-red)] animate-pulse" />
+                                {dict.legacy.trustIndex}
+                            </span>
+                            <span className="opacity-50">/</span>
+                            <span>{dict.legacy.version}</span>
+                        </div>
 
-                    <p className="text-xl lg:text-3xl font-black uppercase tracking-tight italic leading-tight">
-                        {dict.legacy.quote}
-                    </p>
-
-                    {/* Trust Metrics */}
-                    <div className="mt-10 pt-8 border-t-2 border-foreground/10 flex flex-col sm:flex-row justify-center gap-6 lg:gap-12 font-mono text-[9px] font-black uppercase tracking-widest opacity-50">
-                        <span>{dict.legacy.trustIndex}</span>
-                        <span className="hidden sm:inline">•</span>
-                        <span>{dict.legacy.version}</span>
+                        {/* Historic Data Quote as smaller, refined meta text */}
+                        <p className="max-w-md text-left md:text-right text-sm md:text-base font-semibold uppercase tracking-widest leading-relaxed text-foreground/80 border-l-[3px] md:border-l-0 md:border-r-[3px] border-[var(--swiss-red)] pl-4 md:pl-0 md:pr-4">
+                            "{dict.legacy.quote}"
+                        </p>
                     </div>
+
+                    {/* MASSIVE TRUST QUOTE */}
+                    <div className="trust-quote-wrapper relative w-full flex flex-col gap-8 lg:gap-12">
+                        
+                        {/* BACKGROUND ACCENT */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] bg-[var(--swiss-red)] opacity-10 pointer-events-none" style={{ borderRadius: '50%', filter: 'blur(120px)' }} />
+
+                        {/* First Part */}
+                        <h3 className="flex flex-wrap content-start items-start justify-start gap-x-[0.3em] gap-y-[0.1em] text-[15vw] sm:text-[11vw] lg:text-[8vw] font-black uppercase leading-[0.9] tracking-[-0.03em] w-11/12 lg:w-4/5 pb-4 perspective-1000 z-10 relative">
+                            {(dict.legacy.trustQuote || "").split(',')[0].trim().split(' ').map((word: string, i: number, arr: string[]) => (
+                                <span key={i} className="inline-block overflow-hidden pb-[0.2em]">
+                                    <span className="trust-quote-word inline-block origin-bottom text-foreground">
+                                        {word}{i === arr.length - 1 ? ',' : ''}
+                                    </span>
+                                </span>
+                            ))}
+                        </h3>
+
+                        {/* Second Part - Ultra extreme whitespace (1.5x Screen Height) for ultimate dramatic impact */}
+                        <h3 className="trust-quote-part-2 flex flex-wrap content-start items-start justify-end gap-x-[0.25em] gap-y-[0.1em] text-[10vw] sm:text-[8vw] lg:text-[5.5vw] font-black uppercase leading-[0.9] tracking-[-0.04em] w-full mt-[80vh] lg:mt-[150vh] pb-4 perspective-1000 z-50 relative">
+                            {(dict.legacy.trustQuote || "").split(',').slice(1).join(',').trim().split(' ').map((word: string, i: number) => (
+                                <span key={i} className="inline-block overflow-hidden pb-[0.2em] pt-[0.1em] px-[0.05em] align-top">
+                                    <span className="trust-quote-word-2 inline-block origin-bottom text-[var(--pop-blue)]"
+                                        style={{
+                                            textShadow: '2.5px 2.5px 0px var(--foreground), 5px 5px 0px rgba(0,0,0,0.1)',
+                                            WebkitTextStroke: '1.2px var(--foreground)',
+                                            paintOrder: 'stroke fill'
+                                        }}>
+                                        {word}
+                                    </span>
+                                </span>
+                            ))}
+                        </h3>
+                    </div>
+
                 </div>
             </div>
         </section>

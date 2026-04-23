@@ -68,7 +68,13 @@ export const id = {
             storyCta0: "Coba melihat",
             storyCta1: "Cari saklar",
             storyCta2: "Coba yang lain",
-            storyCta3: "Lanjutkan"
+            storyCta3: "Lanjutkan",
+            floating1: "Profil jelas?",
+            floating2: "Dimana lokasi?",
+            floating3: "Portofolionya?",
+            floating4: "Buka jam berapa?",
+            floating5: "Prosedur layanan?",
+            floating6: "Cara pesan?"
         },
         peran: {
             label: "// 03_STRATEGI_SEDERHANA",
@@ -131,7 +137,8 @@ export const id = {
         subtitle: "Membangun Otoritas Melalui Data Histori yang Terverifikasi",
         ref: "REF_",
         sequence: "URUTAN_DATA_",
-        quote: "Data histori membentuk fondasi struktural bagi keberlanjutan otoritas digital.",
+        quote: "Data histori mengenalkan prinsip dan metodologi anda kepada pembaca",
+        trustQuote: "Jika Anda lelah bersaing di harga, mulailah bersaing di kepercayaan.",
         trustIndex: "INDEKS_KEPERCAYAAN: AA+",
         version: "VERSI: PROVENANCE_V1"
     },

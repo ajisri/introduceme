@@ -27,17 +27,18 @@ export default function DiagnosisSection() {
                 {/* Light Reveal Effects */}
                 <AnimatePresence>
                     {step === 1 && (
-                        <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
-                            <motion.span initial={{ opacity: 0, x: -150, y: -80 }} animate={{ opacity: 0.15, x: -250, y: -120, rotate: -15 }} transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-2xl lg:text-4xl text-white whitespace-nowrap">Profil jelas?</motion.span>
-                            <motion.span initial={{ opacity: 0, x: 200, y: -120 }} animate={{ opacity: 0.1, x: 300, y: -160, rotate: 10 }} transition={{ duration: 3.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-xl lg:text-3xl text-white whitespace-nowrap">Dimana Lokasi?</motion.span>
-                            <motion.span initial={{ opacity: 0, x: -120, y: 150 }} animate={{ opacity: 0.15, x: -200, y: 200, rotate: -5 }} transition={{ duration: 5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-2xl lg:text-4xl text-white whitespace-nowrap">Portofolionya?</motion.span>
-                            <motion.span initial={{ opacity: 0, x: 180, y: 100 }} animate={{ opacity: 0.12, x: 260, y: 140, rotate: 20 }} transition={{ duration: 4.2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-lg lg:text-2xl text-white whitespace-nowrap">Buka jam berapa?</motion.span>
-                            <motion.span initial={{ opacity: 0, x: 0, y: -200 }} animate={{ opacity: 0.15, x: 20, y: -260, rotate: -10 }} transition={{ duration: 4.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-xl lg:text-3xl text-white whitespace-nowrap">Prosedur layanan?</motion.span>
-                            <motion.span initial={{ opacity: 0, x: 50, y: 220 }} animate={{ opacity: 0.1, x: 0, y: 280, rotate: 15 }} transition={{ duration: 3.8, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-lg lg:text-2xl text-white whitespace-nowrap">Cara pesan?</motion.span>
-                        </div>
+                        <motion.div key="bg-step-1" exit={{ opacity: 0 }} className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
+                            <motion.span initial={{ opacity: 0, x: -150, y: -80 }} animate={{ opacity: 0.15, x: -250, y: -120, rotate: -15 }} transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-2xl lg:text-4xl text-white whitespace-nowrap">{dict.landing.diagnosis.floating1}</motion.span>
+                            <motion.span initial={{ opacity: 0, x: 200, y: -120 }} animate={{ opacity: 0.1, x: 300, y: -160, rotate: 10 }} transition={{ duration: 3.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-xl lg:text-3xl text-white whitespace-nowrap">{dict.landing.diagnosis.floating2}</motion.span>
+                            <motion.span initial={{ opacity: 0, x: -120, y: 150 }} animate={{ opacity: 0.15, x: -200, y: 200, rotate: -5 }} transition={{ duration: 5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-2xl lg:text-4xl text-white whitespace-nowrap">{dict.landing.diagnosis.floating3}</motion.span>
+                            <motion.span initial={{ opacity: 0, x: 180, y: 100 }} animate={{ opacity: 0.12, x: 260, y: 140, rotate: 20 }} transition={{ duration: 4.2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-lg lg:text-2xl text-white whitespace-nowrap">{dict.landing.diagnosis.floating4}</motion.span>
+                            <motion.span initial={{ opacity: 0, x: 0, y: -200 }} animate={{ opacity: 0.15, x: 20, y: -260, rotate: -10 }} transition={{ duration: 4.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-xl lg:text-3xl text-white whitespace-nowrap">{dict.landing.diagnosis.floating5}</motion.span>
+                            <motion.span initial={{ opacity: 0, x: 50, y: 220 }} animate={{ opacity: 0.1, x: 0, y: 280, rotate: 15 }} transition={{ duration: 3.8, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} className="absolute font-unbounded text-lg lg:text-2xl text-white whitespace-nowrap">{dict.landing.diagnosis.floating6}</motion.span>
+                        </motion.div>
                     )}
                     {step === 2 && (
                         <motion.div 
+                            key="bg-step-2"
                             initial={{ opacity: 0, scale: 0.5 }}
                             animate={{ opacity: 0.2, scale: 1.2 }}
                             exit={{ opacity: 0 }}
@@ -46,6 +47,7 @@ export default function DiagnosisSection() {
                     )}
                     {step === 3 && (
                         <motion.div 
+                            key="bg-step-3"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
@@ -66,6 +68,7 @@ export default function DiagnosisSection() {
                     )}
                     {step >= 3 && (
                         <motion.div 
+                            key="bg-step-3-up"
                             initial={{ opacity: 0, scale: 1.05 }}
                             animate={{ opacity: step === 4 ? 0.2 : 0.4, scale: 1 }}
                             exit={{ opacity: 0 }}

@@ -83,6 +83,12 @@ export interface Dictionary {
             storyCta1: string;
             storyCta2: string;
             storyCta3: string;
+            floating1: string;
+            floating2: string;
+            floating3: string;
+            floating4: string;
+            floating5: string;
+            floating6: string;
         };
         peran: {
             label: string;
@@ -141,6 +147,7 @@ export interface Dictionary {
         ref: string;
         sequence: string;
         quote: string;
+        trustQuote: string;
         trustIndex: string;
         version: string;
     };

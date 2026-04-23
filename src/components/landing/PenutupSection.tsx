@@ -4,6 +4,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, AnimatePresence } from "framer-motion";
 import Magnetic from "./Magnetic";
 
 export default function PenutupSection() {
@@ -115,7 +116,7 @@ export default function PenutupSection() {
     return (
         <section
             ref={containerRef}
-            className="w-full relative penutup-section overflow-hidden min-h-[100svh] bg-transparent border-t border-foreground/5 pt-32 lg:pt-40 pb-10 lg:pb-20 flex flex-col justify-between"
+            className="w-full relative penutup-section overflow-hidden min-h-[100svh] bg-transparent border-t border-foreground/5 pt-16 lg:pt-20 pb-10 lg:pb-20 flex flex-col justify-between"
         >
             <div className="swiss-container flex-grow flex flex-col justify-between relative z-10 h-full">
                 
@@ -125,12 +126,12 @@ export default function PenutupSection() {
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-16 lg:gap-0 border-b border-foreground/10 pb-12 lg:pb-16">
                     
                     {/* Left: Structured Reflection */}
-                    <div className="flex flex-col gap-8 max-w-lg">
+                    <div className="flex flex-col gap-14 max-w-lg">
                         <span className="penutup-line inline-block font-mono font-black uppercase tracking-[0.4em] text-swiss-red opacity-60" style={{ fontSize: "0.65rem" }}>
                             // 05_CLOSURE_PROTOCOL
                         </span>
                         
-                        <div className="border-l border-foreground/20 pl-6 lg:pl-8 space-y-6">
+                        <div className="border-l border-foreground/20 pl-6 lg:pl-8 space-y-10">
                             <p className="penutup-line font-medium leading-[1.6] text-foreground/50 italic" style={{ fontSize: "clamp(1rem, 1.2vw, 1.15rem)" }}>
                                 {dict.landing.penutup.line1} <br/> {dict.landing.penutup.line2}
                             </p>
@@ -141,7 +142,7 @@ export default function PenutupSection() {
                     </div>
 
                     {/* Right: Studio Monk Style CTA + Evasive Button */}
-                    <div className="penutup-cta-container w-full lg:w-auto flex flex-col-reverse lg:flex-row items-center justify-start lg:justify-end gap-8 relative z-50">
+                    <div className="penutup-cta-container w-full lg:w-auto flex flex-col-reverse lg:flex-row items-center justify-start lg:justify-end gap-12 relative z-50">
                         
                         <button 
                             ref={noButtonRef}
@@ -171,10 +172,22 @@ export default function PenutupSection() {
                     BOTTOM MODULE: PURE TYPOGRAPHIC SCALE
                     ========================================= */}
                 <div className="pt-16 lg:pt-auto mt-auto flex flex-col justify-end">
-                    <div className="penutup-line">
-                        <h1 className="font-unbounded font-medium uppercase text-foreground leading-[0.8] tracking-tighter w-full text-left" style={{ fontSize: "clamp(2.5rem, 10vw, 11rem)" }}>
-                            {dict.landing.penutup.closing}
-                        </h1>
+                    <div className="penutup-line overflow-hidden">
+                        <AnimatePresence mode="wait">
+                            <motion.h1 
+                                key={language + dict.landing.penutup.closing}
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                exit={{ y: "-100%" }}
+                                transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+                                className="font-unbounded font-medium uppercase text-foreground leading-[0.8] tracking-tighter w-full text-left" 
+                                style={{ fontSize: "clamp(2.5rem, 10vw, 11rem)" }}
+                            >
+                                {dict.landing.penutup.closing.split(" ").map((word, i) => (
+                                    <span key={i} className="inline-block mr-[0.2em]">{word}</span>
+                                ))}
+                            </motion.h1>
+                        </AnimatePresence>
                     </div>
                 </div>
 

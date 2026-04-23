@@ -67,7 +67,13 @@ export const en = {
             storyCta0: "Try to see",
             storyCta1: "Find a switch",
             storyCta2: "Try another one",
-            storyCta3: "Push further"
+            storyCta3: "Push further",
+            floating1: "Clear profile?",
+            floating2: "Where's the location?",
+            floating3: "The portfolio?",
+            floating4: "What time do you open?",
+            floating5: "Service procedures?",
+            floating6: "How to order?"
         },
         peran: {
             label: "// 03_SIMPLE_STRATEGY",
@@ -131,6 +137,7 @@ export const en = {
         ref: "REF_",
         sequence: "DATA_SEQUENCE_",
         quote: "Historical data constitutes the structural foundation for digital authority.",
+        trustQuote: "If you are tired of competing on price, start competing on trust.",
         trustIndex: "TRUST_INDEX: AA+",
         version: "VERSION: PROVENANCE_V1"
     },
