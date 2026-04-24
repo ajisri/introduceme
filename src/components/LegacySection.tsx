@@ -119,30 +119,15 @@ export default function LegacySection() {
                         rotateZ: 0,
                         opacity: 1,
                         stagger: 0.04,
+                        duration: 1.4,
+                        ease: "expo.out",
                         scrollTrigger: {
                             trigger: ".trust-quote-wrapper",
-                            start: "top 95%",
-                            end: "top 20%",
-                            scrub: 1.2, // Smooth scroll-linked movement
+                            start: "top 80%",
                         }
                     }
                 );
             }
-
-            // ====================================================================
-            // SMOOTH MOVEMENT: Parallax for pinned section
-            // ====================================================================
-            gsap.to(".trust-quote-word-2", {
-                x: (i) => (i % 2 === 0 ? -40 : 40),
-                y: (i) => (i % 3 === 0 ? -20 : 20),
-                rotateZ: (i) => (i % 2 === 0 ? -3 : 3),
-                scrollTrigger: {
-                    trigger: ".trust-quote-part-2",
-                    start: "center center",
-                    end: "+=150%",
-                    scrub: 2, // Extra smooth inertia
-                }
-            });
 
             // ====================================================================
             // PINNING: "Mulailah bersaing di kepercayaan" stays fixed
@@ -150,9 +135,50 @@ export default function LegacySection() {
             ScrollTrigger.create({
                 trigger: ".trust-quote-part-2",
                 start: "center center",
-                end: "+=150%", // Tahan lebih lama (ditambah 1x scroll)
+                end: "+=700%", // Tahan sangat lama (7x tinggi layar) untuk dampak meditasi visual
                 pin: true,
                 pinSpacing: false, // Biarkan konten selanjutnya (seperti footer) menumpuk di atasnya
+            });
+
+            // ====================================================================
+            // PSYCHOLOGICAL BACKGROUND ANIMATION
+            // ====================================================================
+            gsap.to(".moire-layer", {
+                rotate: 2,
+                scale: 2.2,
+                duration: 10,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+            
+            gsap.to(".red-glow-accent", {
+                scale: 1.15,
+                opacity: 0.20, // Melemahkan puncaknya sedikit
+                duration: 6,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+
+            gsap.to(".quote-container-border", {
+                borderTopColor: "rgba(var(--foreground-rgb), 0.8)",
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+
+            // FADE OUT ALL VISUALS AT END OF SECTION
+            // Mencegah efek 'tumbang' (tiba-tiba hilang) saat scroll berlanjut
+            gsap.to([".moire-layer", ".red-glow-accent", ".trust-quote-part-2", ".quote-container-border"], {
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "bottom 40%", 
+                    end: "bottom 10%",
+                    scrub: true
+                }
             });
 
             // ====================================================================
@@ -295,7 +321,7 @@ export default function LegacySection() {
                 SECTION FOOTER - MASTERPIECE TYPOGRAPHY
             ================================================================ */}
             <div className="w-full mt-32 lg:mt-48 z-10 px-4 lg:px-10 pb-20 overflow-hidden">
-                <div className="w-full max-w-[1600px] mx-auto border-t-[3px] border-foreground relative pt-12 lg:pt-24">
+                <div className="quote-container-border w-full max-w-[1600px] mx-auto border-t-[1px] border-foreground/10 relative pt-12 lg:pt-24">
                     
                     {/* Meta Header */}
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-16 lg:mb-32">
@@ -318,8 +344,20 @@ export default function LegacySection() {
                     {/* MASSIVE TRUST QUOTE */}
                     <div className="trust-quote-wrapper relative w-full flex flex-col gap-8 lg:gap-12">
                         
-                        {/* BACKGROUND ACCENT */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] bg-[var(--swiss-red)] opacity-10 pointer-events-none" style={{ borderRadius: '50%', filter: 'blur(120px)' }} />
+                        {/* PSYCHOLOGICAL BACKGROUND ACCENTS - Softened Red */}
+                        <div className="red-glow-accent absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] max-w-[1200px] bg-[var(--swiss-red)] opacity-15 pointer-events-none z-0" 
+                             style={{ borderRadius: '50%', filter: 'blur(160px)', transformStyle: 'preserve-3d' }} 
+                        />
+                        
+                        {/* MOIRÉ ILLUSION LAYER - Ultra Thin Concentric Circles */}
+                        <div className="moire-layer absolute inset-x-[-20%] inset-y-[-50%] opacity-[0.02] pointer-events-none z-0" 
+                             style={{ 
+                                 backgroundImage: `repeating-radial-gradient(circle at center, var(--foreground) 0px, var(--foreground) 0.5px, transparent 0.5px, transparent 24px)`,
+                                 backgroundSize: '100% 100%',
+                                 transform: 'rotate(0deg) scale(2)',
+                                 filter: 'blur(0.5px)'
+                             }} 
+                        />
 
                         {/* First Part */}
                         <h3 className="flex flex-wrap content-start items-start justify-start gap-x-[0.3em] gap-y-[0.1em] text-[15vw] sm:text-[11vw] lg:text-[8vw] font-black uppercase leading-[0.9] tracking-[-0.03em] w-11/12 lg:w-4/5 pb-4 perspective-1000 z-10 relative">
@@ -332,11 +370,11 @@ export default function LegacySection() {
                             ))}
                         </h3>
 
-                        {/* Second Part - Ultra extreme whitespace (1.5x Screen Height) for ultimate dramatic impact */}
-                        <h3 className="trust-quote-part-2 flex flex-wrap content-start items-start justify-end gap-x-[0.25em] gap-y-[0.1em] text-[10vw] sm:text-[8vw] lg:text-[5.5vw] font-black uppercase leading-[0.9] tracking-[-0.04em] w-full mt-[80vh] lg:mt-[150vh] pb-4 perspective-1000 z-50 relative">
+                        {/* Second Part - Raised further and enhanced background interaction */}
+                        <h3 className="trust-quote-part-2 flex flex-wrap content-start items-start justify-end gap-x-[0.25em] gap-y-[0.1em] text-[10vw] sm:text-[8vw] lg:text-[5.5vw] font-black uppercase leading-[0.9] tracking-[-0.04em] w-full mt-[30vh] lg:mt-[60vh] pb-4 perspective-1000 z-50 relative">
                             {(dict.legacy.trustQuote || "").split(',').slice(1).join(',').trim().split(' ').map((word: string, i: number) => (
                                 <span key={i} className="inline-block overflow-hidden pb-[0.2em] pt-[0.1em] px-[0.05em] align-top">
-                                    <span className="trust-quote-word-2 inline-block origin-bottom text-[var(--pop-blue)]"
+                                    <span className="trust-quote-word inline-block origin-bottom text-[var(--pop-blue)]"
                                         style={{
                                             textShadow: '2.5px 2.5px 0px var(--foreground), 5px 5px 0px rgba(0,0,0,0.1)',
                                             WebkitTextStroke: '1.2px var(--foreground)',

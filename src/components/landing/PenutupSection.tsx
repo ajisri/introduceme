@@ -116,7 +116,7 @@ export default function PenutupSection() {
     return (
         <section
             ref={containerRef}
-            className="w-full relative penutup-section overflow-hidden min-h-[100svh] bg-transparent border-t border-foreground/5 pt-16 lg:pt-20 pb-10 lg:pb-20 flex flex-col justify-between"
+            className="w-full relative penutup-section overflow-hidden min-h-[100svh] bg-background border-t border-foreground/5 pt-16 lg:pt-20 pb-10 lg:pb-20 flex flex-col justify-between"
         >
             <div className="swiss-container flex-grow flex flex-col justify-between relative z-10 h-full">
                 
