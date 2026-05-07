@@ -95,6 +95,7 @@ export const en = {
             line1: "Your business is ready,",
             line2: "Or not ready,",
             line3: "To convince them.",
+            financialCare: "soothing their financial concerns at the exact moment they make a decision",
             closing: "Choose to be trusted.",
             cta: "→ Build Clarity"
         },

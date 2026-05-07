@@ -135,9 +135,10 @@ export default function LegacySection() {
             ScrollTrigger.create({
                 trigger: ".trust-quote-part-2",
                 start: "center center",
-                end: "+=700%", // Tahan sangat lama (7x tinggi layar) untuk dampak meditasi visual
+                end: "+=150%", // Jaga kalimat setengah scroll lagi setelah berhenti (reveal selesai)
                 pin: true,
-                pinSpacing: false, // Biarkan konten selanjutnya (seperti footer) menumpuk di atasnya
+                pinSpacing: false, 
+                anticipatePin: 1,
             });
 
             // ====================================================================
@@ -170,14 +171,14 @@ export default function LegacySection() {
             });
 
             // FADE OUT ALL VISUALS AT END OF SECTION
-            // Mencegah efek 'tumbang' (tiba-tiba hilang) saat scroll berlanjut
             gsap.to([".moire-layer", ".red-glow-accent", ".trust-quote-part-2", ".quote-container-border"], {
                 opacity: 0,
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: "bottom 40%", 
-                    end: "bottom 10%",
-                    scrub: true
+                    start: "bottom 20%", 
+                    end: "bottom 0%",
+                    scrub: true,
+                    invalidateOnRefresh: true
                 }
             });
 
@@ -360,9 +361,9 @@ export default function LegacySection() {
                         />
 
                         {/* First Part */}
-                        <h3 className="flex flex-wrap content-start items-start justify-start gap-x-[0.3em] gap-y-[0.1em] text-[15vw] sm:text-[11vw] lg:text-[8vw] font-black uppercase leading-[0.9] tracking-[-0.03em] w-11/12 lg:w-4/5 pb-4 perspective-1000 z-10 relative">
+                        <h3 className="flex flex-wrap content-start items-start justify-start gap-x-[0.3em] gap-y-[0.1em] text-[11vw] sm:text-[9vw] lg:text-[7vw] font-black uppercase leading-[0.9] tracking-[-0.03em] w-full pb-4 perspective-1000 z-10 relative">
                             {(dict.legacy.trustQuote || "").split(',')[0].trim().split(' ').map((word: string, i: number, arr: string[]) => (
-                                <span key={i} className="inline-block overflow-hidden pb-[0.2em]">
+                                <span key={i} className="inline-block overflow-hidden pb-[0.2em] whitespace-nowrap">
                                     <span className="trust-quote-word inline-block origin-bottom text-foreground">
                                         {word}{i === arr.length - 1 ? ',' : ''}
                                     </span>
@@ -371,9 +372,9 @@ export default function LegacySection() {
                         </h3>
 
                         {/* Second Part - Raised further and enhanced background interaction */}
-                        <h3 className="trust-quote-part-2 flex flex-wrap content-start items-start justify-end gap-x-[0.25em] gap-y-[0.1em] text-[10vw] sm:text-[8vw] lg:text-[5.5vw] font-black uppercase leading-[0.9] tracking-[-0.04em] w-full mt-[30vh] lg:mt-[60vh] pb-4 perspective-1000 z-50 relative">
+                        <h3 className="trust-quote-part-2 flex flex-wrap content-start items-start justify-end gap-x-[0.25em] gap-y-[0.1em] text-[8.5vw] sm:text-[7vw] lg:text-[5.5vw] font-black uppercase leading-[0.9] tracking-[-0.04em] w-full mt-[30vh] lg:mt-[60vh] pb-4 perspective-1000 z-50 relative text-right">
                             {(dict.legacy.trustQuote || "").split(',').slice(1).join(',').trim().split(' ').map((word: string, i: number) => (
-                                <span key={i} className="inline-block overflow-hidden pb-[0.2em] pt-[0.1em] px-[0.05em] align-top">
+                                <span key={i} className="inline-block overflow-hidden pb-[0.2em] pt-[0.1em] px-[0.05em] align-top whitespace-nowrap">
                                     <span className="trust-quote-word inline-block origin-bottom text-[var(--pop-blue)]"
                                         style={{
                                             textShadow: '2.5px 2.5px 0px var(--foreground), 5px 5px 0px rgba(0,0,0,0.1)',

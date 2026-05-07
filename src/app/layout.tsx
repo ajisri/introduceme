@@ -16,10 +16,11 @@ const geistMono = Geist_Mono({
 const unbounded = Unbounded({
   variable: "--font-unbounded",
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-swiss.vercel.app"),
   title: "SWISS POP | Interactive Brutalist Portfolio",
   description: "A high-performance, interactive portfolio built with Swiss International Style and Pop Art aesthetics. Designed by a Staff Engineer level developer.",
   keywords: ["Swiss Style", "Brutalist Design", "Portfolio", "GSAP", "Three.js", "Next.js", "Staff Engineer"],

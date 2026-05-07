@@ -21,6 +21,8 @@ import {
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
+    // BEST PRACTICE: Suppress null target warnings for React where elements conditionally unmount
+    gsap.config({ nullTargetWarn: false });
 }
 
 // STUDIO MONKS COLOR PALETTE (Themed)
@@ -75,6 +77,12 @@ export default function LandingPage() {
     const [isVisible, setIsVisible] = useState(false);
     const animationStartedRef = useRef(false);
 
+    // PERFORMANCE OPTIMIZATION: GSAP quickTo refs for buttery 60fps mousemove without garbage collection lag
+    const xTo = useRef<gsap.QuickToFunc | null>(null);
+    const yTo = useRef<gsap.QuickToFunc | null>(null);
+    const xRevTo = useRef<gsap.QuickToFunc | null>(null);
+    const yRevTo = useRef<gsap.QuickToFunc | null>(null);
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -125,14 +133,30 @@ export default function LandingPage() {
             gsap.to(".pop-accent-2", { rotation: -8, scale: 0.95, y: -20, duration: 8, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 1 });
 
             // Scroll indicator bar pulse
-            gsap.to(".scroll-indicator-bar", { 
-                scaleY: 1, 
-                duration: 2, 
-                ease: "power2.inOut", 
-                repeat: -1, 
-                yoyo: true,
-                transformOrigin: "top left"
-            });
+            const scrollBars = gsap.utils.toArray(".scroll-indicator-bar");
+            if (scrollBars.length) {
+                gsap.to(scrollBars, { 
+                    scaleY: 1, 
+                    duration: 2, 
+                    ease: "power2.inOut", 
+                    repeat: -1, 
+                    yoyo: true,
+                    transformOrigin: "top left"
+                });
+            }
+
+            // OPTIMIZATION: Initialize quickTo instances once, rather than creating new tweens 60 times a second
+            const parallaxEls = gsap.utils.toArray(".hero-parallax");
+            const parallaxRevEls = gsap.utils.toArray(".hero-parallax-reverse");
+
+            if (parallaxEls.length) {
+                xTo.current = gsap.quickTo(parallaxEls, "x", { duration: 0.8, ease: "power2.out" });
+                yTo.current = gsap.quickTo(parallaxEls, "y", { duration: 0.8, ease: "power2.out" });
+            }
+            if (parallaxRevEls.length) {
+                xRevTo.current = gsap.quickTo(parallaxRevEls, "x", { duration: 1, ease: "power2.out" });
+                yRevTo.current = gsap.quickTo(parallaxRevEls, "y", { duration: 1, ease: "power2.out" });
+            }
 
             // 3. REFLEKSI — Reveal with precision
             gsap.from(".refleksi-label", {
@@ -213,11 +237,20 @@ export default function LandingPage() {
         return () => ctx.revert();
     }, [isVisible]);
 
+    const bgInitializedRef = useRef(false);
+
     // B. STUDIO MONKS BACKGROUND TRANSITIONS (Themed Priority Effect)
     useEffect(() => {
+        // Only re-initialize if theme actually resolved and we haven't already set up for this specific theme
+        if (!resolvedTheme) return;
+
         const ctx = gsap.context(() => {
             const colorTriggers = gsap.utils.toArray(".color-trigger") as HTMLElement[];
-            console.log(`[LEVEL_UP] Theme: ${resolvedTheme}. Tracking ${colorTriggers.length} zones.`);
+            
+            // Reduced logging noise
+            if (!bgInitializedRef.current) {
+                console.log(`[LEVEL_UP] Protocol: ${resolvedTheme}. Monitoring ${colorTriggers.length} zones.`);
+            }
 
             if (colorTriggers.length > 0) {
                 // Determine Mode
@@ -234,7 +267,6 @@ export default function LandingPage() {
 
                 colorTriggers.forEach((trigger, i) => {
                     // Check height: only trigger for "Meaningful" sections (> 30% of screen height)
-                    // This catches Diagnosis Section (part 5) which is ~40% of VH
                     const sectionHeight = trigger.offsetHeight;
                     const threshold = window.innerHeight * 0.3;
                     
@@ -263,15 +295,28 @@ export default function LandingPage() {
                     });
                 });
             }
+            bgInitializedRef.current = true;
         });
-        return () => ctx.revert();
-    }, [resolvedTheme]); // Re-initialize on theme change
+        return () => {
+            ctx.revert();
+            bgInitializedRef.current = false;
+        };
+    }, [resolvedTheme]); 
 
     const handleMouseMove = (e: React.MouseEvent) => {
+        // PERF: Only calculate and apply values if the quickTo instances were successfully created
+        if (!xTo.current || !yTo.current) return;
+        
         const moveX = (e.clientX - window.innerWidth / 2) * 0.015;
         const moveY = (e.clientY - window.innerHeight / 2) * 0.015;
-        gsap.to(".hero-parallax", { x: moveX, y: moveY, duration: 0.8, ease: "power2.out" });
-        gsap.to(".hero-parallax-reverse", { x: -moveX * 1.5, y: -moveY * 1.5, duration: 1, ease: "power2.out" });
+        
+        xTo.current(moveX);
+        yTo.current(moveY);
+        
+        if (xRevTo.current && yRevTo.current) {
+            xRevTo.current(-moveX * 1.5);
+            yRevTo.current(-moveY * 1.5);
+        }
     };
 
     return (

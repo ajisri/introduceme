@@ -21,14 +21,14 @@ export default function HeroSection({ handleMouseMove }: HeroSectionProps) {
                 {/* 100% Width Titles to guarantee equal height and no cut-off */}
                 <div className="mb-16 lg:mb-24 flex flex-col items-start gap-0 relative w-full">
                     <div className="py-2 w-full">
-                        <h1 className="font-unbounded font-bold uppercase leading-[0.9] tracking-tighter text-foreground whitespace-nowrap"
-                            style={{ fontSize: "clamp(2.5rem, 6.5vw, 9rem)" }}>
+                        <h1 className="font-unbounded font-bold uppercase leading-[0.9] tracking-tighter text-foreground break-words sm:whitespace-nowrap"
+                            style={{ fontSize: "clamp(1.8rem, 6.5vw, 9rem)" }}>
                             {dict.landing.hero.title1}
                         </h1>
                     </div>
                     <div className="py-2 w-full">
-                        <h1 className="font-unbounded font-bold uppercase leading-[0.9] tracking-tighter text-swiss-red whitespace-nowrap"
-                            style={{ fontSize: "clamp(2.5rem, 6.5vw, 9rem)" }}>
+                        <h1 className="font-unbounded font-bold uppercase leading-[0.9] tracking-tighter text-swiss-red break-words sm:whitespace-nowrap"
+                            style={{ fontSize: "clamp(1.8rem, 6.5vw, 9rem)" }}>
                             {dict.landing.hero.title2}
                         </h1>
                     </div>
@@ -119,8 +119,16 @@ export default function HeroSection({ handleMouseMove }: HeroSectionProps) {
                 </div>
             </div>
             
-            {/* Subtle background grid intersection */}
+            {/* Subtle background grid intersection & Parallax Accents */}
             <div className="absolute bottom-0 right-0 w-32 h-32 opacity-5 border-r border-b border-foreground pointer-events-none" />
+            
+            {/* Pop Art Abstract Shapes for Parallax */}
+            <div className="hero-parallax absolute top-[20%] left-[5%] w-32 h-32 md:w-48 md:h-48 border-[1px] border-foreground/10 rounded-full pointer-events-none opacity-20 hidden md:block" />
+            <div className="hero-parallax-reverse absolute bottom-[15%] right-[10%] w-16 h-16 md:w-24 md:h-24 bg-swiss-red/5 pointer-events-none rotate-45 hidden md:block" />
+            
+            {/* Pop Accent Floating Elements (Managed by LandingPage GSAP timeline) */}
+            <div className="pop-accent-1 absolute top-[30%] right-[15%] w-4 h-4 bg-pop-blue opacity-20 rounded-sm pointer-events-none hidden md:block" />
+            <div className="pop-accent-2 absolute bottom-[40%] left-[8%] w-3 h-3 border border-pop-pink opacity-30 rounded-full pointer-events-none hidden md:block" />
         </section>
     );
 }

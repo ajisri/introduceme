@@ -105,6 +105,7 @@ export interface Dictionary {
             line1: string;
             line2: string;
             line3: string;
+            financialCare: string;
             closing: string;
             cta: string;
         };

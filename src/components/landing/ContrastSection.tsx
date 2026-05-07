@@ -24,11 +24,11 @@ export default function ContrastSection() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-foreground/10">
                         
                         {/* Standard Audit — Faded/Technical Debt */}
-                        <div className="p-10 lg:p-16 border-b lg:border-b-0 lg:border-r border-foreground/10 bg-foreground/[0.02]">
-                            <span className="font-mono font-black uppercase tracking-[0.3em] text-foreground opacity-20 mb-10 block" style={{ fontSize: "0.6rem" }}>
+                        <div className="p-6 sm:p-10 lg:p-16 border-b lg:border-b-0 lg:border-r border-foreground/10 bg-foreground/[0.02]">
+                            <span className="font-mono font-black uppercase tracking-[0.3em] text-foreground opacity-20 mb-8 lg:mb-10 block" style={{ fontSize: "0.6rem" }}>
                                 [ 01_STANDARD_AUDIT ]
                             </span>
-                            <h3 className="font-bold uppercase tracking-tighter text-foreground/60 mb-8 font-unbounded leading-[1.1] break-words"
+                            <h3 className="font-bold uppercase tracking-tighter text-foreground/60 mb-6 lg:mb-8 font-unbounded leading-[1.1] break-words"
                                 style={{ fontSize: "clamp(1.2rem, 2.8vw, 2.2rem)" }}>
                                 {dict.landing.contrast.agencyLabel}
                             </h3>
@@ -39,7 +39,7 @@ export default function ContrastSection() {
                         </div>
 
                         {/* Validated Audit — High Performance/Authority */}
-                        <div className="p-10 lg:p-16 bg-transparent relative group">
+                        <div className="p-6 sm:p-10 lg:p-16 bg-transparent relative group">
                             <div className="absolute top-0 left-0 w-full h-[1px] bg-swiss-red opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             <span className="font-mono font-black uppercase tracking-[0.3em] text-swiss-red opacity-60 mb-10 block" style={{ fontSize: "0.6rem" }}>
                                 [ 02_VALIDATED_AUDIT ]

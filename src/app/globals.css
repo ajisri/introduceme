@@ -199,7 +199,7 @@
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     text-rendering: optimizeLegibility;
-    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   main,
@@ -424,7 +424,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   pointer-events: none;
   z-index: var(--z-bg-texture);
   opacity: var(--noise-opacity);

@@ -7,10 +7,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
 import Magnetic from "./Magnetic";
 
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
+
 export default function PenutupSection() {
     const { dict, language } = useLanguage();
     const containerRef = useRef<HTMLElement>(null);
     const noButtonRef = useRef<HTMLButtonElement>(null);
+    const hasInitializedRef = useRef(false);
 
     const handleEvade = (e?: React.MouseEvent | React.TouchEvent) => {
         if (!noButtonRef.current) return;
@@ -60,7 +65,7 @@ export default function PenutupSection() {
     };
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+        if (!containerRef.current || hasInitializedRef.current) return;
 
         const ctx = gsap.context(() => {
             const penutupLines = gsap.utils.toArray(".penutup-line") as HTMLElement[];
@@ -70,47 +75,45 @@ export default function PenutupSection() {
             // SET INITIAL STATE: Hardware acceleration enabled
             gsap.set(penutupLines, {
                 opacity: 0,
-                y: "6vh",
+                y: 50,
                 force3D: true
             });
             gsap.set(".penutup-cta-container", {
                 opacity: 0,
-                y: "4vh",
+                y: 30,
                 force3D: true
             });
 
-            // CHOREOGRAPHY
+            // CHOREOGRAPHY — Simple reveal, NO pinning
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: "top center", 
-                    end: "+=100%", 
-                    pin: true,
-                    scrub: 1,    
-                    anticipatePin: 1
+                    start: "top 70%",
+                    toggleActions: "play none none none",
                 }
             });
 
             tl.to(penutupLines, {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
-                stagger: 0.15,
-                ease: "expo.out"
+                duration: 1,
+                stagger: 0.12,
+                ease: "power3.out"
             })
             .to(".penutup-cta-container", {
                 opacity: 1,
                 y: 0,
-                duration: 1,
-                ease: "expo.out"
-            }, "-=0.8"); 
-            
-            // Breathing room end frame
-            tl.to({}, { duration: 0.5 });
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.6");
 
+            hasInitializedRef.current = true;
         }, containerRef);
 
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+            hasInitializedRef.current = false;
+        };
     }, []);
 
     return (
@@ -137,6 +140,9 @@ export default function PenutupSection() {
                             </p>
                             <p className="penutup-line font-bold leading-[1.4] tracking-tight text-foreground" style={{ fontSize: "clamp(1.2rem, 1.5vw, 1.4rem)" }}>
                                 {dict.landing.penutup.line3}
+                            </p>
+                            <p className="penutup-line font-mono uppercase tracking-[0.2em] text-swiss-red/80 pt-4" style={{ fontSize: "0.65rem", maxWidth: "320px" }}>
+                                [ {dict.landing.penutup.financialCare} ]
                             </p>
                         </div>
                     </div>

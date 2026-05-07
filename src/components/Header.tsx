@@ -90,29 +90,31 @@ export default function Header() {
 
             {/* Mobile Overlay - Postmodern Chaos */}
             {isOpen && (
-                <div className="fixed inset-0 z-[var(--z-mobile-menu)] bg-transparent text-foreground flex flex-col justify-center p-8 md:p-16">
+                <div className="fixed inset-0 z-[var(--z-mobile-menu)] bg-background text-foreground flex flex-col justify-center p-6 md:p-16 overflow-y-auto">
                     <div className="absolute top-0 left-0 w-full h-full bg-halftone opacity-10 pointer-events-none"></div>
-                    <nav className="relative z-10 flex flex-col gap-4">
+                    <nav className="relative z-10 flex flex-col gap-6 md:gap-4 mt-16 md:mt-0">
                         {dict.header.mobile.items.map((item, i) => (
                             item.isAnchor ? (
                                 <a
                                     key={i}
                                     href={item.href.startsWith('#') ? '/' + item.href : item.href}
                                     onClick={(e) => handleAnchorClick(e, item.href.startsWith('#') ? item.href : item.href.replace('/', ''))}
-                                    className="text-6xl md:text-8xl font-black uppercase tracking-tighter hover:italic flex items-center gap-4 group cursor-pointer"
+                                    className="font-black uppercase tracking-tighter hover:italic flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 group cursor-pointer"
+                                    style={{ fontSize: "clamp(2.5rem, 10vw, 6rem)", lineHeight: "1" }}
                                 >
-                                    <span className="text-sm font-mono opacity-40 group-hover:opacity-100 transition-opacity">{item.label.split('_')[0]}</span>
-                                    <span className="group-hover:translate-x-4 transition-transform duration-500">{item.label.split('_').slice(1).join('_')}</span>
+                                    <span className="text-xs sm:text-sm font-mono opacity-40 group-hover:opacity-100 transition-opacity">{item.label.split('_')[0]}_</span>
+                                    <span className="group-hover:translate-x-4 transition-transform duration-500 break-words">{item.label.split('_').slice(1).join('_')}</span>
                                 </a>
                             ) : (
                                 <Link
                                     key={i}
                                     href={item.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-6xl md:text-8xl font-black uppercase tracking-tighter hover:italic flex items-center gap-4 group"
+                                    className="font-black uppercase tracking-tighter hover:italic flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 group"
+                                    style={{ fontSize: "clamp(2.5rem, 10vw, 6rem)", lineHeight: "1" }}
                                 >
-                                    <span className="text-sm font-mono opacity-40 group-hover:opacity-100 transition-opacity">{item.label.split('_')[0]}</span>
-                                    <span className="group-hover:translate-x-4 transition-transform duration-500">{item.label.split('_').slice(1).join('_')}</span>
+                                    <span className="text-xs sm:text-sm font-mono opacity-40 group-hover:opacity-100 transition-opacity">{item.label.split('_')[0]}_</span>
+                                    <span className="group-hover:translate-x-4 transition-transform duration-500 break-words">{item.label.split('_').slice(1).join('_')}</span>
                                 </Link>
                             )
                         ))}

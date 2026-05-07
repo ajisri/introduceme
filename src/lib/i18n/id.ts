@@ -96,6 +96,7 @@ export const id = {
             line1: "Bisnis Anda siap,",
             line2: "Atau tidak siap,",
             line3: "Untuk meyakinkan mereka.",
+            financialCare: "menenangkan kekhawatiran finansial mereka tepat pada saat mereka mengambil keputusan",
             closing: "Pilih untuk dipercaya.",
             cta: "→ Bangun Kejelasan"
         },
