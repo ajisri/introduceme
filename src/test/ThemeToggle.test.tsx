@@ -8,7 +8,7 @@ import { ReactNode } from 'react';
 vi.mock('next-themes', async () => {
     const actual = await vi.importActual('next-themes');
     return {
-        ...actual as any,
+        ...actual as Record<string, unknown>,
         useTheme: () => ({
             theme: themeState.theme,
             setTheme: (t: string) => {
@@ -19,7 +19,7 @@ vi.mock('next-themes', async () => {
     };
 });
 
-let themeState = { theme: 'light' };
+const themeState = { theme: 'light' };
 const renderTheme = () => { };
 
 const wrapper = ({ children }: { children: ReactNode }) => (

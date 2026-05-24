@@ -30,8 +30,13 @@ export default function PeranSection() {
         setWords(newWords);
     };
 
+    // Split the solution description into items
+    const solutionItems = dict.landing.peran.mainDesc 
+        ? dict.landing.peran.mainDesc.split("•").map(item => item.trim()).filter(Boolean)
+        : [];
+
     return (
-        <section id="authority" className="w-full bg-foreground text-background py-32 lg:py-48 overflow-hidden relative border-t border-background/5">
+        <section id="authority" className="w-full bg-foreground text-background py-32 lg:py-48 overflow-hidden relative border-t border-background/10">
             <div className="absolute top-0 left-0 w-full h-full bg-halftone-dense opacity-[0.02] pointer-events-none" />
             
             <div className="swiss-container relative z-10">
@@ -52,15 +57,26 @@ export default function PeranSection() {
                                 className="mt-8 font-mono text-[9px] uppercase tracking-widest leading-relaxed max-w-[180px]"
                             >
                                 <span className="text-swiss-red">[ LOGIKA_SISTEM ]</span><br />
-                                Kata-kata di bawah akan bergeser secara rapi untuk menyesuaikan struktur baru.
+                                Kata-kata di samping akan bergeser secara rapi ketika Anda klik untuk menyesuaikan struktur baru.
                             </motion.div>
                         </div>
                     </div>
 
                     <div className="col-span-12 lg:col-span-9 lg:col-start-4">
-                        <div className="flex flex-col gap-16 lg:gap-24">
-                            <div className="relative group">
-                                {/* Gunakan Motion Div dengan layout prop untuk transisi 'rapi' */}
+                        <div className="flex flex-col gap-12 lg:gap-16">
+                            {/* Interactive Word Shuffle with structural border frame */}
+                            <div className="relative border border-background/15 p-6 md:p-10 lg:p-12 bg-background/[0.02] backdrop-blur-[2px]">
+                                {/* Technical labels for Swiss design aesthetic */}
+                                <div className="absolute -top-2.5 left-6 bg-foreground text-background px-2 py-0.5 text-[8px] font-mono tracking-widest">
+                                    [ INTERACTION_SHUFFLE_BOARD ]
+                                </div>
+                                <div className="absolute -top-2.5 right-6 bg-background text-foreground px-2 py-0.5 text-[8px] font-mono tracking-widest opacity-80 hidden sm:block">
+                                    SYS_REORDER: CLICK_TO_SHUFFLE
+                                </div>
+                                <div className="absolute -bottom-2 right-6 bg-background text-foreground px-2 py-0.5 text-[8px] font-mono tracking-widest opacity-40">
+                                    LOC: 50.10°N // 08.41°E
+                                </div>
+
                                 <motion.div 
                                     layout
                                     className="flex flex-wrap gap-x-[0.4em] gap-y-[0.6em] pointer-events-auto"
@@ -81,14 +97,14 @@ export default function PeranSection() {
                                                 }}
                                                 className="cursor-pointer"
                                                 onClick={() => {
-                                                    // Klik untuk pindahkan ke depan (simulasi reorder rapi)
+                                                    // Click to move to the front
                                                     if (idx > 0) moveWord(idx, idx - 1);
                                                     else moveWord(idx, words.length - 1);
                                                 }}
                                             >
                                                 <span 
                                                     className="font-unbounded font-medium uppercase leading-[0.9] tracking-[-0.05em] text-background block hover:text-swiss-red transition-colors duration-300"
-                                                    style={{ fontSize: "clamp(1.8rem, 5vw, 4.5rem)" }}
+                                                    style={{ fontSize: "clamp(1.6rem, 4.5vw, 4rem)" }}
                                                 >
                                                     {wordObj.text}{idx === words.length - 1 ? "." : ""}
                                                 </span>
@@ -96,23 +112,43 @@ export default function PeranSection() {
                                         ))}
                                     </AnimatePresence>
                                 </motion.div>
-                                
-                                <div className="absolute -top-6 right-0 font-mono text-[8px] opacity-20 flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 bg-background rounded-full animate-pulse" />
-                                    SYSTEM_LOGIC_ACTIVE
+                            </div>
+
+                            {/* Asymmetric 2-column layout for Negation vs Solution */}
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 border-t border-background/15 pt-12">
+                                {/* Left column: Negated claims (col-span-5) */}
+                                <div className="lg:col-span-5 space-y-4">
+                                    <div className="font-mono text-[9px] opacity-40 uppercase tracking-widest flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 bg-swiss-red rounded-full"></span>
+                                        [ STATUS_DIABAIKAN / NEGASI ]
+                                    </div>
+                                    <div className="space-y-4 pt-2">
+                                        <p className="font-sans font-medium leading-snug opacity-20 line-through decoration-swiss-red decoration-2" style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.15rem)" }}>
+                                            {dict.landing.peran.notLine1}
+                                        </p>
+                                        <p className="font-sans font-medium leading-snug opacity-20 line-through decoration-swiss-red decoration-2" style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.15rem)" }}>
+                                            {dict.landing.peran.notLine2}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Right column: Solution Blueprint items (col-span-7) */}
+                                <div className="lg:col-span-7 border-t lg:border-t-0 lg:border-l border-background/15 lg:pl-10 pt-8 lg:pt-0">
+                                    <div className="font-mono text-[9px] text-swiss-red uppercase tracking-widest mb-6 flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 bg-swiss-red"></span>
+                                        [ PROTOKOL_SOLUSI_KOMUNIKASI ]
+                                    </div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                                        {solutionItems.map((item, idx) => (
+                                            <div key={idx} className="border-b border-background/10 pb-2 flex justify-between items-end">
+                                                <span className="font-mono text-[8px] opacity-40">INDEX_0{idx + 1}</span>
+                                                <span className="font-unbounded font-medium text-[11px] tracking-tight text-background uppercase">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                                <div className="lg:col-span-8 peran-negation space-y-4">
-                                    <p className="font-bold leading-tight opacity-20 line-through decoration-1 decoration-swiss-red" style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}>
-                                        {dict.landing.peran.notLine1}
-                                    </p>
-                                    <p className="font-bold leading-tight opacity-20 line-through decoration-1 decoration-swiss-red" style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}>
-                                        {dict.landing.peran.notLine2}
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

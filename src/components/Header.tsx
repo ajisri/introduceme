@@ -60,13 +60,13 @@ export default function Header() {
                         <Magnetic strength={0.1}>
                             <Link href="/story" className="px-5 py-2 border border-foreground/20 hover:border-foreground hover:bg-foreground hover:text-background transition-all mx-2">{dict.header.nav.vault}</Link>
                         </Magnetic>
-                        <a
+                        <Link
                             href="/#about"
                             onClick={(e) => handleAnchorClick(e, '#about')}
                             className="px-5 py-2 hover:bg-[var(--pop-pink)] hover:text-white transition-all border border-transparent cursor-pointer"
                         >
                             {dict.header.nav.manifesto}
-                        </a>
+                        </Link>
                         <div className="w-px h-6 bg-foreground/10 mx-4"></div>
                         <div className="flex items-center border border-foreground/10 rounded-sm overflow-hidden">
                             <LanguageToggle />

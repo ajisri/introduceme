@@ -28,6 +28,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         const savedLang = localStorage.getItem("language") as Language;
         if (savedLang && (savedLang === "en" || savedLang === "id")) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setLanguageState(savedLang);
         } else {
             const browserLang = navigator.language.startsWith("id") ? "id" : "en";

@@ -71,8 +71,7 @@ const THEME_PALETTE: Record<string, { light: { bg: string, fg: string }, dark: {
  * Visual philosophy: Precision = minimal. White space = confidence.
  */
 export default function LandingPage() {
-    const { theme, resolvedTheme } = useTheme();
-    const isDark = resolvedTheme === "dark";
+    const { resolvedTheme } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
     const animationStartedRef = useRef(false);

@@ -4,6 +4,7 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import { storyFloors } from "@/data/story-content";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 
 // =============================================================================
 // FOOTER COMPONENT
@@ -117,12 +118,12 @@ export default function Footer() {
                 </div>
 
                 <nav className="hidden lg:flex gap-8 font-mono text-[9px] uppercase tracking-widest opacity-60">
-                    <a href="/" className="hover:opacity-100 hover:text-[var(--pop-green)] transition-all">
+                    <Link href="/" className="hover:opacity-100 hover:text-[var(--pop-green)] transition-all">
                         {dict.footer.nav.home}
-                    </a>
-                    <a href="/story" className="hover:opacity-100 hover:text-[var(--pop-pink)] transition-all">
+                    </Link>
+                    <Link href="/story" className="hover:opacity-100 hover:text-[var(--pop-pink)] transition-all">
                         {dict.footer.nav.vault}
-                    </a>
+                    </Link>
                     <a href="#about" className="hover:opacity-100 hover:text-[var(--pop-yellow)] transition-all">
                         {dict.footer.nav.manifesto}
                     </a>
@@ -194,7 +195,7 @@ const FooterGallery = () => {
                             )}
 
                             <div className="absolute bottom-0 right-0 text-[9px] lg:text-xs text-white bg-black px-3 py-1.5 font-black font-mono" style={{ position: 'absolute' }}>
-                                //0{i + 1}
+                                {"//0"}{i + 1}
                             </div>
 
                             <div className="absolute inset-0 bg-[var(--swiss-red)]/0 group-hover:bg-[var(--swiss-red)]/10 transition-colors duration-500" style={{ position: 'absolute' }} />

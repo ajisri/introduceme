@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -124,7 +124,7 @@ export default function DiagnosisSection() {
                                 <h3 className="font-unbounded font-medium text-4xl lg:text-7xl text-white tracking-tighter">
                                     {dict.landing.diagnosis.storyStep1}
                                 </h3>
-                                <p className="text-white/50 w-full text-center text-sm lg:text-base italic font-light whitespace-nowrap overflow-visible">"{dict.landing.diagnosis.storyStep1Desc}"</p>
+                                <p className="text-white/50 w-full text-center text-sm lg:text-base italic font-light whitespace-nowrap overflow-visible">&ldquo;{dict.landing.diagnosis.storyStep1Desc}&rdquo;</p>
                                 <button 
                                     onClick={nextStep}
                                     className="mt-4 px-8 py-4 bg-white text-black font-mono text-xs uppercase tracking-widest font-bold"
@@ -190,44 +190,55 @@ export default function DiagnosisSection() {
                                     className="w-full"
                                 >
                                     <h3 
-                                        className="font-unbounded font-medium lowercase text-white leading-[1.1] tracking-tighter text-center mb-12" 
-                                        style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
+                                        className="font-swiss-display font-black uppercase text-white tracking-tighter text-center mb-16" 
+                                        style={{ fontSize: "clamp(2rem, 6.5vw, 5rem)" }}
                                     >
                                         {dict.landing.diagnosis.title}
                                     </h3>
                                     
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl mx-auto text-left">
+                                    {/* Blueprint Technical Datasheet Grid */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-white/10 w-full max-w-5xl mx-auto text-left bg-white/[0.01] backdrop-blur-sm">
                                         {dict.landing.diagnosis.items.map((item: string, i: number) => (
                                             <motion.div 
                                                 key={i}
-                                                initial={{ opacity: 0, x: -20 }}
-                                                animate={{ opacity: 1, x: 0 }}
+                                                initial={{ opacity: 0, y: 15 }}
+                                                animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: 0.5 + (i * 0.1) }}
-                                                className="p-6 border border-white/5 bg-white/[0.02] backdrop-blur-sm"
+                                                className="p-8 border-r border-b border-white/10 flex flex-col justify-between min-h-[160px] relative group hover:bg-white/[0.01] transition-colors"
                                             >
-                                                <span className="block font-mono text-[10px] text-swiss-red mb-2 opacity-40">ITEM_{i+1}</span>
-                                                <p className="text-sm lg:text-base text-white/80 leading-relaxed">{item}</p>
+                                                <div>
+                                                    <div className="flex justify-between items-center mb-4">
+                                                        <span className="block font-mono text-[9px] text-swiss-red font-black tracking-widest">[ CELL_0{i+1} ]</span>
+                                                        <span className="font-mono text-[8px] text-white/20 select-none">X-REF // {i % 2 === 0 ? 'L_COL' : 'R_COL'}</span>
+                                                    </div>
+                                                    <p className="text-sm lg:text-base text-white/80 leading-relaxed font-sans font-medium">{item}</p>
+                                                </div>
+                                                <div className="absolute bottom-0 left-0 w-full h-[2px] bg-swiss-red scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                                             </motion.div>
                                         ))}
                                     </div>
 
+                                    {/* Technical Asymmetric Conclusion */}
                                     <motion.div 
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 1.5 }}
-                                        className="mt-20 flex flex-col items-center gap-4"
+                                        className="mt-20 w-full max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end border-t border-white/10 pt-10 gap-8"
                                     >
-                                        <span className="font-mono text-[10px] uppercase tracking-widest opacity-40">
-                                            {dict.landing.diagnosis.conclusion1}
-                                        </span>
-                                        <h4 className="font-unbounded text-2xl lg:text-4xl text-white">
-                                            {dict.landing.diagnosis.conclusion2}
-                                        </h4>
+                                        <div className="text-left">
+                                            <span className="font-mono text-[9px] uppercase tracking-widest text-swiss-red block mb-2 font-black">
+                                                [ KESEIMBANGAN_INFORMASI ]
+                                            </span>
+                                            <h4 className="font-swiss-display font-bold uppercase text-2xl lg:text-3xl text-white tracking-tight">
+                                                {dict.landing.diagnosis.conclusion2}
+                                            </h4>
+                                        </div>
+                                        
                                         <button 
                                             onClick={() => setStep(0)}
-                                            className="mt-12 text-[10px] font-mono uppercase tracking-[0.3em] text-white/40 hover:text-swiss-red transition-colors border-b border-white/10 pb-1"
+                                            className="text-[9px] font-mono uppercase tracking-[0.25em] text-white/40 hover:text-swiss-red transition-colors border border-white/10 px-4 py-2 bg-transparent whitespace-nowrap"
                                         >
-                                            {language === "id" ? "( Lihat ulang analisa )" : "( Re-analyze story )"}
+                                            {language === "id" ? "( lihat ulang analisa )" : "( re-analyze story )"}
                                         </button>
                                     </motion.div>
                                 </motion.div>

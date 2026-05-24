@@ -237,6 +237,50 @@
   position: relative;
 }
 
+/* Swiss Grid Lines Background Guides */
+.swiss-grid-lines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4vw;
+  opacity: 0.6;
+}
+
+.swiss-grid-line {
+  height: 100%;
+  border-right: 1px solid var(--grid-line);
+}
+
+.swiss-grid-line:first-child {
+  border-left: 1px solid var(--grid-line);
+}
+
+/* Swiss Typographic Helper */
+.font-swiss-display {
+  font-family: var(--font-unbounded), sans-serif;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+}
+
+/* Grid Table Border Collapse Helper */
+.grid-table-layout {
+  display: grid;
+  border-top: 1px solid var(--foreground);
+  border-left: 1px solid var(--foreground);
+}
+
+.grid-table-cell {
+  border-right: 1px solid var(--foreground);
+  border-bottom: 1px solid var(--foreground);
+}
+
+
 /* =============================================================================
    BRUTALIST COMPONENTS
    Raw, unapologetic UI elements with exposed structure

@@ -64,6 +64,11 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} ${unbounded.variable}`} suppressHydrationWarning>
         <Providers>
           <div className="bg-grain-overlay" />
+          <div className="swiss-grid-lines">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="swiss-grid-line" />
+            ))}
+          </div>
           <ClientLayout>
             {children}
           </ClientLayout>

@@ -21,72 +21,78 @@ export default function ContrastSection() {
                 </div>
 
                 <div className="col-span-12 lg:col-span-9 lg:col-start-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-foreground/10">
+                    <div className="grid grid-cols-12 gap-0 border border-foreground/15">
                         
-                        {/* Standard Audit — Faded/Technical Debt */}
-                        <div className="p-6 sm:p-10 lg:p-16 border-b lg:border-b-0 lg:border-r border-foreground/10 bg-foreground/[0.02]">
-                            <span className="font-mono font-black uppercase tracking-[0.3em] text-foreground opacity-20 mb-8 lg:mb-10 block" style={{ fontSize: "0.6rem" }}>
+                        {/* Standard Audit — Faded/Technical Debt (col-span-4) */}
+                        <div className="col-span-12 lg:col-span-4 p-6 sm:p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-foreground/15 bg-background text-foreground/40">
+                            <span className="font-mono font-bold uppercase tracking-[0.2em] text-foreground/30 mb-8 block text-[9px]">
                                 [ 01_STANDARD_AUDIT ]
                             </span>
-                            <h3 className="font-bold uppercase tracking-tighter text-foreground/60 mb-6 lg:mb-8 font-unbounded leading-[1.1] break-words"
-                                style={{ fontSize: "clamp(1.2rem, 2.8vw, 2.2rem)" }}>
+                            <h3 className="font-unbounded font-medium uppercase tracking-tight text-foreground/50 mb-6 leading-[1.15] break-words text-lg sm:text-xl lg:text-2xl">
                                 {dict.landing.contrast.agencyLabel}
                             </h3>
-                            <p className="font-sans font-medium text-foreground/60 leading-relaxed max-w-sm"
-                                style={{ fontSize: "clamp(1rem, 1.2vw, 1.1rem)" }}>
+                            <p className="font-sans font-medium text-foreground/45 leading-relaxed max-w-sm text-xs sm:text-sm">
                                 {dict.landing.contrast.agencyLine}
                             </p>
                         </div>
-
-                        {/* Validated Audit — High Performance/Authority */}
-                        <div className="p-6 sm:p-10 lg:p-16 bg-transparent relative group">
-                            <div className="absolute top-0 left-0 w-full h-[1px] bg-swiss-red opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                            <span className="font-mono font-black uppercase tracking-[0.3em] text-swiss-red opacity-60 mb-10 block" style={{ fontSize: "0.6rem" }}>
-                                [ 02_VALIDATED_AUDIT ]
+ 
+                        {/* Validated Audit — High Performance/Authority (col-span-8) */}
+                        <div className="col-span-12 lg:col-span-8 p-6 sm:p-10 lg:p-14 bg-foreground text-background relative overflow-hidden group">
+                            {/* Halftone pop art texture overlay */}
+                            <div className="absolute inset-0 bg-halftone-dense opacity-[0.08] pointer-events-none" />
+                            
+                            <span className="font-mono font-bold uppercase tracking-[0.2em] text-swiss-red mb-8 block text-[9px] relative z-10">
+                                [ 02_VALIDATED_AUDIT // AKTIF ]
                             </span>
-                            <h3 className="font-black uppercase tracking-tighter text-foreground mb-8 font-unbounded leading-[1.1] break-words"
-                                style={{ fontSize: "clamp(1.2rem, 2.8vw, 2.5rem)" }}>
+                            
+                            <h3 className="font-unbounded font-bold uppercase tracking-tight text-background mb-6 leading-[1.1] break-words text-xl sm:text-2xl lg:text-3xl relative z-10">
                                 {dict.landing.contrast.engineerLabel}
                             </h3>
-                            <p className="font-sans font-semibold text-foreground/90 leading-relaxed bg-foreground/5 p-4 max-w-md"
-                                style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.3rem)" }}>
+                            
+                            <p className="font-sans font-medium text-background/80 leading-relaxed bg-background/10 p-4 max-w-md text-xs sm:text-sm border-l-2 border-swiss-red mb-8 relative z-10">
                                 {dict.landing.contrast.engineerLine}
                             </p>
-                            <div className="mt-8 flex flex-col gap-4">
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mt-6 relative z-10">
                                 {["Profil Jelas", "Lokasi & Jam", "Cara Pesan", "Portofolio", "Testimoni", "Prosedur Layanan"].map((item, idx) => (
-                                    <div key={idx} className="flex items-center gap-4 text-foreground/80 hover:text-swiss-red transition-colors duration-300">
-                                        <div className="w-1.5 h-1.5 bg-swiss-red rounded-sm" />
-                                        <span className="font-sans font-bold uppercase tracking-widest text-xs">{item}</span>
+                                    <div key={idx} className="flex items-center gap-3 text-background/90 hover:text-swiss-red transition-colors duration-300">
+                                        <div className="w-1.5 h-1.5 bg-swiss-red" />
+                                        <span className="font-mono font-bold uppercase tracking-widest text-[9px]">{item}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     </div>
-
-                    {/* Performance Metrics — Competence through achievement, not words */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 lg:mt-24 pt-10 border-t border-foreground/10 opacity-90">
-                        <div className="flex flex-col gap-2">
-                            <span className="font-mono font-black uppercase" style={{ fontSize: "0.6rem" }}>LOGIC_DEPTH</span>
-                            <div className="h-1 w-full bg-foreground/10 rounded-full overflow-hidden">
-                                <div className="h-full w-[40%] bg-foreground/40" />
+ 
+                    {/* Performance Metrics — Aligned strictly to the columns above */}
+                    <div className="grid grid-cols-12 gap-8 mt-16 lg:mt-24 pt-10 border-t border-foreground/15 opacity-95">
+                        {/* Logic depth aligns to Standard Audit column (col-span-4) */}
+                        <div className="col-span-12 md:col-span-4 flex flex-col gap-2">
+                            <span className="font-mono font-bold uppercase text-[9px] tracking-widest text-foreground/40">LOGIC_DEPTH [ 40% ]</span>
+                            <div className="h-1.5 w-full bg-foreground/10 overflow-hidden">
+                                <div className="h-full w-[40%] bg-foreground/45" />
                             </div>
                         </div>
-                        <div className="flex flex-col gap-2">
-                            <span className="font-mono font-black uppercase text-swiss-red" style={{ fontSize: "0.6rem" }}>CONVICTION_VAL</span>
-                            <div className="h-1 w-full bg-swiss-red/10 rounded-full overflow-hidden">
-                                <div className="h-full w-[95%] bg-swiss-red" />
+                        
+                        {/* Next three metrics align to Validated Audit column (col-span-8) */}
+                        <div className="col-span-12 md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <div className="flex flex-col gap-2">
+                                <span className="font-mono font-bold uppercase text-swiss-red text-[9px] tracking-widest">CONVICTION_VAL [ MAX ]</span>
+                                <div className="h-1.5 w-full bg-swiss-red/20 overflow-hidden">
+                                    <div className="h-full w-[95%] bg-swiss-red" />
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <span className="font-mono font-black uppercase" style={{ fontSize: "0.6rem" }}>GAPS_SEALED</span>
-                            <div className="h-1 w-full bg-foreground/10 rounded-full overflow-hidden">
-                                <div className="h-full w-full bg-foreground/40" />
+                            <div className="flex flex-col gap-2">
+                                <span className="font-mono font-bold uppercase text-foreground text-[9px] tracking-widest">GAPS_SEALED [ 100% ]</span>
+                                <div className="h-1.5 w-full bg-foreground/10 overflow-hidden">
+                                    <div className="h-full w-full bg-foreground" />
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <span className="font-mono font-black uppercase text-swiss-red" style={{ fontSize: "0.6rem" }}>DATA_INTEGRITY</span>
-                            <div className="h-1 w-full bg-swiss-red/10 rounded-full overflow-hidden">
-                                <div className="h-full w-[98%] bg-swiss-red" />
+                            <div className="flex flex-col gap-2">
+                                <span className="font-mono font-bold uppercase text-swiss-red text-[9px] tracking-widest">DATA_INTEGRITY [ 99.8% ]</span>
+                                <div className="h-1.5 w-full bg-swiss-red/20 overflow-hidden">
+                                    <div className="h-full w-[98%] bg-swiss-red" />
+                                </div>
                             </div>
                         </div>
                     </div>

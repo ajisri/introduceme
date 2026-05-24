@@ -263,21 +263,27 @@ export default function LegacySection() {
                     {dict.legacy.subtitle}
                 </p>
             </div>
-
             {/* ================================================================
-                IMAGE GRID - Chaos to Order Cards
+                IMAGE GRID - Chaos to Order Cards (Asymmetric 12-Column Layout)
             ================================================================ */}
             <div
                 ref={gridRef}
-                className="relative w-full max-w-7xl h-auto flex items-center justify-center py-16 lg:py-24 px-4 lg:px-6"
+                className="relative w-full max-w-[1600px] h-auto flex items-center justify-center py-16 lg:py-24 px-4 lg:px-10"
             >
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-10 w-full perspective-1000">
-                    {images.map((src, i) => (
+                <div className="grid grid-cols-12 gap-y-16 md:gap-y-28 md:gap-x-12 w-full perspective-1000">
+                    {[
+                        { src: images[0], layout: "col-span-12 sm:col-span-6 md:col-span-5 md:mt-0" },
+                        { src: images[1], layout: "col-span-12 sm:col-span-6 md:col-span-6 md:col-start-7 md:mt-24" },
+                        { src: images[2], layout: "col-span-12 sm:col-span-6 md:col-span-4 md:mt-10" },
+                        { src: images[3], layout: "col-span-12 sm:col-span-6 md:col-span-6 md:col-start-7 md:-mt-16" },
+                        { src: images[4], layout: "col-span-12 sm:col-span-6 md:col-span-6 md:mt-16" },
+                        { src: images[5], layout: "col-span-12 sm:col-span-6 md:col-span-5 md:col-start-8 md:-mt-12" }
+                    ].map((card, i) => (
                         <div
                             key={i}
                             className={`
                                 legacy-card brutalist-card relative aspect-[3/4] w-full group cursor-pointer overflow-hidden p-0
-                                ${i % 2 === 0 ? 'lg:translate-y-8' : 'lg:-translate-y-8'}
+                                ${card.layout}
                             `}
                             style={{
                                 willChange: 'transform, opacity, filter',
@@ -287,13 +293,18 @@ export default function LegacySection() {
                             {/* Image Container */}
                             <div className="absolute inset-0 bg-transparent overflow-hidden">
                                 <Image
-                                    src={src}
+                                    src={card.src}
                                     alt={`Legacy Archive ${i + 1}`}
                                     fill
                                     sizes="(max-width: 768px) 50vw, 33vw"
                                     className="object-cover transition-all duration-700 grayscale-0 group-hover:grayscale-0 scale-100 group-hover:scale-110"
                                     loading="lazy"
                                 />
+
+                                {/* Coordinate indicator badge for Swiss aesthetic */}
+                                <div className="absolute top-0 left-0 bg-background/80 backdrop-blur-[2px] text-foreground px-2 py-1 font-mono text-[7px] font-bold uppercase tracking-wider z-20 border-r border-b border-foreground/15">
+                                    COORD_[X_{i * 2 + 3}_Y_{20 - i * 3}]
+                                </div>
 
                                 {/* Reference Label - Top Right */}
                                 <div className="absolute top-0 right-0 bg-foreground text-background px-3 py-1.5 font-mono text-[8px] font-black uppercase tracking-wider z-20">
@@ -338,7 +349,7 @@ export default function LegacySection() {
 
                         {/* Historic Data Quote as smaller, refined meta text */}
                         <p className="max-w-md text-left md:text-right text-sm md:text-base font-semibold uppercase tracking-widest leading-relaxed text-foreground/80 border-l-[3px] md:border-l-0 md:border-r-[3px] border-[var(--swiss-red)] pl-4 md:pl-0 md:pr-4">
-                            "{dict.legacy.quote}"
+                            &ldquo;{dict.legacy.quote}&rdquo;
                         </p>
                     </div>
 

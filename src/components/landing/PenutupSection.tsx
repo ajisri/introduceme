@@ -131,7 +131,7 @@ export default function PenutupSection() {
                     {/* Left: Structured Reflection */}
                     <div className="flex flex-col gap-14 max-w-lg">
                         <span className="penutup-line inline-block font-mono font-black uppercase tracking-[0.4em] text-swiss-red opacity-60" style={{ fontSize: "0.65rem" }}>
-                            // 05_CLOSURE_PROTOCOL
+                            {"// 05_CLOSURE_PROTOCOL"}
                         </span>
                         
                         <div className="border-l border-foreground/20 pl-6 lg:pl-8 space-y-10">

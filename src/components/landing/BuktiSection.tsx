@@ -21,25 +21,24 @@ export default function BuktiSection() {
                 </div>
 
                 <div className="col-span-12 lg:col-span-9 lg:col-start-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-foreground/10 border border-foreground/10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/15 border border-foreground/15">
                         {dict.landing.bukti.items.map((item, i) => (
-                            <div key={i} className="bg-transparent p-6 sm:p-10 lg:p-14 flex flex-col justify-between aspect-square lg:aspect-auto lg:min-h-[300px] group transition-colors hover:bg-foreground/[0.02]">
-                                <span className="font-mono font-black text-swiss-red opacity-40 mb-10" style={{ fontSize: "0.7rem" }}>
-                                    [ PARAMETER_0{i + 1} ]
-                                </span>
+                            <div key={i} className="bg-background p-6 md:p-8 flex flex-col justify-between min-h-[260px] group transition-colors hover:bg-foreground/[0.02]">
+                                <div className="flex flex-col gap-2">
+                                    <span className="font-mono font-black text-swiss-red opacity-60 text-[9px] tracking-wider">
+                                        [ PARAMETER_0{i + 1} ]
+                                    </span>
+                                    <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-foreground/45 leading-tight">
+                                        {item.label}
+                                    </span>
+                                </div>
                                 
-                                <div className="space-y-4">
-                                    <p className="font-light uppercase tracking-tighter leading-none text-foreground font-unbounded"
-                                        style={{ fontSize: "clamp(3rem, 5vw, 6rem)" }}>
+                                <div className="border-t border-foreground/10 pt-6 mt-8">
+                                    <p className="font-unbounded font-medium uppercase tracking-tighter leading-none text-foreground text-4xl sm:text-5xl group-hover:text-swiss-red transition-colors duration-300">
                                         {item.val}
                                     </p>
-                                    <p className="font-black uppercase tracking-[0.3em] text-foreground opacity-30"
-                                        style={{ fontSize: "0.6rem" }}>
-                                        {item.label}
-                                    </p>
+                                    <div className="mt-4 h-[2px] w-0 bg-swiss-red transition-all duration-500 group-hover:w-full" />
                                 </div>
-
-                                <div className="mt-10 h-[1px] w-0 bg-swiss-red transition-all duration-700 group-hover:w-full" />
                             </div>
                         ))}
                     </div>

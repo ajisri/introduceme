@@ -20,7 +20,7 @@ import {
  * Refactored for better maintainability by externalizing shader code.
  */
 export default function LoadingScreen({ setIsDoneAction }: { setIsDoneAction: () => void }) {
-    const { theme, resolvedTheme } = useTheme();
+    const { resolvedTheme } = useTheme();
     const { dict } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const canvas3dRef = useRef<HTMLCanvasElement>(null);
