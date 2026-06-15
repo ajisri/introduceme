@@ -29,8 +29,8 @@ export default function HeroSection({ handleMouseMove }: HeroSectionProps) {
                 <div className="grid grid-cols-12 gap-0 border-b border-foreground/10 pb-16 mb-16 relative w-full">
                     {/* title1 Rata Kiri, span 10 */}
                     <div className="col-span-12 lg:col-span-10 reveal-mask py-2">
-                        <h1 className="font-swiss-display font-bold uppercase tracking-tighter text-foreground break-words sm:whitespace-nowrap"
-                            style={{ fontSize: "clamp(1.8rem, 6.5vw, 9rem)" }}>
+                        <h1 className="font-swiss-display font-bold uppercase tracking-tighter text-foreground break-words lg:whitespace-nowrap"
+                            style={{ fontSize: "clamp(1.8rem, 5.5vw, 7.2rem)" }}>
                             {dict.landing.hero.title1}
                         </h1>
                     </div>
@@ -42,8 +42,8 @@ export default function HeroSection({ handleMouseMove }: HeroSectionProps) {
                     
                     {/* title2 Rata Kanan, offset col-start-3 span 10 */}
                     <div className="col-span-12 lg:col-start-3 lg:col-span-10 reveal-mask py-2">
-                        <h1 className="font-swiss-display font-bold uppercase tracking-tighter text-swiss-red break-words sm:whitespace-nowrap"
-                            style={{ fontSize: "clamp(1.8rem, 6.5vw, 9rem)" }}>
+                        <h1 className="font-swiss-display font-bold uppercase tracking-tighter text-swiss-red break-words lg:whitespace-nowrap"
+                            style={{ fontSize: "clamp(1.8rem, 5.5vw, 7.2rem)" }}>
                             {dict.landing.hero.title2}
                         </h1>
                     </div>

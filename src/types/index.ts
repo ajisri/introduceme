@@ -18,9 +18,18 @@ export interface ManifestoItem {
     desc: string;
 }
 
+export interface LegacyCardContent {
+    title: string;
+    problem: string;
+    challenge: string;
+    decision: string;
+    result: string;
+}
+
 export interface BuktiItem {
     val: string;
     label: string;
+    desc: string;
 }
 
 export interface Dictionary {
@@ -108,6 +117,7 @@ export interface Dictionary {
             financialCare: string;
             closing: string;
             cta: string;
+            inquire: string;
         };
         marquee1: {
             part1: string;
@@ -139,6 +149,7 @@ export interface Dictionary {
         galleryLabel: string;
         expandArchive: string;
     };
+
     legacy: {
         badge: string;
         title1: string;
@@ -151,6 +162,7 @@ export interface Dictionary {
         trustQuote: string;
         trustIndex: string;
         version: string;
+        cards: LegacyCardContent[];
     };
     storyPage: {
         badge: string;

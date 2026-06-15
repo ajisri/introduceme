@@ -338,11 +338,9 @@ export default function LandingPage() {
             <DiagnosisSection /> 
             {/* DiagnosisSection implements its own .color-trigger keys internally if needed */}
 
-            <MaskTransition bgColor="var(--background)">
-                <div className="color-trigger" data-theme-key="peran">
-                    <PeranSection />
-                </div>
-            </MaskTransition>
+            <div className="color-trigger" data-theme-key="peran">
+                <PeranSection />
+            </div>
             
             <div className="color-trigger" data-theme-key="bukti">
                 <BuktiSection />

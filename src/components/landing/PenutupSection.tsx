@@ -195,6 +195,19 @@ export default function PenutupSection() {
                             </motion.h1>
                         </AnimatePresence>
                     </div>
+
+                    <div className="penutup-line mt-8 md:mt-12 flex justify-start z-30">
+                        <Magnetic strength={0.15}>
+                            <Link 
+                                href="/story" 
+                                className="group inline-flex items-center gap-4 border-b border-foreground hover:border-swiss-red pb-2 transition-colors duration-300"
+                            >
+                                <span className="font-mono text-[10px] md:text-xs font-black uppercase tracking-[0.25em] text-foreground group-hover:text-swiss-red transition-colors duration-300">
+                                    {dict.landing.penutup.inquire}
+                                </span>
+                            </Link>
+                        </Magnetic>
+                    </div>
                 </div>
 
             </div>

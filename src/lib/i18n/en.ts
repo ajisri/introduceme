@@ -85,10 +85,26 @@ export const en = {
         bukti: {
             label: "// 04_CLARITY_PARAMETERS",
             items: [
-                { val: "100%", label: "ZERO_WILD_ASSUMPTIONS" },
-                { val: "ZERO", label: "CUSTOMER_DOUBT" },
-                { val: "FOCUS", label: "FIRM_DECISIONS" },
-                { val: "CLEAR", label: "CONFIRMATION_FLOW" }
+                { 
+                    val: "100%", 
+                    label: "OFFICIAL CLARITY", 
+                    desc: "We eliminate customer assumptions by building a centralized, official digital profile that answers key questions instantly, leaving zero room for doubt." 
+                },
+                { 
+                    val: "ZERO", 
+                    label: "COGNITIVE GAP", 
+                    desc: "When information is scattered, the human brain fills the gap with perceived risk. We structure your digital assets so customers can make informed decisions in seconds." 
+                },
+                { 
+                    val: "FOCUS", 
+                    label: "DECISION ARCHITECTURE", 
+                    desc: "We design user journeys that guide visitors directly to conversion elements, stripping away unnecessary secondary features that dilute user focus." 
+                },
+                { 
+                    val: "CLEAR", 
+                    label: "VERIFIED CREDIBILITY", 
+                    desc: "We build verified digital trust frameworks that satisfy search engines and customers alike, establishing your business as an undisputed authority in your niche." 
+                }
             ]
         },
         penutup: {
@@ -97,7 +113,8 @@ export const en = {
             line3: "To convince them.",
             financialCare: "soothing their financial concerns at the exact moment they make a decision",
             closing: "Choose to be trusted.",
-            cta: "→ Build Clarity"
+            cta: "→ Build Clarity",
+            inquire: "Inquire for Collaboration →"
         },
         marquee1: {
             part1: "Grow_Professional",
@@ -140,7 +157,30 @@ export const en = {
         quote: "Historical data constitutes the structural foundation for digital authority.",
         trustQuote: "If you are tired of competing on price, start competing on trust.",
         trustIndex: "TRUST_INDEX: AA+",
-        version: "VERSION: PROVENANCE_V1"
+        version: "VERSION: PROVENANCE_V1",
+        cards: [
+            {
+                title: "THE AWAKENING",
+                problem: "Traditional businesses losing traction due to invisible shifts in digital consumer behaviors.",
+                challenge: "Capturing organic user trust without resorting to gimmicky or aggressive ads.",
+                decision: "Pivot to Swiss-Brutalist minimalist architectures focusing on speed, raw data, and clear info structures.",
+                result: "Establishment of the digital trust protocol achieving instant credibility and zero noise."
+            },
+            {
+                title: "AKSA INITIATIVE",
+                problem: "Fragmented historical records and data provenance across decentralized engineering platforms.",
+                challenge: "Unifying architectural system records while preserving absolute security and low cognitive load.",
+                decision: "Implement a structured metadata ledger and grid-based visual verification framework.",
+                result: "A robust provenance tracking system with verifiable indices and high compliance audit scores."
+            },
+            {
+                title: "REFLECTIVE RECONSTRUCTION",
+                problem: "Over-complicated user interfaces creating cognitive gaps and decision hesitation.",
+                challenge: "Stripping down secondary visual noise while maintaining premium brand aesthetic.",
+                decision: "Enforce strict typographic hierarchy and linear conversion funnel layout patterns.",
+                result: "A 40% reduction in customer drop-off rate and a highly optimized decision-making path."
+            }
+        ]
     },
     storyPage: {
         badge: "( DECRYPTING_BIOGRAPHY )",

@@ -85,10 +85,26 @@ export const id = {
         bukti: {
             label: "// 04_PARAMETER_KEJELASAN",
             items: [
-                { val: "100%", label: "BEBAS_ASUMSI_LIAR" },
-                { val: "NOL", label: "KERAGUAN_PELANGGAN" },
-                { val: "FOKUS", label: "KEPUTUSAN_MANTAP" },
-                { val: "JELAS", label: "ALUR_KONFIRMASI" }
+                { 
+                    val: "100%", 
+                    label: "KEJELASAN RESMI", 
+                    desc: "Kami melenyapkan segala asumsi liar pelanggan dengan membangun pusat profil digital resmi yang menjawab pertanyaan penting secara langsung, menutup ruang keraguan." 
+                },
+                { 
+                    val: "NOL", 
+                    label: "CELAH INFORMASI", 
+                    desc: "Saat informasi tersebar tanpa arah, otak pelanggan akan mengisi kekosongan dengan asumsi risiko. Kami merancang struktur informasi agar mereka yakin dalam hitungan detik." 
+                },
+                { 
+                    val: "FOKUS", 
+                    label: "ARSITEKTUR KEPUTUSAN", 
+                    desc: "Kami memandu alur keputusan pengunjung langsung menuju tindakan konversi utama, menghilangkan kerumitan sistem sekunder yang memecah fokus perhatian." 
+                },
+                { 
+                    val: "JELAS", 
+                    label: "OTORITAS TERVERIFIKASI", 
+                    desc: "Kami membangun sistem pembuktian kredibilitas yang diakui oleh mesin pencari dan calon pelanggan, memperkokoh reputasi Anda sebagai otoritas tepercaya." 
+                }
             ]
         },
         penutup: {
@@ -97,7 +113,8 @@ export const id = {
             line3: "Untuk meyakinkan mereka.",
             financialCare: "menenangkan kekhawatiran finansial mereka tepat pada saat mereka mengambil keputusan",
             closing: "Pilih untuk dipercaya.",
-            cta: "→ Bangun Kejelasan"
+            cta: "→ Bangun Kejelasan",
+            inquire: "Ajukan Kolaborasi →"
         },
         marquee1: {
             part1: "Bertumbuh_Profesional",
@@ -140,7 +157,30 @@ export const id = {
         quote: "Data histori mengenalkan prinsip dan metodologi anda kepada pembaca",
         trustQuote: "Jika Anda lelah bersaing di harga, mulailah bersaing di kepercayaan.",
         trustIndex: "INDEKS_KEPERCAYAAN: AA+",
-        version: "VERSI: PROVENANCE_V1"
+        version: "VERSI: PROVENANCE_V1",
+        cards: [
+            {
+                title: "AWAKENING (AWAL MULA)",
+                problem: "Bisnis tradisional kehilangan traksi karena perubahan perilaku konsumen digital yang tidak terlihat.",
+                challenge: "Meraih kepercayaan pengguna secara organik tanpa menggunakan iklan yang agresif atau manipulatif.",
+                decision: "Beralih ke arsitektur minimalis Swiss-Brutalist yang berfokus pada kecepatan, data mentah, dan kejelasan informasi.",
+                result: "Terbentuknya protokol kepercayaan digital yang menghasilkan kredibilitas instan tanpa kebisingan visual."
+            },
+            {
+                title: "INISIATIF AKSA",
+                problem: "Catatan histori dan asal-usul data yang terfragmentasi di berbagai platform rekayasa desentralisasi.",
+                challenge: "Menyatukan catatan sistem arsitektural sembari menjaga keamanan mutlak dan beban kognitif yang rendah.",
+                decision: "Menerapkan buku besar metadata terstruktur dan kerangka verifikasi visual berbasis grid.",
+                result: "Sistem pelacakan asal-usul data yang kokoh dengan indeks terverifikasi dan skor audit kepatuhan yang tinggi."
+            },
+            {
+                title: "REKONSTRUKSI REFLEKTIF",
+                problem: "Antarmuka pengguna yang terlalu rumit sehingga menciptakan celah kognitif dan keraguan keputusan.",
+                challenge: "Memangkas kebisingan visual sekunder sembari mempertahankan estetika merek yang premium.",
+                decision: "Menegakkan hierarki tipografi yang ketat dan pola tata letak corong konversi linier.",
+                result: "Pengurangan 40% pada rasio pentalan pelanggan dan jalur pengambilan keputusan yang sangat dioptimalkan."
+            }
+        ]
     },
     storyPage: {
         badge: "( DEKRIPSI_BIOGRAFI )",

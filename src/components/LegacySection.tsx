@@ -6,18 +6,15 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 // =============================================================================
-// LEGACY SECTION - "Chaos to Order" Animation
-// Design: Pop Art + Postmodern irony, demonstrating control over chaos
-// Color: Swiss Red theme (NOT blue) for brand consistency
+// LEGACY SECTION - "Chaos to Order" / Curated Case Studies
+// Design: Swiss Pop Brutalism with structured, alternating case study grids
+// Color: Swiss Red theme for brand consistency
 // =============================================================================
 
 const images = [
     "/story/1_awakening.png",
     "/story/2_aksa.png",
-    "/story/3_time.png",
-    "/story/4_stuck.png",
-    "/story/7_reflection.png",
-    "/story/8_journey.png"
+    "/story/7_reflection.png"
 ];
 
 export default function LegacySection() {
@@ -30,65 +27,65 @@ export default function LegacySection() {
 
         const ctx = gsap.context(() => {
             const cards = gsap.utils.toArray(".legacy-card") as HTMLElement[];
+            const textBlocks = gsap.utils.toArray(".case-study-narrative") as HTMLElement[];
             if (cards.length === 0) return;
 
             // ====================================================================
-            // INITIAL STATE: Controlled Chaos
-            // Random positions but within reasonable bounds for better UX
+            // INITIAL STATE: Subtle entry offsets
             // ====================================================================
             cards.forEach((card, i) => {
-                // Create varied but balanced chaos
-                const angle = (i / cards.length) * Math.PI * 2;
-                const radius = 150 + Math.random() * 200;
-
                 gsap.set(card, {
-                    x: Math.cos(angle + Math.random() * 0.5) * radius,
-                    y: Math.sin(angle + Math.random() * 0.5) * radius * 0.6,
-                    rotate: (Math.random() - 0.5) * 35,
-                    scale: 0.75 + Math.random() * 0.15,
+                    y: 60,
                     opacity: 0,
-                    filter: "blur(8px) grayscale(100%)"
+                    filter: "blur(4px)"
+                });
+            });
+            textBlocks.forEach((block) => {
+                gsap.set(block, {
+                    y: 40,
+                    opacity: 0
                 });
             });
 
             // ====================================================================
-            // SCROLL ANIMATION: Chaos → Order Transition
-            // Extended end point for smoother completion before section exits
+            // SCROLL ANIMATION: Staggered Fade-in/Up Reveal
             // ====================================================================
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 80%",      // Start earlier
-                    end: "center center",  // End at center for complete reveal
-                    scrub: 0.6,            // Slightly faster response
-                }
+            const rows = gsap.utils.toArray(".case-study-row") as HTMLElement[];
+            rows.forEach((row) => {
+                const img = row.querySelector(".legacy-card");
+                const narrative = row.querySelector(".case-study-narrative");
+
+                const rowTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: row,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    }
+                });
+
+                rowTl.to(img, {
+                    y: 0,
+                    opacity: 1,
+                    filter: "blur(0px)",
+                    duration: 1,
+                    ease: "power2.out"
+                })
+                .to(narrative, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power2.out"
+                }, "-=0.6");
             });
 
-            // Staggered reveal with smooth easing
-            tl.to(cards, {
-                x: 0,
-                y: 0,
-                rotate: 0,
-                scale: 1,
-                opacity: 1,
-                filter: "blur(0px) grayscale(0%)",
-                stagger: {
-                    amount: 0.4,
-                    from: "center" // Reveal from center outward
-                },
-                ease: "power2.out",
-                force3D: true
-            });
-
             // ====================================================================
-            // POST-REVEAL: Subtle Floating Animation
-            // Organic movement that doesn't fight with scroll position
+            // POST-REVEAL: Subtle Floating Animation for Images
             // ====================================================================
             cards.forEach((card, i) => {
                 const floatTl = gsap.timeline({
                     scrollTrigger: {
                         trigger: containerRef.current,
-                        start: "center center",
+                        start: "top 40%",
                         toggleActions: "play pause resume pause"
                     }
                 });
@@ -134,8 +131,8 @@ export default function LegacySection() {
             // ====================================================================
             ScrollTrigger.create({
                 trigger: ".trust-quote-part-2",
-                start: "center center",
-                end: "+=150%", // Jaga kalimat setengah scroll lagi setelah berhenti (reveal selesai)
+                start: "center 35%",
+                end: "+=250%", 
                 pin: true,
                 pinSpacing: false, 
                 anticipatePin: 1,
@@ -155,7 +152,7 @@ export default function LegacySection() {
             
             gsap.to(".red-glow-accent", {
                 scale: 1.15,
-                opacity: 0.20, // Melemahkan puncaknya sedikit
+                opacity: 0.20,
                 duration: 6,
                 repeat: -1,
                 yoyo: true,
@@ -223,6 +220,9 @@ export default function LegacySection() {
         return () => ctx.revert();
     }, []);
 
+    // Safety fallback for cards translation structure
+    const cardsList = dict.legacy.cards || [];
+
     return (
         <section
             ref={containerRef}
@@ -246,7 +246,6 @@ export default function LegacySection() {
                 <h2 className="text-[14vw] lg:text-[10vw] font-black uppercase leading-[0.75] tracking-[-0.03em]">
                     {dict.legacy.title1}<br />
                     <span className="text-stroke">{dict.legacy.title2}</span><br />
-                    {/* Swiss Red with black text-shadow for stronger contrast */}
                     <span
                         className="text-[var(--swiss-red)] relative"
                         style={{
@@ -263,69 +262,97 @@ export default function LegacySection() {
                     {dict.legacy.subtitle}
                 </p>
             </div>
+
             {/* ================================================================
-                IMAGE GRID - Chaos to Order Cards (Asymmetric 12-Column Layout)
+                IMAGE GRID - Curated Alternating Case Study Layout
             ================================================================ */}
             <div
                 ref={gridRef}
-                className="relative w-full max-w-[1600px] h-auto flex items-center justify-center py-16 lg:py-24 px-4 lg:px-10"
+                className="relative w-full max-w-[1600px] h-auto py-16 lg:py-24 px-4 lg:px-10 z-10"
             >
-                <div className="grid grid-cols-12 gap-y-16 md:gap-y-28 md:gap-x-12 w-full perspective-1000">
-                    {[
-                        { src: images[0], layout: "col-span-12 sm:col-span-6 md:col-span-5 md:mt-0" },
-                        { src: images[1], layout: "col-span-12 sm:col-span-6 md:col-span-6 md:col-start-7 md:mt-24" },
-                        { src: images[2], layout: "col-span-12 sm:col-span-6 md:col-span-4 md:mt-10" },
-                        { src: images[3], layout: "col-span-12 sm:col-span-6 md:col-span-6 md:col-start-7 md:-mt-16" },
-                        { src: images[4], layout: "col-span-12 sm:col-span-6 md:col-span-6 md:mt-16" },
-                        { src: images[5], layout: "col-span-12 sm:col-span-6 md:col-span-5 md:col-start-8 md:-mt-12" }
-                    ].map((card, i) => (
-                        <div
-                            key={i}
-                            className={`
-                                legacy-card brutalist-card relative aspect-[3/4] w-full group cursor-pointer overflow-hidden p-0
-                                ${card.layout}
-                            `}
-                            style={{
-                                willChange: 'transform, opacity, filter',
-                                transformStyle: 'preserve-3d'
-                            }}
-                        >
-                            {/* Image Container */}
-                            <div className="absolute inset-0 bg-transparent overflow-hidden">
-                                <Image
-                                    src={card.src}
-                                    alt={`Legacy Archive ${i + 1}`}
-                                    fill
-                                    sizes="(max-width: 768px) 50vw, 33vw"
-                                    className="object-cover transition-all duration-700 grayscale-0 group-hover:grayscale-0 scale-100 group-hover:scale-110"
-                                    loading="lazy"
-                                />
+                <div className="flex flex-col gap-24 lg:gap-40 w-full perspective-1000">
+                    {cardsList.slice(0, 3).map((card, i) => {
+                        const isEven = i % 2 === 0;
+                        return (
+                            <div 
+                                key={i} 
+                                className="case-study-row grid grid-cols-12 gap-8 lg:gap-16 items-center w-full"
+                            >
+                                {/* Poster Image Column */}
+                                <div className={`col-span-12 lg:col-span-5 ${isEven ? 'lg:order-1' : 'lg:order-2 lg:col-start-8'}`}>
+                                    <div
+                                        className="legacy-card brutalist-card relative aspect-[3/4] w-full group cursor-pointer overflow-hidden p-0"
+                                        style={{
+                                            willChange: 'transform, opacity, filter',
+                                            transformStyle: 'preserve-3d'
+                                        }}
+                                    >
+                                        <div className="absolute inset-0 bg-transparent overflow-hidden">
+                                            <Image
+                                                src={images[i]}
+                                                alt={card.title}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, 40vw"
+                                                className="object-cover transition-all duration-700 grayscale-0 group-hover:grayscale-0 scale-100 group-hover:scale-110"
+                                                loading="lazy"
+                                            />
 
-                                {/* Coordinate indicator badge for Swiss aesthetic */}
-                                <div className="absolute top-0 left-0 bg-background/80 backdrop-blur-[2px] text-foreground px-2 py-1 font-mono text-[7px] font-bold uppercase tracking-wider z-20 border-r border-b border-foreground/15">
-                                    COORD_[X_{i * 2 + 3}_Y_{20 - i * 3}]
-                                </div>
+                                            {/* Coordinate indicator badge for Swiss aesthetic */}
+                                            <div className="absolute top-0 left-0 bg-background/80 backdrop-blur-[2px] text-foreground px-2 py-1 font-mono text-[7px] font-bold uppercase tracking-wider z-20 border-r border-b border-foreground/15">
+                                                COORD_[X_{i * 4 + 3}_Y_{20 - i * 6}]
+                                            </div>
 
-                                {/* Reference Label - Top Right */}
-                                <div className="absolute top-0 right-0 bg-foreground text-background px-3 py-1.5 font-mono text-[8px] font-black uppercase tracking-wider z-20">
-                                    {dict.legacy.ref}{String(i + 1).padStart(2, '0')}
-                                </div>
+                                            {/* Reference Label - Top Right */}
+                                            <div className="absolute top-0 right-0 bg-foreground text-background px-3 py-1.5 font-mono text-[8px] font-black uppercase tracking-wider z-20">
+                                                {dict.legacy.ref}{String(i + 1).padStart(2, '0')}
+                                            </div>
 
-                                {/* Hover Info Panel - Bottom */}
-                                <div className="absolute bottom-0 left-0 w-full p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-foreground text-background z-30">
-                                    <div className="flex justify-between items-center w-full">
-                                        <span className="font-mono text-[9px] font-black uppercase tracking-wide">
-                                            {dict.legacy.sequence}{String(i + 1).padStart(2, '0')}
-                                        </span>
-                                        <div className="w-2 h-2 bg-[var(--pop-green)] rounded-full animate-pulse" />
+                                            {/* Hover Info Panel - Bottom */}
+                                            <div className="absolute bottom-0 left-0 w-full p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-foreground text-background z-30">
+                                                <div className="flex justify-between items-center w-full">
+                                                    <span className="font-mono text-[9px] font-black uppercase tracking-wide">
+                                                        {dict.legacy.sequence}{String(i + 1).padStart(2, '0')}
+                                                    </span>
+                                                    <div className="w-2 h-2 bg-[var(--pop-green)] rounded-full animate-pulse" />
+                                                </div>
+                                            </div>
+
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* Gradient Overlay on Hover */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                {/* Narrative Detail Column */}
+                                <div className={`case-study-narrative col-span-12 lg:col-span-6 flex flex-col justify-center gap-6 p-6 lg:p-10 border border-foreground/10 bg-foreground/[0.01] backdrop-blur-[1px] relative ${isEven ? 'lg:order-2 lg:col-start-7' : 'lg:order-1'}`}>
+                                    <div className="absolute -top-3 left-6 bg-foreground text-background px-3 py-0.5 text-[8px] font-mono tracking-widest uppercase font-black">
+                                        [ CASE_STUDY_0{i + 1} // {card.title} ]
+                                    </div>
+                                    
+                                    <div className="space-y-4">
+                                        <div className="border-l-2 border-swiss-red pl-4">
+                                            <span className="font-mono text-[8px] uppercase tracking-widest text-swiss-red block font-black mb-1">MASALAH / PROBLEM</span>
+                                            <p className="text-xs sm:text-sm font-sans font-medium text-foreground/80 leading-relaxed">{card.problem}</p>
+                                        </div>
+
+                                        <div className="border-l-2 border-foreground/30 pl-4">
+                                            <span className="font-mono text-[8px] uppercase tracking-widest text-foreground/40 block font-black mb-1">TANTANGAN / CHALLENGE</span>
+                                            <p className="text-xs sm:text-sm font-sans font-medium text-foreground/80 leading-relaxed">{card.challenge}</p>
+                                        </div>
+
+                                        <div className="border-l-2 border-[var(--pop-blue)] pl-4">
+                                            <span className="font-mono text-[8px] uppercase tracking-widest text-[var(--pop-blue)] block font-black mb-1">KEPUTUSAN / DECISION</span>
+                                            <p className="text-xs sm:text-sm font-sans font-medium text-foreground/80 leading-relaxed">{card.decision}</p>
+                                        </div>
+
+                                        <div className="border-l-2 border-[var(--pop-green)] pl-4">
+                                            <span className="font-mono text-[8px] uppercase tracking-widest text-[var(--pop-green)] block font-black mb-1">HASIL / RESULT</span>
+                                            <p className="text-xs sm:text-sm font-sans font-bold text-foreground leading-relaxed">{card.result}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
 
@@ -368,7 +395,7 @@ export default function LegacySection() {
                                  backgroundSize: '100% 100%',
                                  transform: 'rotate(0deg) scale(2)',
                                  filter: 'blur(0.5px)'
-                             }} 
+                              }} 
                         />
 
                         {/* First Part */}
@@ -382,7 +409,7 @@ export default function LegacySection() {
                             ))}
                         </h3>
 
-                        {/* Second Part - Raised further and enhanced background interaction */}
+                        {/* Second Part */}
                         <h3 className="trust-quote-part-2 flex flex-wrap content-start items-start justify-end gap-x-[0.25em] gap-y-[0.1em] text-[8.5vw] sm:text-[7vw] lg:text-[5.5vw] font-black uppercase leading-[0.9] tracking-[-0.04em] w-full mt-[30vh] lg:mt-[60vh] pb-4 perspective-1000 z-50 relative text-right">
                             {(dict.legacy.trustQuote || "").split(',').slice(1).join(',').trim().split(' ').map((word: string, i: number) => (
                                 <span key={i} className="inline-block overflow-hidden pb-[0.2em] pt-[0.1em] px-[0.05em] align-top whitespace-nowrap">
