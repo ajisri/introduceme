@@ -11,12 +11,10 @@ import {
     HeroSection,
     MarqueeOne,
     RefleksiSection,
-    DiagnosisSection,
     PeranSection,
     BuktiSection,
-    ContrastSection,
     PenutupSection,
-    MaskTransition
+    NotesSection
 } from "./landing";
 
 if (typeof window !== "undefined") {
@@ -35,25 +33,9 @@ const THEME_PALETTE: Record<string, { light: { bg: string, fg: string }, dark: {
         light: { bg: "#E8E9E4", fg: "#0E0E0E" },
         dark: { bg: "#121212", fg: "#F5F5F0" }
     },
-    diagnosis_top: {
-        light: { bg: "#D7DFE4", fg: "#0E0E0E" },
-        dark: { bg: "#1a1c1e", fg: "#F5F5F0" }
-    },
-    diagnosis_bottom: {
-        light: { bg: "#0E0E0E", fg: "#F5F5F0" },
-        dark: { bg: "#000000", fg: "#F5F5F0" }
-    },
-    peran: {
-        light: { bg: "#F5F2EB", fg: "#0E0E0E" },
-        dark: { bg: "#151513", fg: "#F5F5F0" }
-    },
     bukti: {
         light: { bg: "#E6E5E0", fg: "#0E0E0E" },
         dark: { bg: "#141416", fg: "#F5F5F0" }
-    },
-    contrast: {
-        light: { bg: "#DFE2E5", fg: "#0E0E0E" },
-        dark: { bg: "#1a1a1b", fg: "#F5F5F0" }
     },
     legacy: {
         light: { bg: "#F5F5F0", fg: "#0E0E0E" },
@@ -62,6 +44,14 @@ const THEME_PALETTE: Record<string, { light: { bg: string, fg: string }, dark: {
     penutup: {
         light: { bg: "#050505", fg: "#F5F5F0" },
         dark: { bg: "#000000", fg: "#F5F5F0" }
+    },
+    notes: {
+        light: { bg: "#EAE9E5", fg: "#0E0E0E" },
+        dark: { bg: "#111113", fg: "#F5F5F0" }
+    },
+    peran: {
+        light: { bg: "#F5F2EB", fg: "#0E0E0E" },
+        dark: { bg: "#151513", fg: "#F5F5F0" }
     }
 };
 
@@ -177,59 +167,10 @@ export default function LandingPage() {
                 scale: 0.98, opacity: 0, duration: 1.2, ease: "power2.out"
             });
 
-            // 4. DIAGNOSIS — Precise clinical reveal
-            gsap.from(".diagnosis-title", {
-                scrollTrigger: { trigger: ".diagnosis-title", start: "top 80%" },
-                y: 50, opacity: 0, duration: 1.2, ease: "power4.out"
-            });
-            const diagnosisItems = gsap.utils.toArray(".diagnosis-item") as HTMLElement[];
-            diagnosisItems.forEach((item, i) => {
-                gsap.from(item, {
-                    scrollTrigger: { trigger: item, start: "top 90%" },
-                    x: 30, opacity: 0, duration: 1, delay: i * 0.1, ease: "power3.out"
-                });
-            });
-            gsap.from(".diagnosis-conclusion", {
-                scrollTrigger: { trigger: ".diagnosis-conclusion", start: "top 85%" },
-                y: 40, opacity: 0, duration: 1.2, ease: "power4.out"
-            });
-
-            // 5. PERAN — Authority reveal (inverted section)
-            gsap.from(".peran-title", {
-                scrollTrigger: { trigger: ".peran-title", start: "top 85%", toggleActions: "play none none reverse" },
-                y: 60, opacity: 0, duration: 1, ease: "power3.out"
-            });
-            gsap.from(".peran-negation", {
-                scrollTrigger: { trigger: ".peran-negation", start: "top 88%", toggleActions: "play none none reverse" },
-                y: 30, opacity: 0, duration: 0.7, ease: "power2.out"
-            });
-            gsap.from(".peran-main", {
-                scrollTrigger: { trigger: ".peran-main", start: "top 88%", toggleActions: "play none none reverse" },
-                x: 40, opacity: 0, duration: 0.8, ease: "power2.out"
-            });
-
-            // 6. BUKTI — Stats scale reveal (subtle)
-            gsap.utils.toArray(".bukti-item").forEach((item) => {
-                gsap.from(item as HTMLElement, {
-                    scrollTrigger: { trigger: item as HTMLElement, start: "top 90%", toggleActions: "play none none reverse" },
-                    y: 30, opacity: 0, duration: 0.6, ease: "power2.out"
-                });
-            });
-            gsap.utils.toArray(".stat-value").forEach((stat) => {
-                gsap.from(stat as HTMLElement, {
-                    scrollTrigger: { trigger: stat as HTMLElement, start: "top 90%", toggleActions: "play none none reverse" },
-                    scale: 0.9, opacity: 0, duration: 0.5, ease: "back.out(1.2)"
-                });
-            });
-
-            // 7. CONTRAST — Side-by-side reveal
-            gsap.from(".contrast-agency", {
-                scrollTrigger: { trigger: ".contrast-agency", start: "top 88%", toggleActions: "play none none reverse" },
-                x: -30, opacity: 0, duration: 0.7, ease: "power2.out"
-            });
-            gsap.from(".contrast-engineer", {
-                scrollTrigger: { trigger: ".contrast-engineer", start: "top 88%", toggleActions: "play none none reverse" },
-                x: 30, opacity: 0, duration: 0.7, delay: 0.15, ease: "power2.out"
+            // 4. BUKTI — Stats scale reveal (subtle)
+            gsap.from(".bukti-label", {
+                scrollTrigger: { trigger: ".bukti-label", start: "top 90%" },
+                x: -30, opacity: 0, duration: 1, ease: "power4.out"
             });
         }, containerRef);
 
@@ -335,19 +276,16 @@ export default function LandingPage() {
                 <RefleksiSection />
             </div>
             
-            <DiagnosisSection /> 
-            {/* DiagnosisSection implements its own .color-trigger keys internally if needed */}
+            <div className="color-trigger" data-theme-key="bukti">
+                <BuktiSection />
+            </div>
 
             <div className="color-trigger" data-theme-key="peran">
                 <PeranSection />
             </div>
-            
-            <div className="color-trigger" data-theme-key="bukti">
-                <BuktiSection />
-            </div>
-            
-            <div className="color-trigger" data-theme-key="contrast">
-                <ContrastSection />
+
+            <div className="color-trigger" data-theme-key="notes">
+                <NotesSection />
             </div>
             
             <div className="color-trigger" data-theme-key="legacy">

@@ -4,7 +4,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PeranSection() {
-    const { dict } = useLanguage();
+    const { dict, language } = useLanguage();
     const [words, setWords] = useState<{ id: string, text: string }[]>([]);
 
     useEffect(() => {
@@ -30,10 +30,7 @@ export default function PeranSection() {
         setWords(newWords);
     };
 
-    // Split the solution description into items
-    const solutionItems = dict.landing.peran.mainDesc 
-        ? dict.landing.peran.mainDesc.split("•").map(item => item.trim()).filter(Boolean)
-        : [];
+    // Split the solution description into items (removed unused variable)
 
     return (
         <section id="authority" className="w-full bg-foreground text-background py-32 lg:py-48 overflow-hidden relative border-t border-background/10">
@@ -49,16 +46,6 @@ export default function PeranSection() {
                                     {dict.landing.peran.label}
                                 </span>
                             </div>
-                            
-                            <motion.div 
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 0.5, x: 0 }}
-                                transition={{ delay: 1 }}
-                                className="mt-8 font-mono text-[9px] uppercase tracking-widest leading-relaxed max-w-[180px]"
-                            >
-                                <span className="text-swiss-red">[ LOGIKA_SISTEM ]</span><br />
-                                Kata-kata di samping akan bergeser secara rapi ketika Anda klik untuk menyesuaikan struktur baru.
-                            </motion.div>
                         </div>
                     </div>
 
@@ -66,13 +53,6 @@ export default function PeranSection() {
                         <div className="flex flex-col gap-12 lg:gap-16">
                             {/* Interactive Word Shuffle with structural border frame */}
                             <div className="relative border border-background/15 p-6 md:p-10 lg:p-12 bg-background/[0.02] backdrop-blur-[2px]">
-                                {/* Technical labels for Swiss design aesthetic */}
-                                <div className="absolute -top-2.5 left-6 bg-foreground text-background px-2 py-0.5 text-[8px] font-mono tracking-widest">
-                                    [ INTERACTION_SHUFFLE_BOARD ]
-                                </div>
-                                <div className="absolute -top-2.5 right-6 bg-background text-foreground px-2 py-0.5 text-[8px] font-mono tracking-widest opacity-80 hidden sm:block">
-                                    SYS_REORDER: CLICK_TO_SHUFFLE
-                                </div>
                                 <div className="absolute -bottom-2 right-6 bg-background text-foreground px-2 py-0.5 text-[8px] font-mono tracking-widest opacity-40">
                                     LOC: 50.10°N // 08.41°E
                                 </div>
@@ -114,38 +94,32 @@ export default function PeranSection() {
                                 </motion.div>
                             </div>
 
-                            {/* Asymmetric 2-column layout for Negation vs Solution */}
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 border-t border-background/15 pt-12">
-                                {/* Left column: Negated claims (col-span-5) */}
-                                <div className="lg:col-span-5 space-y-4">
-                                    <div className="font-mono text-[9px] opacity-40 uppercase tracking-widest flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 bg-swiss-red rounded-full"></span>
-                                        [ STATUS_DIABAIKAN / NEGASI ]
-                                    </div>
-                                    <div className="space-y-4 pt-2">
-                                        <p className="font-sans font-medium leading-snug opacity-20 line-through decoration-swiss-red decoration-2" style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.15rem)" }}>
-                                            {dict.landing.peran.notLine1}
-                                        </p>
-                                        <p className="font-sans font-medium leading-snug opacity-20 line-through decoration-swiss-red decoration-2" style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.15rem)" }}>
-                                            {dict.landing.peran.notLine2}
-                                        </p>
-                                    </div>
-                                </div>
+                            {/* Personal Narrative */}
+                            <div className="border-l-2 border-swiss-red pl-6 md:pl-10 space-y-6 max-w-3xl">
+                                <span className="font-mono text-[9px] text-swiss-red uppercase tracking-widest block font-black">
+                                    {language === "id" ? "[ MENGAPA_SAYA_PEDULI ]" : "[ WHY_I_CARE ]"}
+                                </span>
+                                <p className="font-sans font-medium text-background/85 leading-relaxed text-sm md:text-lg">
+                                    {dict.landing.peran.whyCare}
+                                </p>
+                            </div>
 
-                                {/* Right column: Solution Blueprint items (col-span-7) */}
-                                <div className="lg:col-span-7 border-t lg:border-t-0 lg:border-l border-background/15 lg:pl-10 pt-8 lg:pt-0">
-                                    <div className="font-mono text-[9px] text-swiss-red uppercase tracking-widest mb-6 flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 bg-swiss-red"></span>
-                                        [ PROTOKOL_SOLUSI_KOMUNIKASI ]
-                                    </div>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                                        {solutionItems.map((item, idx) => (
-                                            <div key={idx} className="border-b border-background/10 pb-2 flex justify-between items-end">
-                                                <span className="font-mono text-[8px] opacity-40">INDEX_0{idx + 1}</span>
-                                                <span className="font-unbounded font-medium text-[11px] tracking-tight text-background uppercase">{item}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                            {/* Philosophy / Beliefs Grid */}
+                            <div className="border-t border-background/15 pt-12">
+                                <span className="font-mono text-[9px] opacity-40 uppercase tracking-widest block mb-8">
+                                    {dict.landing.peran.beliefsTitle}
+                                </span>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    {dict.landing.peran.beliefs.map((belief: string, idx: number) => (
+                                        <div key={idx} className="border border-background/10 p-6 bg-background/[0.02] flex flex-col justify-between min-h-[160px]">
+                                            <span className="font-mono text-[8px] text-swiss-red font-black">
+                                                [ BELIEF_0{idx + 1} ]
+                                            </span>
+                                            <p className="font-sans text-xs md:text-sm text-background/80 leading-relaxed font-semibold mt-4">
+                                                {belief}
+                                            </p>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 

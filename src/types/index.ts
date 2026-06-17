@@ -20,15 +20,20 @@ export interface ManifestoItem {
 
 export interface LegacyCardContent {
     title: string;
-    problem: string;
-    challenge: string;
-    decision: string;
-    result: string;
+    question: string;
+    hypothesis: string;
+    exploration: string;
+    insight: string;
 }
 
 export interface BuktiItem {
     val: string;
     label: string;
+    desc: string;
+}
+
+export interface NotesItem {
+    title: string;
     desc: string;
 }
 
@@ -60,6 +65,7 @@ export interface Dictionary {
             desc2: string;
             stat: string;
             statLabel: string;
+            statDesc?: string;
             point1?: string;
             point2?: string;
             cta: string;
@@ -102,6 +108,9 @@ export interface Dictionary {
         peran: {
             label: string;
             title: string;
+            whyCare: string;
+            beliefsTitle: string;
+            beliefs: string[];
             notLine1: string;
             notLine2: string;
             mainDesc: string;
@@ -130,6 +139,11 @@ export interface Dictionary {
             agencyLine: string;
             engineerLabel: string;
             engineerLine: string;
+        };
+        notes: {
+            label: string;
+            title: string;
+            items: NotesItem[];
         };
     };
     footer: {

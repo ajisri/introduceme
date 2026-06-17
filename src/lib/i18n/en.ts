@@ -2,8 +2,8 @@ import { Dictionary } from "@/types";
 
 export const en = {
     header: {
-        status: "STATUS: OPERATIONAL // V.01-2026",
-        protocol: "PROTOCOL: DESIGN_AUTHORITY",
+        status: "STATUS: ACTIVE // V.01-2026",
+        protocol: "PROTOCOL: TRUST_ARCHITECTURE",
         location: "LOC: GLOBAL_NETWORK",
         nav: {
             core: "Core",
@@ -25,29 +25,30 @@ export const en = {
     },
     landing: {
         hero: {
-            tagline: "[ DIGITAL BEHAVIOR ANALYSIS ]",
-            title1: "STAY RELEVANT.",
-            title2: "STAY PROFESSIONAL.",
-            subtitle: "A website is just one tool for business growth and staying professional in a changing market.",
-            desc1: "Why? Because when confirming something risky, people's behavior changes.",
-            desc2: "From visiting stores directly to confirm, it shifts to Google confirmation and seeking digital alternatives.",
-            stat: "99%",
-            statLabel: "PEOPLE DON'T CARE ABOUT YOUR HARD WORK",
-            cta: "→ SEE REALITY",
-            scrollLabel: "INITIATE_ANALYSIS",
-            qualifier: "YOUR BUSINESS IS EITHER READY OR NOT READY TO CONVINCE THEM."
+            tagline: "[ Reducing Digital Uncertainty ]",
+            title1: "People decide who to trust",
+            title2: "before they decide who to hire.",
+            subtitle: "I help professionals, consultants, and growing businesses build websites that communicate credibility before the first conversation.",
+            desc1: "",
+            desc2: "",
+            stat: "CORE",
+            statLabel: "[ THE TRUST METHOD ]",
+            statDesc: "Many Businesses Only Need A Simple Version To Avoid Customer Confusion.",
+            cta: "→ See My Thinking",
+            scrollLabel: "Initiate analysis",
+            qualifier: "Your business is either ready or not ready to convince them."
         },
         refleksi: {
-            label: "// 01_MARKET_PSYCHOLOGY",
-            line1: "However... what doesn't change?",
-            line2: "Ensuring official information, reputation, and professionalism.",
-            question: "They simply… leave.",
-            desc1: "Opening 3–5 options, comparing silently. They never say 'I'm hesitant'.",
-            desc2: "The human brain naturally fills information gaps with risk."
+            label: "// 01_The_Observation",
+            line1: "Most websites fail before people read them.",
+            line2: "Visitors don't leave because they dislike your business.",
+            question: "They leave because they don't understand it.",
+            desc1: "When positioning is unclear,",
+            desc2: "trust disappears within seconds."
         },
         diagnosis: {
-            label: "// 02_UNCERTAINTY_ANALYSIS",
-            title: "FILLING THE GAPS",
+            label: "// 02_Uncertainty_Analysis",
+            title: "Filling the Gaps",
             items: [
                 "No official information center → customer brain fills the gap with assumptions.",
                 "Doubt arises when information is unclear (The Black Room).",
@@ -76,45 +77,52 @@ export const en = {
             floating6: "How to order?"
         },
         peran: {
-            label: "// 03_SIMPLE_STRATEGY",
-            title: "Many businesses only need a simple version to avoid customer confusion.",
-            notLine1: "Not all businesses need complex systems.",
-            notLine2: "Clarity is the key to trust.",
-            mainDesc: "Clear Profile • Location & Hours • Ordering Process • Portfolio • Testimonials • Service Procedures."
+            label: "// 03_Philosophy",
+            title: "What I believe.",
+            whyCare: "A website should not impress people. It should remove uncertainty. Most websites focus on attention. I focus on understanding.",
+            beliefsTitle: "Because trust is created when people:",
+            beliefs: [
+                "immediately understand who you are,",
+                "what you do,",
+                "and why it matters."
+            ],
+            notLine1: "A website should not impress people.",
+            notLine2: "It should remove uncertainty.",
+            mainDesc: "Editorial Structure • Structured Case Data • Typographic Precision • Low Cognitive Load"
         },
         bukti: {
-            label: "// 04_CLARITY_PARAMETERS",
+            label: "// 02_The_Framework",
             items: [
                 { 
-                    val: "100%", 
-                    label: "OFFICIAL CLARITY", 
-                    desc: "We eliminate customer assumptions by building a centralized, official digital profile that answers key questions instantly, leaving zero room for doubt." 
+                    val: "01", 
+                    label: "Clarity", 
+                    desc: "Can people explain what you do after 10 seconds?" 
                 },
                 { 
-                    val: "ZERO", 
-                    label: "COGNITIVE GAP", 
-                    desc: "When information is scattered, the human brain fills the gap with perceived risk. We structure your digital assets so customers can make informed decisions in seconds." 
+                    val: "02", 
+                    label: "Authority", 
+                    desc: "Can people verify your expertise?" 
                 },
                 { 
-                    val: "FOCUS", 
-                    label: "DECISION ARCHITECTURE", 
-                    desc: "We design user journeys that guide visitors directly to conversion elements, stripping away unnecessary secondary features that dilute user focus." 
+                    val: "03", 
+                    label: "Trust", 
+                    desc: "Do people find reasons to believe you?" 
                 },
                 { 
-                    val: "CLEAR", 
-                    label: "VERIFIED CREDIBILITY", 
-                    desc: "We build verified digital trust frameworks that satisfy search engines and customers alike, establishing your business as an undisputed authority in your niche." 
+                    val: "04", 
+                    label: "Direction", 
+                    desc: "Do people know what to do next?" 
                 }
             ]
         },
         penutup: {
-            line1: "Your business is ready,",
-            line2: "Or not ready,",
-            line3: "To convince them.",
-            financialCare: "soothing their financial concerns at the exact moment they make a decision",
-            closing: "Choose to be trusted.",
-            cta: "→ Build Clarity",
-            inquire: "Inquire for Collaboration →"
+            line1: "Need a second opinion",
+            line2: "on your website?",
+            line3: "Let's talk.",
+            financialCare: "websites are tools to reduce uncertainty",
+            closing: "Get a second opinion.",
+            cta: "→ Let's talk",
+            inquire: "Want honest feedback on your digital presence? Start here."
         },
         marquee1: {
             part1: "Grow_Professional",
@@ -127,6 +135,24 @@ export const en = {
             agencyLine: "Focus on complicated features that often confuse customers.",
             engineerLabel: "RIGHT STRATEGY",
             engineerLine: "Focus on fulfilling information needs so customers stop doubting."
+        },
+        notes: {
+            label: "// 05_THINKING_PROOF",
+            title: "Notes on trust, positioning, and digital credibility.",
+            items: [
+                {
+                    title: "Why most personal websites fail",
+                    desc: "It's not because the design is bad. It's because visitors never understand who is behind it. When identity is missing, the brain assumes risk."
+                },
+                {
+                    title: "The difference between a portfolio and a credibility system",
+                    desc: "A portfolio shows what you did. A credibility system explains how you think. In high-ticket consulting, the latter is infinitely more valuable."
+                },
+                {
+                    title: "The hidden cost of confusing messaging",
+                    desc: "If visitors have to think to understand what you do, they leave. Confusion is the ultimate conversion killer."
+                }
+            ]
         }
     },
     footer: {
@@ -147,38 +173,38 @@ export const en = {
         expandArchive: "EXPAND_ARCHIVE"
     },
     legacy: {
-        badge: "[ RESTRICTED_ACCESS // AUTHORITY_ARCHIVE ]",
-        title1: "PROVENANCE",
-        title2: "DATA",
-        title3: "RECORDS",
-        subtitle: "Architecture for Authority Through Verified Provenance",
+        badge: "[ THE_DESIGN_LAB // EXPERIMENTS ]",
+        title1: "Design",
+        title2: "Experiments",
+        title3: "Archive",
+        subtitle: "I'm interested in one question: Why do people trust some professionals immediately while ignoring others? My work explores how design, structure, and positioning influence that decision.",
         ref: "REF_",
-        sequence: "DATA_SEQUENCE_",
+        sequence: "EXPERIMENT_SEQ_",
         quote: "Historical data constitutes the structural foundation for digital authority.",
         trustQuote: "If you are tired of competing on price, start competing on trust.",
         trustIndex: "TRUST_INDEX: AA+",
         version: "VERSION: PROVENANCE_V1",
         cards: [
             {
-                title: "THE AWAKENING",
-                problem: "Traditional businesses losing traction due to invisible shifts in digital consumer behaviors.",
-                challenge: "Capturing organic user trust without resorting to gimmicky or aggressive ads.",
-                decision: "Pivot to Swiss-Brutalist minimalist architectures focusing on speed, raw data, and clear info structures.",
-                result: "Establishment of the digital trust protocol achieving instant credibility and zero noise."
+                title: "Personal Brand Architecture",
+                question: "How can a professional appear more trustworthy online?",
+                hypothesis: "Simplifying visual components while maximizing text weight establishes higher perceived authority.",
+                exploration: "Enforcing asymmetric layouts that emphasize typographical details, removing typical marketing visual noise.",
+                insight: "Lowering cognitive friction makes editorial authority immediately clear without needing client logos."
             },
             {
-                title: "AKSA INITIATIVE",
-                problem: "Fragmented historical records and data provenance across decentralized engineering platforms.",
-                challenge: "Unifying architectural system records while preserving absolute security and low cognitive load.",
-                decision: "Implement a structured metadata ledger and grid-based visual verification framework.",
-                result: "A robust provenance tracking system with verifiable indices and high compliance audit scores."
+                title: "The Credibility System",
+                question: "How to represent proof of expertise without standard portfolios?",
+                hypothesis: "Presenting raw case reasoning directly built credibility more effectively than static visual grids.",
+                exploration: "Replacing case galleries with strategic questions, hypotheses, and structured thinking blocks.",
+                insight: "A visitor decides to trust when they understand the decision-making process behind the work."
             },
             {
-                title: "REFLECTIVE RECONSTRUCTION",
-                problem: "Over-complicated user interfaces creating cognitive gaps and decision hesitation.",
-                challenge: "Stripping down secondary visual noise while maintaining premium brand aesthetic.",
-                decision: "Enforce strict typographic hierarchy and linear conversion funnel layout patterns.",
-                result: "A 40% reduction in customer drop-off rate and a highly optimized decision-making path."
+                title: "Clarity Conversion Funnel",
+                question: "Why do high-quality visitors bounce from minimal landing pages?",
+                hypothesis: "Minimalism without immediate context creates risk, leading to rapid exits.",
+                exploration: "Structuring layouts specifically around answering visitor doubts rather than focusing on aesthetic empty spaces.",
+                insight: "Clarity of value within the first 10 seconds is the ultimate driver of user journey progression."
             }
         ]
     },

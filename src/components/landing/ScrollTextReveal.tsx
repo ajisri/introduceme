@@ -67,9 +67,9 @@ export default function ScrollTextReveal({
                 {words.map((word, i) => (
                     <span
                         key={i}
-                        className="scroll-word inline-block mr-[0.3em] will-change-[opacity]"
+                        className="scroll-word inline-block mr-[0.2em] will-change-[opacity]"
                     >
-                        {word}
+                        {word}{" "}
                     </span>
                 ))}
             </Tag>

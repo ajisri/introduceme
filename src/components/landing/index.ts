@@ -8,3 +8,5 @@ export { default as ContrastSection } from "./ContrastSection";
 export { default as PenutupSection } from "./PenutupSection";
 export { default as ScrollTextReveal } from "./ScrollTextReveal";
 export { default as MaskTransition } from "./MaskTransition";
+export { default as NotesSection } from "./NotesSection";
+

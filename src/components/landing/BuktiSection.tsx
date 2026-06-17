@@ -2,14 +2,15 @@
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function BuktiSection() {
-    const { dict } = useLanguage();
+    const { dict, language } = useLanguage();
 
     return (
-        <section className="swiss-container py-32 lg:py-48 relative border-t border-foreground/5 bg-transparent overflow-hidden">
+        <section className="w-full py-32 lg:py-48 relative border-t border-foreground/15 bg-transparent overflow-hidden">
             {/* Structural Ghost Layer — Architectural Depth */}
             <div className="absolute top-0 right-0 w-[50%] h-full bg-swiss-grid opacity-[0.03] pointer-events-none" />
 
-            <div className="grid grid-cols-12 gap-8 lg:gap-12 relative z-10">
+            <div className="swiss-container">
+                <div className="grid grid-cols-12 gap-8 lg:gap-12 relative z-10">
                 {/* Sticky Side Label */}
                 <div className="col-span-12 lg:col-span-3">
                     <div className="sticky top-32 lg:pb-10">
@@ -21,6 +22,9 @@ export default function BuktiSection() {
                 </div>
 
                 <div className="col-span-12 lg:col-span-9 lg:col-start-4">
+                    <h3 className="font-unbounded font-black text-foreground tracking-tighter mb-12 text-3xl sm:text-4xl lg:text-5xl leading-none">
+                        {language === "id" ? "Bagaimana saya membangun kredibilitas digital." : "How I construct digital credibility."}
+                    </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/15 border border-foreground/15">
                         {dict.landing.bukti.items.map((item, i) => (
                             <div key={i} className="bg-background p-6 md:p-8 flex flex-col justify-between min-h-[320px] group transition-colors hover:bg-foreground/[0.02]">
@@ -49,6 +53,7 @@ export default function BuktiSection() {
                     </div>
                 </div>
             </div>
-        </section>
-    );
+        </div>
+    </section>
+);
 }

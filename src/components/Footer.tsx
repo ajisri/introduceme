@@ -128,15 +128,6 @@ export default function Footer() {
                         {dict.footer.nav.manifesto}
                     </a>
                 </nav>
-
-                <div className="flex flex-col gap-2 md:text-right mt-8 md:mt-0">
-                    <span className="font-mono text-[8px] uppercase tracking-[0.5em] opacity-50">
-                        {dict.footer.accessPoint}
-                    </span>
-                    <span className="text-xl lg:text-2xl font-black tracking-tighter">
-                        {dict.footer.globalNetwork}
-                    </span>
-                </div>
             </div>
 
             <div className="bg-foreground text-background px-6 lg:px-12 py-4 border-t border-background/5 flex justify-between items-center font-mono text-[8px] uppercase tracking-widest opacity-40" style={{ position: 'relative' }}>

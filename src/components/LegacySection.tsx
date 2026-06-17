@@ -33,7 +33,7 @@ export default function LegacySection() {
             // ====================================================================
             // INITIAL STATE: Subtle entry offsets
             // ====================================================================
-            cards.forEach((card, i) => {
+            cards.forEach((card) => {
                 gsap.set(card, {
                     y: 60,
                     opacity: 0,
@@ -243,14 +243,14 @@ export default function LegacySection() {
                 </div>
 
                 {/* Main Title - Swiss Typography */}
-                <h2 className="text-[14vw] lg:text-[10vw] font-black uppercase leading-[0.75] tracking-[-0.03em]">
+                <h2 className="text-[10vw] lg:text-[7vw] font-black leading-[0.8] tracking-[-0.03em]">
                     {dict.legacy.title1}<br />
                     <span className="text-stroke">{dict.legacy.title2}</span><br />
                     <span
                         className="text-[var(--swiss-red)] relative"
                         style={{
-                            textShadow: '4px 4px 0px black, -1px -1px 0px black, 1px -1px 0px black, -1px 1px 0px black',
-                            WebkitTextStroke: '2px black',
+                            textShadow: '3px 3px 0px black, -1px -1px 0px black, 1px -1px 0px black, -1px 1px 0px black',
+                            WebkitTextStroke: '1.5px black',
                             paintOrder: 'stroke fill'
                         }}
                     >
@@ -272,14 +272,13 @@ export default function LegacySection() {
             >
                 <div className="flex flex-col gap-24 lg:gap-40 w-full perspective-1000">
                     {cardsList.slice(0, 3).map((card, i) => {
-                        const isEven = i % 2 === 0;
                         return (
                             <div 
                                 key={i} 
                                 className="case-study-row grid grid-cols-12 gap-8 lg:gap-16 items-center w-full"
                             >
-                                {/* Poster Image Column */}
-                                <div className={`col-span-12 lg:col-span-5 ${isEven ? 'lg:order-1' : 'lg:order-2 lg:col-start-8'}`}>
+                                {/* Poster Image Column - Consistent Left Grid Layout */}
+                                <div className="col-span-12 lg:col-span-8 lg:order-1">
                                     <div
                                         className="legacy-card brutalist-card relative aspect-[3/4] w-full group cursor-pointer overflow-hidden p-0"
                                         style={{
@@ -322,110 +321,37 @@ export default function LegacySection() {
                                     </div>
                                 </div>
 
-                                {/* Narrative Detail Column */}
-                                <div className={`case-study-narrative col-span-12 lg:col-span-6 flex flex-col justify-center gap-6 p-6 lg:p-10 border border-foreground/10 bg-foreground/[0.01] backdrop-blur-[1px] relative ${isEven ? 'lg:order-2 lg:col-start-7' : 'lg:order-1'}`}>
+                                {/* Narrative Detail Column - Consistent Right Grid Layout */}
+                                <div className="case-study-narrative col-span-12 lg:col-span-4 flex flex-col justify-center gap-6 p-6 lg:p-10 border border-foreground/10 bg-foreground/[0.01] backdrop-blur-[1px] relative lg:order-2 lg:col-start-9">
                                     <div className="absolute -top-3 left-6 bg-foreground text-background px-3 py-0.5 text-[8px] font-mono tracking-widest uppercase font-black">
-                                        [ CASE_STUDY_0{i + 1} // {card.title} ]
+                                        [ EXPERIMENT_0{i + 1} {"//"} {card.title} ]
                                     </div>
                                     
                                     <div className="space-y-4">
                                         <div className="border-l-2 border-swiss-red pl-4">
-                                            <span className="font-mono text-[8px] uppercase tracking-widest text-swiss-red block font-black mb-1">MASALAH / PROBLEM</span>
-                                            <p className="text-xs sm:text-sm font-sans font-medium text-foreground/80 leading-relaxed">{card.problem}</p>
-                                        </div>
-
-                                        <div className="border-l-2 border-foreground/30 pl-4">
-                                            <span className="font-mono text-[8px] uppercase tracking-widest text-foreground/40 block font-black mb-1">TANTANGAN / CHALLENGE</span>
-                                            <p className="text-xs sm:text-sm font-sans font-medium text-foreground/80 leading-relaxed">{card.challenge}</p>
+                                            <span className="font-mono text-[8px] uppercase tracking-widest text-swiss-red block font-black mb-1">PERTANYAAN / QUESTION</span>
+                                            <p className="text-xs sm:text-sm font-sans font-medium text-foreground/80 leading-relaxed">{card.question}</p>
                                         </div>
 
                                         <div className="border-l-2 border-[var(--pop-blue)] pl-4">
-                                            <span className="font-mono text-[8px] uppercase tracking-widest text-[var(--pop-blue)] block font-black mb-1">KEPUTUSAN / DECISION</span>
-                                            <p className="text-xs sm:text-sm font-sans font-medium text-foreground/80 leading-relaxed">{card.decision}</p>
+                                            <span className="font-mono text-[8px] uppercase tracking-widest text-[var(--pop-blue)] block font-black mb-1">HIPOTESIS / HYPOTHESIS</span>
+                                            <p className="text-xs sm:text-sm font-sans font-medium text-foreground/80 leading-relaxed">{card.hypothesis}</p>
+                                        </div>
+
+                                        <div className="border-l-2 border-[var(--pop-pink)] pl-4">
+                                            <span className="font-mono text-[8px] uppercase tracking-widest text-[var(--pop-pink)] block font-black mb-1">EKSPLORASI / EXPLORATION</span>
+                                            <p className="text-xs sm:text-sm font-sans font-medium text-foreground/80 leading-relaxed">{card.exploration}</p>
                                         </div>
 
                                         <div className="border-l-2 border-[var(--pop-green)] pl-4">
-                                            <span className="font-mono text-[8px] uppercase tracking-widest text-[var(--pop-green)] block font-black mb-1">HASIL / RESULT</span>
-                                            <p className="text-xs sm:text-sm font-sans font-bold text-foreground leading-relaxed">{card.result}</p>
+                                            <span className="font-mono text-[8px] uppercase tracking-widest text-[var(--pop-green)] block font-black mb-1">PELAJARAN / INSIGHT</span>
+                                            <p className="text-xs sm:text-sm font-sans font-bold text-foreground leading-relaxed">{card.insight}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         );
                     })}
-                </div>
-            </div>
-
-            {/* ================================================================
-                SECTION FOOTER - MASTERPIECE TYPOGRAPHY
-            ================================================================ */}
-            <div className="w-full mt-32 lg:mt-48 z-10 px-4 lg:px-10 pb-20 overflow-hidden">
-                <div className="quote-container-border w-full max-w-[1600px] mx-auto border-t-[1px] border-foreground/10 relative pt-12 lg:pt-24">
-                    
-                    {/* Meta Header */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-16 lg:mb-32">
-                        {/* Trust Metrics Badge */}
-                        <div className="flex items-center gap-4 bg-foreground text-background px-6 py-3 font-mono text-[10px] md:text-xs font-black uppercase tracking-widest">
-                            <span className="flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-[var(--swiss-red)] animate-pulse" />
-                                {dict.legacy.trustIndex}
-                            </span>
-                            <span className="opacity-50">/</span>
-                            <span>{dict.legacy.version}</span>
-                        </div>
-
-                        {/* Historic Data Quote as smaller, refined meta text */}
-                        <p className="max-w-md text-left md:text-right text-sm md:text-base font-semibold uppercase tracking-widest leading-relaxed text-foreground/80 border-l-[3px] md:border-l-0 md:border-r-[3px] border-[var(--swiss-red)] pl-4 md:pl-0 md:pr-4">
-                            &ldquo;{dict.legacy.quote}&rdquo;
-                        </p>
-                    </div>
-
-                    {/* MASSIVE TRUST QUOTE */}
-                    <div className="trust-quote-wrapper relative w-full flex flex-col gap-8 lg:gap-12">
-                        
-                        {/* PSYCHOLOGICAL BACKGROUND ACCENTS - Softened Red */}
-                        <div className="red-glow-accent absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[90vw] max-w-[1200px] bg-[var(--swiss-red)] opacity-15 pointer-events-none z-0" 
-                             style={{ borderRadius: '50%', filter: 'blur(160px)', transformStyle: 'preserve-3d' }} 
-                        />
-                        
-                        {/* MOIRÉ ILLUSION LAYER - Ultra Thin Concentric Circles */}
-                        <div className="moire-layer absolute inset-x-[-20%] inset-y-[-50%] opacity-[0.02] pointer-events-none z-0" 
-                             style={{ 
-                                 backgroundImage: `repeating-radial-gradient(circle at center, var(--foreground) 0px, var(--foreground) 0.5px, transparent 0.5px, transparent 24px)`,
-                                 backgroundSize: '100% 100%',
-                                 transform: 'rotate(0deg) scale(2)',
-                                 filter: 'blur(0.5px)'
-                              }} 
-                        />
-
-                        {/* First Part */}
-                        <h3 className="flex flex-wrap content-start items-start justify-start gap-x-[0.3em] gap-y-[0.1em] text-[11vw] sm:text-[9vw] lg:text-[7vw] font-black uppercase leading-[0.9] tracking-[-0.03em] w-full pb-4 perspective-1000 z-10 relative">
-                            {(dict.legacy.trustQuote || "").split(',')[0].trim().split(' ').map((word: string, i: number, arr: string[]) => (
-                                <span key={i} className="inline-block overflow-hidden pb-[0.2em] whitespace-nowrap">
-                                    <span className="trust-quote-word inline-block origin-bottom text-foreground">
-                                        {word}{i === arr.length - 1 ? ',' : ''}
-                                    </span>
-                                </span>
-                            ))}
-                        </h3>
-
-                        {/* Second Part */}
-                        <h3 className="trust-quote-part-2 flex flex-wrap content-start items-start justify-end gap-x-[0.25em] gap-y-[0.1em] text-[8.5vw] sm:text-[7vw] lg:text-[5.5vw] font-black uppercase leading-[0.9] tracking-[-0.04em] w-full mt-[30vh] lg:mt-[60vh] pb-4 perspective-1000 z-50 relative text-right">
-                            {(dict.legacy.trustQuote || "").split(',').slice(1).join(',').trim().split(' ').map((word: string, i: number) => (
-                                <span key={i} className="inline-block overflow-hidden pb-[0.2em] pt-[0.1em] px-[0.05em] align-top whitespace-nowrap">
-                                    <span className="trust-quote-word inline-block origin-bottom text-[var(--pop-blue)]"
-                                        style={{
-                                            textShadow: '2.5px 2.5px 0px var(--foreground), 5px 5px 0px rgba(0,0,0,0.1)',
-                                            WebkitTextStroke: '1.2px var(--foreground)',
-                                            paintOrder: 'stroke fill'
-                                        }}>
-                                        {word}
-                                    </span>
-                                </span>
-                            ))}
-                        </h3>
-                    </div>
-
                 </div>
             </div>
         </section>

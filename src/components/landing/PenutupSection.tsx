@@ -4,8 +4,8 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion, AnimatePresence } from "framer-motion";
 import Magnetic from "./Magnetic";
+import { useTheme } from "next-themes";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +13,7 @@ if (typeof window !== "undefined") {
 
 export default function PenutupSection() {
     const { dict, language } = useLanguage();
+    const { resolvedTheme } = useTheme();
     const containerRef = useRef<HTMLElement>(null);
     const noButtonRef = useRef<HTMLButtonElement>(null);
     const hasInitializedRef = useRef(false);
@@ -116,108 +117,112 @@ export default function PenutupSection() {
         };
     }, []);
 
+    // Dilemma background: Neutral transition tone matching the previous section (Legacy)
+    const dilemmaBg = resolvedTheme === "dark" ? "#151513" : "#F5F5F0";
+    const dilemmaFg = resolvedTheme === "dark" ? "#F5F5F0" : "#0E0E0E";
+
     return (
-        <section
-            ref={containerRef}
-            className="w-full relative penutup-section overflow-hidden min-h-[100svh] bg-background border-t border-foreground/5 pt-16 lg:pt-20 pb-10 lg:pb-20 flex flex-col justify-between"
-        >
-            <div className="swiss-container flex-grow flex flex-col justify-between relative z-10 h-full">
+        <div className="w-full flex flex-col">
+            
+            {/* =========================================
+                PART 1: THE DILEMMA (PEAK REFLECTION ZONE)
+                With massive vertical whitespace and full-width top border
+                ========================================= */}
+            <section 
+                style={{ backgroundColor: dilemmaBg, color: dilemmaFg }}
+                className="w-full relative border-t border-foreground/10 py-48 lg:py-64 flex flex-col justify-center items-center transition-colors duration-500 overflow-hidden"
+            >
+                {/* Visual grid texture guide */}
+                <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-halftone" />
                 
-                {/* =========================================
-                    TOP MODULE: READING & ACTION (ASYMMETRICAL)
-                    ========================================= */}
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-16 lg:gap-0 border-b border-foreground/10 pb-12 lg:pb-16">
+                <div className="swiss-container flex flex-col items-start gap-10 relative z-10 w-full">
+                    <span className="inline-block font-mono font-black uppercase tracking-[0.4em] text-swiss-red opacity-70" style={{ fontSize: "0.65rem" }}>
+                        {"// 05_THE_DILEMMA"}
+                    </span>
                     
-                    {/* Left: Structured Reflection */}
-                    <div className="flex flex-col gap-14 max-w-lg">
-                        <span className="penutup-line inline-block font-mono font-black uppercase tracking-[0.4em] text-swiss-red opacity-60" style={{ fontSize: "0.65rem" }}>
-                            {"// 05_CLOSURE_PROTOCOL"}
-                        </span>
-                        
-                        <div className="border-l border-foreground/20 pl-6 lg:pl-8 space-y-10">
-                            <p className="penutup-line font-medium leading-[1.6] text-foreground/50 italic" style={{ fontSize: "clamp(1rem, 1.2vw, 1.15rem)" }}>
-                                {dict.landing.penutup.line1} <br/> {dict.landing.penutup.line2}
-                            </p>
-                            <p className="penutup-line font-bold leading-[1.4] tracking-tight text-foreground" style={{ fontSize: "clamp(1.2rem, 1.5vw, 1.4rem)" }}>
-                                {dict.landing.penutup.line3}
-                            </p>
-                            <p className="penutup-line font-mono uppercase tracking-[0.2em] text-swiss-red/80 pt-4" style={{ fontSize: "0.65rem", maxWidth: "320px" }}>
-                                [ {dict.landing.penutup.financialCare} ]
-                            </p>
+                    <div className="max-w-[1200px] space-y-8 mt-4">
+                        <p className="font-medium leading-relaxed opacity-60 italic text-lg sm:text-xl lg:text-2xl max-w-4xl">
+                            {dict.landing.penutup.line1} <br/> {dict.landing.penutup.line2}
+                        </p>
+                        <h2 className="font-unbounded font-black text-swiss-red leading-[1.0] tracking-[-0.04em]" 
+                           style={{ fontSize: "clamp(2.2rem, 5.5vw, 5.5rem)" }}>
+                            {dict.landing.penutup.line3}
+                        </h2>
+                    </div>
+
+                    {/* Subtle Downwards Guidance */}
+                    <div className="mt-20 flex items-center gap-3 opacity-40 animate-pulse">
+                        <span className="font-mono text-[9px] uppercase tracking-widest">[ SCROLL_TO_FINAL_ACTION ]</span>
+                        <span className="text-xs">↓</span>
+                    </div>
+                </div>
+            </section>
+
+            {/* =========================================
+                PART 2: THE FINAL CALL TO ACTION
+                The dark, high-contrast decision block
+                ========================================= */}
+            <section
+                ref={containerRef}
+                className="w-full relative penutup-section overflow-hidden min-h-[90vh] bg-background border-t border-foreground/10 pt-24 lg:pt-32 pb-10 lg:pb-20 flex flex-col justify-between"
+            >
+                <div className="swiss-container flex-grow flex flex-col justify-between relative z-10 h-full">
+                    
+                    {/* Closing Headline */}
+                    <div className="flex flex-col gap-10 py-12 lg:py-20">
+                        <div className="overflow-hidden">
+                            <h1 className="font-unbounded font-black text-foreground leading-[0.8] tracking-tighter w-full text-left" 
+                                style={{ fontSize: "clamp(2.5rem, 7.5vw, 8.5rem)" }}>
+                                {dict.landing.penutup.closing}
+                            </h1>
+                        </div>
+
+                        {/* CTA Buttons */}
+                        <div className="penutup-cta-container flex flex-col-reverse sm:flex-row items-start sm:items-center gap-8 relative z-50 mt-4">
+                            <button 
+                                ref={noButtonRef}
+                                onMouseEnter={handleEvade}
+                                onClick={handleEvade}
+                                className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-foreground/50 border border-foreground/10 px-8 py-5 bg-transparent whitespace-nowrap hover:border-swiss-red hover:text-swiss-red transition-colors duration-300"
+                                style={{ position: "relative" }}
+                            >
+                                {language === "id" ? "cari alternatif lain" : "find alternatives"}
+                            </button>
+
+                            <Magnetic strength={0.25}>
+                                <Link href="/story" aria-label={dict.landing.penutup.cta} className="group relative flex items-center justify-between gap-10 border border-foreground/10 bg-transparent hover:bg-foreground hover:border-foreground transition-all duration-700 px-8 py-6 w-full sm:w-auto">
+                                    <span className="font-unbounded font-semibold tracking-widest text-foreground group-hover:text-background transition-colors duration-500" style={{ fontSize: "0.75rem" }}>
+                                        {dict.landing.penutup.cta}
+                                    </span>
+                                    <span className="w-10 h-10 rounded-full border border-foreground/20 flex items-center justify-center group-hover:bg-swiss-red group-hover:border-transparent transition-colors duration-500">
+                                        <svg className="w-4 h-4 text-foreground group-hover:text-white rotate-[-45deg] group-hover:rotate-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    </span>
+                                </Link>
+                            </Magnetic>
                         </div>
                     </div>
 
-                    {/* Right: Studio Monk Style CTA + Evasive Button */}
-                    <div className="penutup-cta-container w-full lg:w-auto flex flex-col-reverse lg:flex-row items-center justify-start lg:justify-end gap-12 relative z-50">
-                        
-                        <button 
-                            ref={noButtonRef}
-                            onMouseEnter={handleEvade}
-                            onClick={handleEvade}
-                            className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-foreground/50 border border-foreground/10 px-8 py-5 bg-transparent whitespace-nowrap hover:border-swiss-red hover:text-swiss-red transition-colors duration-300"
-                            style={{ position: "relative" }}
-                        >
-                            {language === "id" ? "pindah alternatif lain" : "find alternatives"}
-                        </button>
-
-                        <Magnetic strength={0.25}>
-                            <Link href="/story" aria-label={dict.landing.penutup.cta} className="group relative flex items-center justify-between gap-10 border border-foreground/10 bg-transparent hover:bg-foreground hover:border-foreground transition-all duration-700 px-8 py-6 w-full lg:w-auto">
-                                <span className="font-unbounded font-semibold uppercase tracking-widest text-foreground group-hover:text-background transition-colors duration-500" style={{ fontSize: "0.75rem" }}>
-                                    {dict.landing.penutup.cta}
-                                </span>
-                                <span className="w-10 h-10 rounded-full border border-foreground/20 flex items-center justify-center group-hover:bg-swiss-red group-hover:border-transparent transition-colors duration-500">
-                                    <svg className="w-4 h-4 text-foreground group-hover:text-white rotate-[-45deg] group-hover:rotate-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </span>
-                            </Link>
-                        </Magnetic>
-                    </div>
-
-                </div>
-
-                {/* =========================================
-                    BOTTOM MODULE: PURE TYPOGRAPHIC SCALE
-                    ========================================= */}
-                <div className="pt-16 lg:pt-auto mt-auto flex flex-col justify-end">
-                    <div className="penutup-line overflow-hidden">
-                        <AnimatePresence mode="wait">
-                            <motion.h1 
-                                key={language + dict.landing.penutup.closing}
-                                initial={{ y: "100%" }}
-                                animate={{ y: 0 }}
-                                exit={{ y: "-100%" }}
-                                transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                                className="font-unbounded font-medium uppercase text-foreground leading-[0.8] tracking-tighter w-full text-left" 
-                                style={{ fontSize: "clamp(2.5rem, 10vw, 11rem)" }}
-                            >
-                                {dict.landing.penutup.closing.split(" ").map((word, i) => (
-                                    <span key={i} className="inline-block mr-[0.2em]">{word}</span>
-                                ))}
-                            </motion.h1>
-                        </AnimatePresence>
-                    </div>
-
-                    <div className="penutup-line mt-8 md:mt-12 flex justify-start z-30">
+                    {/* Bottom Access Link */}
+                    <div className="pt-8 border-t border-foreground/10 mt-auto flex justify-start z-30">
                         <Magnetic strength={0.15}>
                             <Link 
                                 href="/story" 
                                 className="group inline-flex items-center gap-4 border-b border-foreground hover:border-swiss-red pb-2 transition-colors duration-300"
                             >
-                                <span className="font-mono text-[10px] md:text-xs font-black uppercase tracking-[0.25em] text-foreground group-hover:text-swiss-red transition-colors duration-300">
+                                <span className="font-mono text-[10px] md:text-xs font-black tracking-[0.25em] text-foreground group-hover:text-swiss-red transition-colors duration-300">
                                     {dict.landing.penutup.inquire}
                                 </span>
                             </Link>
                         </Magnetic>
                     </div>
-                </div>
 
-            </div>
-            
-            {/* =========================================
-                ENVIRONMENTAL: BLEEDING BRUTALIST LINES
-                ========================================= */}
-            <div className="absolute top-0 left-[5%] lg:left-[8%] w-[1px] h-full bg-foreground/5 pointer-events-none" />
-            <div className="absolute top-0 right-[5%] lg:right-[8%] w-[1px] h-full bg-foreground/5 pointer-events-none" />
-            
-        </section>
+                </div>
+                
+                {/* Environmental lines */}
+                <div className="absolute top-0 left-[5%] lg:left-[8%] w-[1px] h-full bg-foreground/5 pointer-events-none" />
+                <div className="absolute top-0 right-[5%] lg:right-[8%] w-[1px] h-full bg-foreground/5 pointer-events-none" />
+                
+            </section>
+        </div>
     );
 }
